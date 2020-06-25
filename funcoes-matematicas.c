@@ -22,6 +22,25 @@ float calculaBaskara(int a, int b, int c){
     }
 }
 
+int verificaPrimo(int num){
+    int primo=0, i=2;
+    while(i < num){
+        if(num%i == 0){
+            primo++;
+        }
+
+        i++; 
+    }
+
+    if(primo == 0){
+        printf("o numero e primo!");
+        return 1;
+    }else{
+        printf("o numero nao e primo!!");
+        return 0;
+    }
+}
+
 int main(){
 
     return 0;
