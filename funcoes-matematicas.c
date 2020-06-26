@@ -41,8 +41,7 @@ int verificaPrimo(int num){
     }
 }
 
-int main()
-{
+int main(){
     int escolha;
     printf("O que deseja fazer?\n1 - calcular baskara\n2 - verificar se um numero e primo");
     scanf("%d", &escolha);
