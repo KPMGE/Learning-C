@@ -41,7 +41,40 @@ int verificaPrimo(int num){
     }
 }
 
-int main(){
+int main()
+{
+    int escolha;
+    printf("O que deseja fazer?\n1 - calcular baskara\n2 - verificar se um numero e primo");
+    scanf("%d", &escolha);
+
+    switch(escolha)
+    {
+    case 1:
+        float a, b, c;
+
+        printf("digite o valor de A\n> ");
+        scanf("%d", &a);
+
+        printf("digite o valor de B\n> ");
+        scanf("%d", &b);
+
+        printf("digite o valor de C\n> ");
+        scanf("%d", &c);
+
+        calculaBaskara(a, b, c);
+        break;
+
+    case 2:
+        int num;
+        printf("digite o numero\n> ");
+        scanf("%d", &num);
+
+        verificaPrimo(num);
+    
+    default:
+        printf("nenhuma opçao valida escolhida!!");
+        break;
+    }
 
     return 0;
 }
