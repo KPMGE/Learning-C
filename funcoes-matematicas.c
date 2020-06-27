@@ -41,9 +41,22 @@ int verificaPrimo(int num){
     }
 }
 
+float somaNumeros(int num){
+    float soma;
+
+    for(int i=0; i < num; i++){
+        printf("digite o numero\n> ");
+        scanf("%f", &n);
+        soma += n;        
+    }
+
+    printf("A soma e :  %f", soma);
+    return soma;
+}
+
 int main(){
     int escolha;
-    printf("O que deseja fazer?\n1 - calcular baskara\n2 - verificar se um numero e primo");
+    printf("O que deseja fazer?\n1 - calcular baskara\n2 - verificar se um numero e primo\n3 - somar N numeros\n> ");
     scanf("%d", &escolha);
 
     switch(escolha)
@@ -69,6 +82,13 @@ int main(){
         scanf("%d", &num);
 
         verificaPrimo(num);
+
+    case 3:
+        int qtd;
+
+        printf("digite a quantidade de numeros que deseja somar:  ");
+        scanf("%d", &qtd);
+        somaNumeros(qtd);
     
     default:
         printf("nenhuma opçao valida escolhida!!");
