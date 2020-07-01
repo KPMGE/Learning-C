@@ -1,53 +1,56 @@
-//importando bibliotecas
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-/*Encontrando os numeros primos em um intervalo*/
+//funçao que verifica se o numero é primo
+int EhPrimo(int num){
+    int i=2, primo=0;
+
+    //loop enquanto i for menor que o numero
+    while(i < num){
+        //se o resto da divisao do numero por i for igual a 0, variavel primo incrementada
+        if(num%i == 0){
+            primo++;
+        }
+        //incremento na variavel i
+        i++;
+    }
+
+    //caso o numero seja primo é retornado o valor 1(verdadeiro), caso contrario, 0(falso)
+    if(primo == 0){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
 int main(){
-    //declaração de variaveis
-	int n=0, m, primo=0, i=2, cont=0, escolha;
-	
-	do{
-		printf("\n--------- Calculando numeros primos em um intervalo ---------\n\n");
+	//inicio e fim do intervalo(aberto)
+	int n, m, escolha=1, cont=0;
 
-		printf("digite os valores de inicio e final do intervalo('aberto')\n> ");
+	do{
+		//cabeçalho
+		printf("-------------  calculando numeros primos num intervalo  -------------\n\nDigite os numeros de inicio e fim do intervalo(Aberto)\n> ");
+		
 		//leitura dos dados
 		scanf("%d%d", &n, &m);
 
-		n += 1;
+		//incremento em n, pois o intervalo é aberto
+		n++;
 
-		printf("Os numeros primos neste intervalo sao: \n");
-		//for do numero 1o numero digitado ate o ultimo ("intervalo aberto")
-		for(n; n < m; n++){
-			//loop enquanto o valor de i for menor que n
-			while(i < n){
-				//condição caso n seja divisivel por i, logo n não é primo
-				if(n%i == 0){
-					//variavel primo é incrementada em uma unidade
-					primo++;
-				}
-				//variavel i do cabeçalho incrementada
-				i++;
-			}
-
-			//apos a execução do loop, resetamos o valor de i
-			i = 2;
-
-			//caso a variavel primo seja 0, n não é divisivel por nenhum dos numeros anteriores, portanto n é primo
-			if(primo == 0){
+		//loop for de n ate n menor q m
+		for(n; n<m; n++){
+			//se o numero for primo, teremos verdadeiro para o if, logo sera mostrado o valor na tela
+			if(EhPrimo(n)){
+				printf("~  %d\n", n);
 				cont++;
-				printf("~\t%d\n", n);
 			}
-
-			//apos a comparação, resetamos a variavel primo
-			primo = 0;
 		}
-		printf("Temos %d numeros primos neste intervalo", cont);
-
-		printf("\nDeseja calcular novamente?(0 = N) ");
+		
+		//mostrando a quantidade de numeros primos contidos no intervalo
+		printf("ha  %d  numeros primos neste intervalo!!", cont);
+		//perguntando se o usuario deseja calcular novamente
+		printf("\n\nQuer continuar?\nSim - AnyNumber\nNão - 0\n> ");
 		scanf("%d", &escolha);
 	}while(escolha != 0);
 
-	return 0;
+    return 0;
 }
