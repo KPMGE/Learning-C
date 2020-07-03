@@ -135,6 +135,7 @@ int main(){
     //definindo o tamanho da matriz 
     int linhas, colunas;
 
+    printf("------------------ transformando matriz inicialm em matriz so com o proximo primo ou mantendo o numero, se ja primo -------------------\n\n");
     printf("Digite a quantidade de linhas e colunas da matriz:\n> ");
     scanf("%d %d", &linhas, &colunas);
 
