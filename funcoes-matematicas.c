@@ -2,6 +2,7 @@
 #include <math.h>
 
 
+//funçao que calcula a distancia entre dois pontos
 int distanciaEntreDoisPontos(int x1, int x2, int y1, int y2){
     int distancia, deltax, deltay;
 
@@ -17,6 +18,7 @@ int distanciaEntreDoisPontos(int x1, int x2, int y1, int y2){
 }
 
 
+//funçao que calcula as raizes de uma funçao do segundo grau
 float calculaBaskara(int a, int b, int c){
     float delta, raiz1, raiz2;
 
@@ -42,6 +44,7 @@ float calculaBaskara(int a, int b, int c){
 }
 
 
+//funçao que verifica se o numero é primo
 int verificaPrimo(int num){
     //variaveis declaradas
     int primo=0, i=2;
@@ -67,6 +70,7 @@ int verificaPrimo(int num){
 }
 
 
+//funçao que soma N numeros
 float somaNumeros(int num){
     float soma, n;
 
@@ -86,6 +90,7 @@ float somaNumeros(int num){
 }
 
 
+//funçao principal
 int main(){
     int escolha;
 
