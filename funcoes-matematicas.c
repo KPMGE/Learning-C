@@ -11,6 +11,8 @@ int distanciaEntreDoisPontos(int x1, int x2, int y1, int y2){
 
     distancia = sqrt(pow(deltax, 2) - pow(deltay, 2));
 
+    printf("Distancia: %d", distancia);
+
     return distancia;
 }
 
@@ -91,53 +93,53 @@ int main(){
     printf("O que deseja fazer?\n1 - calcular baskara\n2 - verificar se um numero e primo\n3 - somar N numeros\n4 - calcular a distancia entre dois pontos\n> ");
     scanf("%d", &escolha);
 
+    int num, qtd, x1, x2, y1, y2;
+    float a, b, c;
+
     //menu dada a opçao escolhida
     switch(escolha)
     {
     
     //caso opçao 1 escolhida
     case 1:
-        float a, b, c;
-
         printf("digite o valor de A\n> ");
-        scanf("%d", &a);
+        scanf("%f", &a);
 
         printf("digite o valor de B\n> ");
-        scanf("%d", &b);
+        scanf("%f", &b);
 
         printf("digite o valor de C\n> ");
-        scanf("%d", &c);
+        scanf("%f", &c);
 
         calculaBaskara(a, b, c);
+
         break;
 
     //caso opçao 2 escolhida
     case 2:
-        int num;
         printf("digite o numero\n> ");
         scanf("%d", &num);
 
         verificaPrimo(num);
+        
+        break;
 
     //caso opçao 3 escolhida
     case 3:
-        int qtd;
-
         printf("digite a quantidade de numeros que deseja somar:  ");
         scanf("%d", &qtd);
         somaNumeros(qtd);
 
+        break;
+
     //caso opçao 4 escolhida    
     case 4:
-        int x1, x2, y1, y2, distancia;
-
         printf("digite os valores de x1, x2, y1, y2. Respectivamente\n> ");
-        scanf("%d %d %d %d %d", &x1, &x2, &y1, &y2); 
+        scanf("%d %d %d %d", &x1, &x2, &y1, &y2); 
 
-        distancia = distanciaEntreDoisPontos(x1, x2, y1, y2);
+        distanciaEntreDoisPontos(x1, x2, y1, y2);
 
-        printf("Distancia: %d", distancia);
-
+        break;
     
     //caso nenhuma das anteriores
     default:
