@@ -14,13 +14,13 @@ Problema: Faça um programa para substituir caracteres espaço ‘ ‘ por carac
 //funçao que verifica o caractere final
 int verificaFinalCaractere(char caractere)
 {
-    //caso o caractere seja . ! ou ? retornamos 1, caso contrario, 0
-    if(caractere == 46 || caractere == 63 || caractere == 33)
-    {
-        return 1;
-    }else
+    //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
+    if(caractere == '.' || caractere == '!' || caractere == '?')
     {
         return 0;
+    }else
+    {
+        return 1;
     }   
 }
 
@@ -29,10 +29,10 @@ int verificaFinalCaractere(char caractere)
 char trocaEspaco(char caractere)
 {
     //caso o caractere seja um espaço em branco
-    if(caractere == 32)
+    if(caractere == ' ')
     {
         //caractere recebe underline
-        caractere = 95;
+        caractere = '_';
     }
 
     //retornando caractere
@@ -50,17 +50,11 @@ int main()
     //fgets(frase, 50,  stdin);
 
     int i=0;
-    while(i < 50)
+    while(verificaFinalCaractere(frase[i]))
     {
-        if(verificaFinalCaractere(frase[i]))
-        {
-            break;
-        }
-        //caso contrario, o nosso caractere recebe o retorno da funçao trocaEspaço
-        else
-        {
-            frase[i] = trocaEspaco(frase[i]);
-        }
+        //caractere recebe o retorno da funçao trocaEspaço
+        frase[i] = trocaEspaco(frase[i]);
+
         i++;
     }
 
