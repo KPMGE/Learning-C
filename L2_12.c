@@ -7,8 +7,9 @@ Problema: Faça um programa para substituir caracteres espaço ‘ ‘ por carac
 • Saída: “RESP:” seguido da sequência de caracteres modificada.
 */
 
+
+//importação de bibliotecas
 #include <stdio.h>
-#include <stdlib.h>
 
 
 //funçao que verifica o caractere final
@@ -43,20 +44,24 @@ char trocaEspaco(char caractere)
 //funçao principal
 int main()
 {
+    //vetor para a frase
     char frase[50];
 
-    scanf("%[^\n]s", frase);
-    setbuf(stdin, NULL);
-    //fgets(frase, 50,  stdin);
-
-    int i=0;
-    while(verificaFinalCaractere(frase[i]))
+    //como incrementamos i logo no começo do loop, usamos seu valor como -1, assim ao fazer i++, o primeiro valor será i[0]
+    int i=-1;
+    //loop do tipo do-while para fazer a leitura
+    do
     {
+        //incremento na variavel i
+        i++;
+
+        //lendo o caractere na posição de i
+        scanf("%c", &frase[i]);
+
         //caractere recebe o retorno da funçao trocaEspaço
         frase[i] = trocaEspaco(frase[i]);
 
-        i++;
-    }
+    }while(verificaFinalCaractere(frase[i]));
 
     //mostrando frase modificada
     printf("RESP:%s", frase);
