@@ -16,8 +16,8 @@ OBS: “YES - Presentation diferences” não é uma resposta válida para essa 
 //funçao que verifica o caractere final
 int verificaFinalCaractere(char caractere)
 {
-    //caso o caractere seja . ! ou ? retornamos 1, caso contrario, 0
-    if(caractere == 46 || caractere == 63 || caractere == 33)
+    //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
+    if(caractere == '.' || caractere == '!' || caractere == '?')
     {
         return 0;
     }else
@@ -64,21 +64,20 @@ int main()
 {
     //declaraçao de variaveis
     char frase[50];
-    int i=0;
-
-    //leitura de dados
-    scanf("%[^\n]s", frase);
-    setbuf(stdin, NULL);
+    int i=-1;
 
     //loop enquanto nao chegamos no final da frase
-    while(verificaFinalCaractere(frase[i]))
+    do
     {    
-        //transformamos a letra correspondente ao indice q estamos
-        frase[i] = transformaMaiusculo(frase[i]);
-        
         //incremento na variavel i
         i++;
-    }
+
+        //leitura de dados
+        scanf("%c", &frase[i]);
+
+        //transformamos a letra corresp{ondente ao indice q estamos
+        frase[i] = transformaMaiusculo(frase[i]);
+    }while(verificaFinalCaractere(frase[i]));
 
 
     //mostrando a frase na tela
