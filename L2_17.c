@@ -13,7 +13,23 @@ Atenção: Não deverão ser codificadas as letras maiúsculas. Números e outro
 #include <stdio.h>
 
 
-//funçao que verifica se o caractere é uma letra minusculad 
+//funçao que verifica se chegamos ao final do texto
+int verificaFinalTexto(char caractere)
+{
+    //caso cheguemos ao final, retornamos 0(falso), parando o loop
+    if(caractere == '.')
+    {
+        return 0;
+    }
+    //caso contrario, retornamos 1(verdadeiro), mantendo o loop
+    else
+    {
+        return 1;
+    }  
+}
+
+
+//funçao que verifica se o caractere é uma letra minuscula
 int verificaLetraMinuscula(char caractere)
 {
     if(caractere >=97 && caractere<= 122)
@@ -23,22 +39,6 @@ int verificaLetraMinuscula(char caractere)
     {
         return 0;
     }
-}
-
-
-//funçao que verifica se chegamos ao final do texto
-int verificaFinalTexto(char caractere)
-{
-    //caso cheguemos ao final, retornamos 0(falso), parando o loop
-    if(caractere == 46)
-    {
-        return 0;
-    }
-    //caso contrario, retornamos 1(verdadeiro), mantendo o loop
-    else
-    {
-        return 1;
-    }  
 }
 
 
@@ -80,16 +80,11 @@ char decodifica(char letra, int chave)
 int main()
 {
     //declaração de variaveis
-    int modo, chave, i=0;
+    int modo, chave, i=-1;
     char texto[50];
 
-    fgets(texto, 50, stdin);
-    //lendo o modo e chave e texto
-    //scanf("%d %d %[^\n]s", &modo, &chave, texto);
-
-    //limpando o buffer
-    //setbuf(stdin, NULL);
-
+    //lendo o modo de operação e chave
+    scanf("%d %d", &modo, &chave);
 
     //escolhendo o modo de trabalho
     switch(modo)
@@ -97,14 +92,17 @@ int main()
         //caso o modo 1 seja escolhido
         case 1:
             //loop enquanto não chegarmos ao ponto final
-            while(verificaFinalTexto(texto[i]))
+            do
             {
-                //codificamos a letra no loop que estamos
-                texto[i] = codifica(texto[i], chave);
-                
                 //incremento na variável i
                 i++;
-            }
+
+                //leitura dos dados
+                scanf("%c", &texto[i]);
+
+                //codificamos a letra no loop que estamos
+                texto[i] = codifica(texto[i], chave);
+            }while(verificaFinalTexto(texto[i]));
 
             //mostrando o texto final
             printf("%s", texto);    
@@ -114,14 +112,17 @@ int main()
 
         case 2:
             //loop enquanto não chegarmos ao ponto final
-            while(verificaFinalTexto(texto[i]))
+            do
             {
-                //texto na posição de i recebe o retorno da função decodifica
-                texto[i] = decodifica(texto[i], chave);
-
                 //incremento em i
                 i++;
-            }
+
+                //leitura dos dados
+                scanf("%c", &texto[i]);
+
+                //texto na posição de i recebe o retorno da função decodifica
+                texto[i] = decodifica(texto[i], chave);
+            }while(verificaFinalTexto(texto[i]));
             
             //mostrando o texto final
             printf("%s", texto);
