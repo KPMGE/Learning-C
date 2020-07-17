@@ -17,31 +17,44 @@ respectivamente. Depois, L linhas com C valores V (-32767 <= V <=
  Saída: o maior valor V da matriz, seguido
 */
 
+//importação de bibliotecas
 #include <stdio.h>
 
+
+//função principal
 int main()
 {
-
+    //declaração de variaveis
     int l, c, i, j, maior=0, linhaM, colunaM;
+
+    //leitura das dimensões da matriz
     scanf("%d %d", &l, &c);
 
+    //definição da matriz
     int matriz[l][c];
 
+    //percorrendo linhas da matriz
     for(i=0; i<l; i++)
     {
+        //percorrendo colunas da matriz
         for(j=0; j<c; j++)
         {
+            //leitura do elemento da matriz na posição i, j
             scanf("%d", &matriz[i][j]);
+
+            //caso o elemento seja maior
             if(matriz[i][j] > maior)
             {
+                //registrando o elemento da matriz e sua posição
                 maior = matriz[i][j];
-                linhaM = i;
-                colunaM = j;
+                linhaM = i+1;
+                colunaM = j+1;
             }
         }     
     }
 
-    printf("%d(%d, %d)", maior, linhaM+1, colunaM+1);
+    //mostrando dados 
+    printf("%d (%d, %d)", maior, linhaM, colunaM);
 
     return 0;
 }
