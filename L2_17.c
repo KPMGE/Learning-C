@@ -80,11 +80,12 @@ char decodifica(char letra, int chave)
 int main()
 {
     //declaração de variaveis
-    int modo, chave, i=-1;
+    int modo, i=-1;
+    float chave;
     char texto[50];
 
     //lendo o modo de operação e chave
-    scanf("%d %d", &modo, &chave);
+    scanf("%d %f", &modo, &chave);
 
     //escolhendo o modo de trabalho
     switch(modo)
