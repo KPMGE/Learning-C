@@ -1,22 +1,68 @@
+//Programa que, dado um numero , corta-o em seus algarismos
 #include <stdio.h>
+#include <math.h>
 
-int main(){
-    //OBS: numero deve ter 4 casas decimais do tipo abcd
-    int num, ab, cd;
+//função que retorna o tamanho do numero
+int tamanhoNum(int num)
+{
+    int resto, i=1, tamanho = 0;
 
-    printf("Digite um numero de 4 casas decimais\n> ");
+    //repetição enquanto o resto da divisão for diferente do numero
+    while(resto != num)
+    {
+        //resto recebe o resto da disão de numero por 10 elevado a i
+        resto = num % (int)pow(10, i);
+
+        //incrementando tamanho e i
+        tamanho++;
+        i++;
+    }
+    
+    return tamanho;
+}
+
+
+//função que retorna o algarismo na posicaoição dada
+int algarismoNum(int num, int posicaoicao)
+{
+    int algarismo, num2, num3;
+
+    //num2 recebe o numero integral até a casa especificada
+    num2 = num % (int)pow(10, posicaoicao);
+
+    //num3 recebe o numero dois com a primeira casa a menos
+    num3 = num % (int)pow(10, posicaoicao-1);
+
+    //algarismo recebe o numero2 - numero3, logo teremos um numero com o algarismo que queremos e 00.. após
+    algarismo = num2 - num3;
+
+    //cortando os zeros, restando somente o algarismo
+    algarismo /= (int)pow(10, posicaoicao-1);
+
+    return algarismo;
+}
+
+
+//função principal
+int main()
+{
+    //declaração de variaveis
+    int num, tamanho, algarismo, i;
+
+    //leitura de dados
+    printf("Digite o numero: ");
     scanf("%d", &num);
+    
+    tamanho = tamanhoNum(num);
+    //mostrando tamanho 
+    printf("O tamanho do numero e: %d\n", tamanho);
 
-    //os dois ultimos numeros sao dados pelo resto da divisao de numero por 100
-    cd = num%100;
+    //mostrando algarismos
+    for(i = 1; i <= tamanho; i++)
+    {
+        algarismo = algarismoNum(num, i);
+        printf("O algarismo na posicao %d e %d\n", i, algarismo);
+    }
 
-    //atualizamos o valor de numero, subtraindo os dois ultimos numeros, logo ficaremos com 00 ao final
-    num -= cd;
-
-    //como temos 00 ao final, podemos dividir por 100, de modo a corta-los
-    ab = num/100;
-
-    //mostrando as partes
-    printf("ab = %d\ncd = %d", ab, cd);
     return 0;
 }
