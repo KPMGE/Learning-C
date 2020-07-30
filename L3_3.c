@@ -9,27 +9,9 @@ Saída: Como saída, o programa deverá exibir todos os números primos contidos
 #include <stdio.h>
 
 //funçao que verifica se o numero é primo
-int EhPrimo(int num){
-    int i=2, primo=0;
+int EhPrimo(int num);
 
-    //loop enquanto i for menor que o numero
-    while(i < num){
-        //se o resto da divisao do numero por i for igual a 0, variavel primo incrementada
-        if(num%i == 0){
-            primo++;
-        }
-        //incremento na variavel i
-        i++;
-    }
-
-    //caso o numero seja primo é retornado o valor 1(verdadeiro), caso contrario, 0(falso)
-    if(primo == 0){
-        return 1;
-    }else{
-        return 0;
-    }
-}
-
+//função principal
 int main(){
     //inicio e fim do intervalo(aberto)
     int n, m;
@@ -49,4 +31,26 @@ int main(){
     }
 
     return 0;
+}
+
+//funçao que verifica se o numero é primo
+int EhPrimo(int num){
+    int i=2, primo=0;
+
+    //loop enquanto i for menor que o numero
+    while(i < num){
+        //se o resto da divisao do numero por i for igual a 0, variavel primo incrementada
+        if(num%i == 0){
+            primo++;
+        }
+        //incremento na variavel i
+        i++;
+    }
+
+    //caso o numero seja primo é retornado o valor 1(verdadeiro), caso contrario, 0(falso)
+    if(primo == 0){
+        return 1;
+    }else{
+        return 0;
+    }
 }
