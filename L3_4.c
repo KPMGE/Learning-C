@@ -12,6 +12,38 @@ Saída: Como saída, o programa deverá exibir todos os números primos contidos
 #include <stdio.h>
 
 //funçao que imprime os multiplos de num ate max
+void ImprimeMultiplos(int num, int max);
+
+//funçao que verifica se o numero é primo
+int EhPrimo(int num);
+
+//funçao principal
+int main(){
+    //valores de inicio e fim do intervalo
+    int n, m;
+
+    //leitura dos dados
+    scanf("%d%d", &n, &m);
+
+    //incremento, pois nao queremos considerar n
+    n++;
+
+    //loop for de n ate n menor do que m
+    for(n; n<m; n++){
+        //caso o numero seja primo, entra-se no if
+        if(EhPrimo(n)){
+            //mostrando o numero primo
+            printf("%d\n", n);
+
+            //chamada da funçao que imprime os multiplos do numero primo
+            ImprimeMultiplos(n, m);
+        }
+    }
+
+    return 0;
+}
+
+//funçao que imprime os multiplos de num ate max
 void ImprimeMultiplos(int num, int max){
     int teste=0, multiplo, i=2;
     //loop indefinido 
@@ -67,31 +99,4 @@ int EhPrimo(int num){
     }else{
         return 0;
     }
-}
-
-
-//funçao principal
-int main(){
-    //valores de inicio e fim do intervalo
-    int n, m;
-
-    //leitura dos dados
-    scanf("%d%d", &n, &m);
-
-    //incremento, pois nao queremos considerar n
-    n++;
-
-    //loop for de n ate n menor do que m
-    for(n; n<m; n++){
-        //caso o numero seja primo, entra-se no if
-        if(EhPrimo(n)){
-            //mostrando o numero primo
-            printf("%d\n", n);
-
-            //chamada da funçao que imprime os multiplos do numero primo
-            ImprimeMultiplos(n, m);
-        }
-    }
-
-    return 0;
 }
