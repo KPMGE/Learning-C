@@ -34,6 +34,67 @@ abaixo.
 //importaçao de bibliotecas
 #include <stdio.h>
 
+
+//funçao que verifica se o numero é negativo ou nao
+int verificaNegativo(int n);
+
+//funçao que verifica se o numero é primo
+int verificaPrimo(int n);
+
+//funçao que transforma o numero no proximo primo, caso o numero nao seja primo e deixa o se ele ja for
+int transformaPrimo(int n);
+
+//funçao principal
+int main()
+{
+    //definindo o tamanho da matriz
+    int linhas, colunas;
+    scanf("%d %d", &linhas, &colunas);
+
+    //declaraçao da matriz com o tamanho que definimos
+    int matriz[linhas][colunas], matrizResultado[linhas][colunas];
+
+    //lendo matriz
+    int i, j;
+    //loop for de i=0 ate i < linhas, percorrendo as linhas
+    for (i = 0; i < linhas; i++)
+    {
+        //loop for de j=0, ate j<colunas, percorrendo as colunas
+        for (j = 0; j < colunas; j++)
+        {
+            //lendo o valor e passando para o elemento na posiçao linha(i), coluna(j)
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    //criando matriz resultado
+    //loop for de i=0 ate i < linhas, percorrendo as linhas
+    for (i = 0; i < linhas; i++)
+    {
+        //loop for de j=0, ate j<colunas, percorrendo as colunas
+        for (j = 0; j < colunas; j++)
+        {
+            //a matriz resultado sera dada por os elementos da matriz inicial aplicada a funçao transforma primo
+            matrizResultado[i][j] = transformaPrimo(matriz[i][j]);
+        }
+    }
+
+    //mostrando matriz resultado
+    //loop for de i=0 ate i < linhas, percorrendo as linhas
+    for (i = 0; i < linhas; i++)
+    {
+        //loop for de j=0, ate j<colunas, percorrendo as colunas
+        for (j = 0; j < colunas; j++)
+        {
+            //mostrando o valor da matriz resultado
+            printf("%d ", matrizResultado[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
 //funçao que verifica se o numero é negativo ou nao
 int verificaNegativo(int n)
 {
@@ -188,55 +249,4 @@ int transformaPrimo(int n)
             }
         }
     }
-}
-
-//funçao principal
-int main()
-{
-    //definindo o tamanho da matriz
-    int linhas, colunas;
-    scanf("%d %d", &linhas, &colunas);
-
-    //declaraçao da matriz com o tamanho que definimos
-    int matriz[linhas][colunas], matrizResultado[linhas][colunas];
-
-    //lendo matriz
-    int i, j;
-    //loop for de i=0 ate i < linhas, percorrendo as linhas
-    for (i = 0; i < linhas; i++)
-    {
-        //loop for de j=0, ate j<colunas, percorrendo as colunas
-        for (j = 0; j < colunas; j++)
-        {
-            //lendo o valor e passando para o elemento na posiçao linha(i), coluna(j)
-            scanf("%d", &matriz[i][j]);
-        }
-    }
-
-    //criando matriz resultado
-    //loop for de i=0 ate i < linhas, percorrendo as linhas
-    for (i = 0; i < linhas; i++)
-    {
-        //loop for de j=0, ate j<colunas, percorrendo as colunas
-        for (j = 0; j < colunas; j++)
-        {
-            //a matriz resultado sera dada por os elementos da matriz inicial aplicada a funçao transforma primo
-            matrizResultado[i][j] = transformaPrimo(matriz[i][j]);
-        }
-    }
-
-    //mostrando matriz resultado
-    //loop for de i=0 ate i < linhas, percorrendo as linhas
-    for (i = 0; i < linhas; i++)
-    {
-        //loop for de j=0, ate j<colunas, percorrendo as colunas
-        for (j = 0; j < colunas; j++)
-        {
-            //mostrando o valor da matriz resultado
-            printf("%d ", matrizResultado[i][j]);
-        }
-        printf("\n");
-    }
-
-    return 0;
 }
