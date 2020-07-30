@@ -17,6 +17,42 @@ Saída: Os N primeiros números do tipo pedido (par/ímpar).*/
 #include <stdio.h>
 
 //função que verifica se o numero é par ou impar
+int EhPar(int x);
+
+//função que printa os pares 
+void PrintaPares (int N);
+
+//função que printa os impares
+void PrintaImpares (int N);
+
+//função principal
+int main(void)
+{
+    unsigned int N;
+    int tipo;
+
+    //leitura de dados
+    scanf("%d %d", &tipo, &N);
+
+    //analisando o tipo escolhido
+    switch(tipo)
+    {
+        case 0:
+            PrintaPares(N);
+            break;
+
+        case 1:
+           PrintaImpares(N);
+            break;
+
+        default: 
+            break;
+    }
+
+    return 0;
+}
+
+//função que verifica se o numero é par ou impar
 int EhPar(int x)
 {
     if(x % 2 == 0)
@@ -59,31 +95,4 @@ void PrintaImpares (int N)
 
         i++;
     }while(cont != N);
-}
-
-//função principal
-int main()
-{
-    unsigned int N;
-    int tipo;
-
-    //leitura de dados
-    scanf("%d %d", &tipo, &N);
-
-    //analisando o tipo escolhido
-    switch(tipo)
-    {
-        case 0:
-            PrintaPares(N);
-            break;
-
-        case 1:
-           PrintaImpares(N);
-            break;
-
-        default: 
-            break;
-    }
-
-    return 0;
 }
