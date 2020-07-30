@@ -18,6 +18,33 @@ Atenção: As coordenadas da extremidade inferior esquerda do primeiro retângul
 #include <stdio.h>
 #include <math.h>
 
+//funçao que calcula a distancia entre dois pontos 
+int distanciaEntreDoisPontos(int x1, int y1, int x2, int y2);
+
+//funçao que calcula a area de um unico retangulo
+int area (int x1, int y1, int x2, int y2);
+
+//funçao que calcula a area total dos dois retangulos
+int area_total (int r1_x1, int r1_y1, int r1_x2, int r1_y2, int r2_x1, int r2_y1, int r2_x2, int r2_y2);
+
+//funçao principal
+int main(void){
+    //declaraçao das variveis usadas
+    int areaFinal;
+
+    int r1_x1, r1_y1, r1_x2, r1_y2, r2_x1, r2_y1, r2_x2, r2_y2;
+
+    //leitura das coordenadas do primeiro retangulo
+    scanf("%d %d %d %d\n%d %d %d %d", &r1_x1, &r1_y1, &r1_x2, &r1_y2, &r2_x1, &r2_y1, &r2_x2, &r2_y2);
+
+    //calculalndo area final com a funçao 
+    areaFinal = area_total(r1_x1, r1_y1, r1_x2, r1_y2, r2_x1, r2_y1, r2_x2, r2_y2);
+
+    //mostrando resultado na tela
+    printf("RESP:%d", areaFinal);
+
+    return 0;
+}
 
 //funçao que calcula a distancia entre dois pontos 
 int distanciaEntreDoisPontos(int x1, int y1, int x2, int y2){
@@ -75,25 +102,3 @@ int area_total (int r1_x1, int r1_y1, int r1_x2, int r1_y2, int r2_x1, int r2_y1
     return total;
 }
 
-
-//funçao principal
-int main(){
-    //declaraçao das variveis usadas
-    int areaFinal;
-
-    int r1_x1, r1_y1, r1_x2, r1_y2, r2_x1, r2_y1, r2_x2, r2_y2;
-
-    //leitura das coordenadas do primeiro retangulo
-    scanf("%d %d %d %d\n%d %d %d %d", &r1_x1, &r1_y1, &r1_x2, &r1_y2);
-
-    //leiura das coordenadas do segundo retangulo
-    scanf("%d %d %d %d", &r2_x1, &r2_y1, &r2_x2, &r2_y2);
-
-    //calculalndo area final com a funçao 
-    areaFinal = area_total(r1_x1, r1_y1, r1_x2, r1_y2, r2_x1, r2_y1, r2_x2, r2_y2);
-
-    //mostrando resultado na tela
-    printf("RESP:%d", areaFinal);
-
-    return 0;
-}
