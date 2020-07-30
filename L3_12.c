@@ -23,6 +23,53 @@ imprimir: Impar. Se for primo: Primo, caso não: Nao e primo.
 #include <math.h>
 
 //função que imprime par ou impar
+void parImpar(int n);
+
+//função que verifica se o numero é primo
+int verificaPrimo(int n);
+
+//função que imprime os primos
+void valorPrimo(int n);
+
+//função que retorna o tamanho do numero(casas decimais)
+int tamanhoNum(int n);
+
+//função que retorna o algarismo de um numero na posição dada
+int algarismoNum(int n, int posicao);
+
+//função que retorna o algarismo de um numero na posição dada
+int algarismoNum(int n, int posicao);
+
+//função que calcula a soma dos digitos
+int somadosdigitos(int n);
+
+//função principal
+int main()
+{
+    unsigned int valor, soma;
+    
+    //leitura de dados
+    scanf("%d", &valor);
+
+    //enquanto a soma dos digitos for maior que 9(maior numero de uma casa)
+    do
+    {
+        //calculando a soma
+        soma = somadosdigitos(valor);
+
+        //mostrando dados
+        printf("%d ", soma);
+        parImpar(soma);
+        valorPrimo(soma);
+        printf("\n");
+
+        valor = soma;
+    }while(soma > 9);
+
+    return 0;
+}
+
+//função que imprime par ou impar
 void parImpar(int n)
 {
     //caso o numero seja divisível por 2 é par, se não é impar
@@ -137,30 +184,4 @@ int somadosdigitos(int n)
     }
     
     return soma;
-}
-
-//função principal
-int main()
-{
-    unsigned int valor, soma;
-    
-    //leitura de dados
-    scanf("%d", &valor);
-
-    //enquanto a soma dos digitos for maior que 9(maior numero de uma casa)
-    do
-    {
-        //calculando a soma
-        soma = somadosdigitos(valor);
-
-        //mostrando dados
-        printf("%d ", soma);
-        parImpar(soma);
-        valorPrimo(soma);
-        printf("\n");
-
-        valor = soma;
-    }while(soma > 9);
-
-    return 0;
 }
