@@ -41,6 +41,85 @@ Saída: o texto codificado ou Decodificado.
 //importação de bibliotecas
 #include <stdio.h>
 
+//funçao que verifica se chegamos ao final do texto
+int verificaFinalTexto(char caractere);
+
+//função que  verifica se o caractere é uma letra
+int EhLetra (char c);
+
+//função que verifica se o caractere é uma letra maiúscula
+int EhLetraMaiuscula(char c);
+
+//função que verifica se o caractere é uma letra minúscula
+int EhLetraMinuscula(char c);
+
+//funçao que codifica a letra dada
+char Codifica(char letra, int n);
+
+//funçao  que Decodifica a letra dada
+char Decodifica (char letra, int n);
+
+//funçao principal
+int main()
+{
+    //declaração de variaveis
+    int modo, n, i=-1;
+    char texto[50];
+
+    //lendo o modo de operação e n
+    scanf("%d %d", &modo, &n);
+
+    //escolhendo o modo de trabalho
+    switch(modo)
+    {
+        //caso o modo 1 seja escolhido
+        case 1:
+            //loop enquanto não chegarmos ao ponto final
+            do
+            {
+                //incremento na variável i
+                i++;
+
+                //leitura dos dados
+                scanf("%c", &texto[i]);
+
+                //codificamos a letra no loop que estamos
+                texto[i] = Codifica(texto[i], n);
+            }while(verificaFinalTexto(texto[i]));
+
+            //mostrando o texto final
+            printf("%s", texto);    
+            
+            //apos a execuçao saimos do switch
+            break;
+
+        case 2:
+            //loop enquanto não chegarmos ao ponto final
+            do
+            {
+                //incremento em i
+                i++;
+
+                //leitura dos dados
+                scanf("%c", &texto[i]);
+
+                //texto na posição de i recebe o retorno da função Decodifica
+                texto[i] = Decodifica(texto[i], n);
+            }while(verificaFinalTexto(texto[i]));
+            
+            //mostrando o texto final
+            printf("%s", texto);
+
+            //apos a execuçao saimos do switch
+            break;
+
+        //caso nenhuma das opções acima seja escolhida
+        default:
+            printf("Operacao invalida.");
+    }
+    
+    return 0;
+}
 
 //funçao que verifica se chegamos ao final do texto
 int verificaFinalTexto(char caractere)
@@ -144,67 +223,4 @@ char Decodifica (char letra, int n)
     {
         return letra;
     }
-}
-
-
-//funçao principal
-int main()
-{
-    //declaração de variaveis
-    int modo, n, i=-1;
-    char texto[50];
-
-    //lendo o modo de operação e n
-    scanf("%d %d", &modo, &n);
-
-    //escolhendo o modo de trabalho
-    switch(modo)
-    {
-        //caso o modo 1 seja escolhido
-        case 1:
-            //loop enquanto não chegarmos ao ponto final
-            do
-            {
-                //incremento na variável i
-                i++;
-
-                //leitura dos dados
-                scanf("%c", &texto[i]);
-
-                //codificamos a letra no loop que estamos
-                texto[i] = Codifica(texto[i], n);
-            }while(verificaFinalTexto(texto[i]));
-
-            //mostrando o texto final
-            printf("%s", texto);    
-            
-            //apos a execuçao saimos do switch
-            break;
-
-        case 2:
-            //loop enquanto não chegarmos ao ponto final
-            do
-            {
-                //incremento em i
-                i++;
-
-                //leitura dos dados
-                scanf("%c", &texto[i]);
-
-                //texto na posição de i recebe o retorno da função Decodifica
-                texto[i] = Decodifica(texto[i], n);
-            }while(verificaFinalTexto(texto[i]));
-            
-            //mostrando o texto final
-            printf("%s", texto);
-
-            //apos a execuçao saimos do switch
-            break;
-
-        //caso nenhuma das opções acima seja escolhida
-        default:
-            printf("Operacao invalida.");
-    }
-    
-    return 0;
 }
