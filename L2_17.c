@@ -12,69 +12,17 @@ Atenção: Não deverão ser codificadas as letras maiúsculas. Números e outro
 //importação de bibliotecas
 #include <stdio.h>
 
-
 //funçao que verifica se chegamos ao final do texto
-int verificaFinalTexto(char caractere)
-{
-    //caso cheguemos ao final, retornamos 0(falso), parando o loop
-    if(caractere == '.')
-    {
-        return 0;
-    }
-    //caso contrario, retornamos 1(verdadeiro), mantendo o loop
-    else
-    {
-        return 1;
-    }  
-}
-
+int verificaFinalTexto(char caractere);
 
 //funçao que verifica se o caractere é uma letra minuscula
-int verificaLetraMinuscula(char caractere)
-{
-    if(caractere >=97 && caractere<= 122)
-    {
-        return 1;
-    }else
-    {
-        return 0;
-    }
-}
-
+int verificaLetraMinuscula(char caractere);
 
 //funçao que codifica a letra dada
-char codifica(char letra, int chave)
-{
-    //caso o caractere seja uma letra minuscula
-    if(verificaLetraMinuscula(letra))
-    {
-        //letra codificada aplicando a chave
-        letra += chave;
-
-        return letra;
-    }else
-    {
-        return letra;
-    }
-}
-
+char codifica(char letra, int chave);
 
 //funçao  que decodifica a letra dada
-char decodifica(char letra, int chave)
-{
-    //caso o caractere seja uma letra minuscula
-    if(verificaLetraMinuscula(letra))
-    {
-        //letra decodificada retirando a chave
-        letra -= chave;
-
-        return letra;
-    }else
-    {
-        return letra;
-    }
-}
-
+char decodifica(char letra, int chave);
 
 //funçao principal
 int main()
@@ -137,4 +85,65 @@ int main()
     }
     
     return 0;
+}
+
+//funçao que verifica se chegamos ao final do texto
+int verificaFinalTexto(char caractere)
+{
+    //caso cheguemos ao final, retornamos 0(falso), parando o loop
+    if(caractere == '.')
+    {
+        return 0;
+    }
+    //caso contrario, retornamos 1(verdadeiro), mantendo o loop
+    else
+    {
+        return 1;
+    }  
+}
+
+//funçao que verifica se o caractere é uma letra minuscula
+int verificaLetraMinuscula(char caractere)
+{
+    if(caractere >= 97 && caractere <= 122)
+    {
+        return 1;
+    }else
+    {
+        return 0;
+    }
+}
+
+
+//funçao que codifica a letra dada
+char codifica(char letra, int chave)
+{
+    //caso o caractere seja uma letra minuscula
+    if(verificaLetraMinuscula(letra))
+    {
+        //letra codificada aplicando a chave
+        letra += chave;
+
+        return letra;
+    }else
+    {
+        return letra;
+    }
+}
+
+
+//funçao  que decodifica a letra dada
+char decodifica(char letra, int chave)
+{
+    //caso o caractere seja uma letra minuscula
+    if(verificaLetraMinuscula(letra))
+    {
+        //letra decodificada retirando a chave
+        letra -= chave;
+
+        return letra;
+    }else
+    {
+        return letra;
+    }
 }

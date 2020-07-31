@@ -11,35 +11,14 @@ Problema: Faça um programa para eliminar os caracteres espaço ‘ ‘ de uma f
 //importação de bibliotecas
 #include <stdio.h>
 
-
 //funçao que verifica o caractere final
-int verificaFinalCaractere(char caractere)
-{
-    //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
-    if(caractere == '!'|| caractere == '?' || caractere == '.')
-    {
-        return 0;
-    }else
-    {
-        return 1;
-    }   
-}
-
+int verificaFinalCaractere(char caractere);
 
 //função que retorna 1(verdadeiro), caso o caractere seja um espaço e 0(falso) caso contrário
-int ehEspaco(char caractere)
-{
-    if(caractere == ' ')
-    {
-        return 1;
-    }else
-    {
-        return 0;
-    }  
-}
+int ehEspaco(char caractere);
 
 //funçao principal
-int main()
+int main(void)
 {
     //declaração de variaveis
     int i=-1, j=0;
@@ -70,4 +49,30 @@ int main()
     printf("RESP:%s", frase2);
     
     return 0;
+}
+
+//funçao que verifica o caractere final
+int verificaFinalCaractere(char caractere)
+{
+    //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
+    if(caractere == '!'|| caractere == '?' || caractere == '.')
+    {
+        return 0;
+    }else
+    {
+        return 1;
+    }   
+}
+
+
+//função que retorna 1(verdadeiro), caso o caractere seja um espaço e 0(falso) caso contrário
+int ehEspaco(char caractere)
+{
+    if(caractere == ' ')
+    {
+        return 1;
+    }else
+    {
+        return 0;
+    }  
 }
