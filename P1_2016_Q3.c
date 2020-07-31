@@ -1,8 +1,4 @@
-/*
-(BOCA: P1_2016_Q3) Problema: Faça um programa para verificar a validade de um código de 4 caracteres, em que o primeiro caractere deve ser maiúsculo, o segundo deve ser um dígito, o terceiro deve ser uma vogal, e o quarto deve ser uma consoante minúscula.
-
- Entrada: 4 caracteres.
- Saída: O programa deverá imprimir “Invalido” se algum dos caracteres não respeitar as regras de construção do código, e deverá imprimir o próprio código em maiúsculo, caso contrário.
+/* (BOCA: P1_2016_Q3) Problema: Faça um programa para verificar a validade de um código de 4 caracteres, em que o primeiro caractere deve ser maiúsculo, o segundo deve ser um dígito, o terceiro deve ser uma vogal, e o quarto deve ser uma consoante minúscula.  Entrada: 4 caracteres.  Saída: O programa deverá imprimir “Invalido” se algum dos caracteres não respeitar as regras de construção do código, e deverá imprimir o próprio código em maiúsculo, caso contrário.
 */
 
 //importaçao de bibliotecas
@@ -145,15 +141,6 @@ int main()
         vogal = transformaMaiusculo(vogal);
         //consoante recebe o valor da funçao transformaMaiusculo
         consoante = transformaMaiusculo(consoante);
-
-       /* //criando uma string para o codigo final
-        codigoFinal[0] = c1;
-        codigoFinal[1] = digito;
-        codigoFinal[2] = vogal;
-        codigoFinal[3] = consoante;
-
-        //mostrando o código finalizado
-        printf("%s", codigoFinal);*/
 
         printf("%c%c%c%c", c1, digito, vogal, consoante);
 

@@ -3,6 +3,36 @@
 #include <math.h>
 
 //função que retorna o tamanho do numero
+int tamanhoNum(int num);
+
+//função que retorna o algarismo na posicaoição dada
+int algarismoNum(int num, int posicaoicao);
+
+//função principal
+int main(void)
+{
+    //declaração de variaveis
+    int num, tamanho, algarismo, i;
+
+    //leitura de dados
+    printf("Digite o numero: ");
+    scanf("%d", &num);
+    
+    tamanho = tamanhoNum(num);
+    //mostrando tamanho 
+    printf("O tamanho do numero e: %d\n", tamanho);
+
+    //mostrando algarismos
+    for(i = 1; i <= tamanho; i++)
+    {
+        algarismo = algarismoNum(num, i);
+        printf("O algarismo na posicao %d e %d\n", i, algarismo);
+    }
+
+    return 0;
+}
+
+//função que retorna o tamanho do numero
 int tamanhoNum(int num)
 {
     int resto, i=1, tamanho = 0;
@@ -40,29 +70,4 @@ int algarismoNum(int num, int posicaoicao)
     algarismo /= (int)pow(10, posicaoicao-1);
 
     return algarismo;
-}
-
-
-//função principal
-int main()
-{
-    //declaração de variaveis
-    int num, tamanho, algarismo, i;
-
-    //leitura de dados
-    printf("Digite o numero: ");
-    scanf("%d", &num);
-    
-    tamanho = tamanhoNum(num);
-    //mostrando tamanho 
-    printf("O tamanho do numero e: %d\n", tamanho);
-
-    //mostrando algarismos
-    for(i = 1; i <= tamanho; i++)
-    {
-        algarismo = algarismoNum(num, i);
-        printf("O algarismo na posicao %d e %d\n", i, algarismo);
-    }
-
-    return 0;
 }

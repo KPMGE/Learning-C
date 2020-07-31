@@ -13,7 +13,34 @@ a) A verificação da propriedade de um número deverá ser feita por uma funç�
 
  Saída: Como saída, seu programa deverá exibir os números maiores que n e menores que m que satisfaçam esta propriedade, separados por uma quebra de linha.*/
 
+//função principal
 #include <stdio.h>
+
+//funçao que verifica a propriedade 
+int Propriedade(int num);
+
+//funçao principal
+int main(){
+    //inicio e fim do intervalo
+    int n, m;
+
+    //leitura dos dados
+    scanf("%d %d", &n, &m);
+
+    //como nao queremos considerar n, incrementamos o mesmo
+    n++;
+
+    //loop for de n, ate n menor do que m
+    for(n; n<m; n++){
+        //caso o valor de retorno seja 1, entraremos automaticamente no if
+        if(Propriedade(n)){
+            //mostrando o numero que satisfaz a propriedade 
+            printf("%d\n", n);
+        }
+    }
+
+    return 0;
+}
 
 //funçao que verifica a propriedade 
 int Propriedade(int num){
@@ -39,33 +66,9 @@ int Propriedade(int num){
     if(efAoQuadrado == num){
         return 1;
     }
-    
     //caso contrario , retornamos 0(falso)
     else{
         return 0;
     }
 }
 
-
-//funçao principal
-int main(){
-    //inicio e fim do intervalo
-    int n, m;
-
-    //leitura dos dados
-    scanf("%d%d", &n, &m);
-
-    //como nao queremos considerar n, incrementamos o mesmo
-    n++;
-
-    //loop for de n, ate n menor do que m
-    for(n; n<m; n++){
-        //caso o valor de retorno seja 1, entraremos automaticamente no if
-        if(Propriedade(n)){
-            //mostrando o numero que satisfaz a propriedade 
-            printf("%d\n", n);
-        }
-    }
-
-    return 0;
-}

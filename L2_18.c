@@ -54,7 +54,5 @@ int main()
     }
 
     //mostrando dados 
-    printf("%d (%d, %d)", maior, linhaM, colunaM);
-
     return 0;
 }
