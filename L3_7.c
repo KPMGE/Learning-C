@@ -13,22 +13,22 @@ Atenção: As coordenadas da extremidade inferior esquerda do primeiro retângul
 • Saída: “RESP:” seguido de um número inteiro representando a área total ocupada pelos dois retângulos.
 */
 
-
 //importaçao das bibliotecas
 #include <stdio.h>
 #include <math.h>
 
-//funçao que calcula a distancia entre dois pontos 
+//funçao que calcula a distancia entre dois pontos
 int distanciaEntreDoisPontos(int x1, int y1, int x2, int y2);
 
 //funçao que calcula a area de um unico retangulo
-int area (int x1, int y1, int x2, int y2);
+int area(int x1, int y1, int x2, int y2);
 
 //funçao que calcula a area total dos dois retangulos
-int area_total (int r1_x1, int r1_y1, int r1_x2, int r1_y2, int r2_x1, int r2_y1, int r2_x2, int r2_y2);
+int area_total(int r1_x1, int r1_y1, int r1_x2, int r1_y2, int r2_x1, int r2_y1, int r2_x2, int r2_y2);
 
 //funçao principal
-int main(void){
+int main(void)
+{
     //declaraçao das variveis usadas
     int areaFinal;
 
@@ -37,7 +37,7 @@ int main(void){
     //leitura das coordenadas do primeiro retangulo
     scanf("%d %d %d %d\n%d %d %d %d", &r1_x1, &r1_y1, &r1_x2, &r1_y2, &r2_x1, &r2_y1, &r2_x2, &r2_y2);
 
-    //calculalndo area final com a funçao 
+    //calculalndo area final com a funçao
     areaFinal = area_total(r1_x1, r1_y1, r1_x2, r1_y2, r2_x1, r2_y1, r2_x2, r2_y2);
 
     //mostrando resultado na tela
@@ -46,8 +46,9 @@ int main(void){
     return 0;
 }
 
-//funçao que calcula a distancia entre dois pontos 
-int distanciaEntreDoisPontos(int x1, int y1, int x2, int y2){
+//funçao que calcula a distancia entre dois pontos
+int distanciaEntreDoisPontos(int x1, int y1, int x2, int y2)
+{
     //declaraçao das variveis usadas
     int distancia, xq, yq;
 
@@ -64,9 +65,9 @@ int distanciaEntreDoisPontos(int x1, int y1, int x2, int y2){
     return distancia;
 }
 
-
 //funçao que calcula a area de um unico retangulo
-int area (int x1, int y1, int x2, int y2){
+int area(int x1, int y1, int x2, int y2)
+{
     //declaraçao das variveis usadas
     int d1, d2, area;
 
@@ -83,9 +84,9 @@ int area (int x1, int y1, int x2, int y2){
     return area;
 }
 
-
 //funçao que calcula a area total dos dois retangulos
-int area_total (int r1_x1, int r1_y1, int r1_x2, int r1_y2, int r2_x1, int r2_y1, int r2_x2, int r2_y2){
+int area_total(int r1_x1, int r1_y1, int r1_x2, int r1_y2, int r2_x1, int r2_y1, int r2_x2, int r2_y2)
+{
     //declaraçao das variveis usadas
     int area1, area2, total;
 
@@ -101,4 +102,3 @@ int area_total (int r1_x1, int r1_y1, int r1_x2, int r1_y2, int r2_x1, int r2_y1
     //retornando area total
     return total;
 }
-

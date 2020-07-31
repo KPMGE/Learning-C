@@ -18,7 +18,8 @@ void ImprimeMultiplos(int num, int max);
 int EhPrimo(int num);
 
 //funçao principal
-int main(){
+int main()
+{
     //valores de inicio e fim do intervalo
     int n, m;
 
@@ -29,9 +30,11 @@ int main(){
     n++;
 
     //loop for de n ate n menor do que m
-    for(n; n<m; n++){
+    for (n; n < m; n++)
+    {
         //caso o numero seja primo, entra-se no if
-        if(EhPrimo(n)){
+        if (EhPrimo(n))
+        {
             //mostrando o numero primo
             printf("%d\n", n);
 
@@ -44,59 +47,56 @@ int main(){
 }
 
 //funçao que imprime os multiplos de num ate max
-void ImprimeMultiplos(int num, int max){
-    int teste=0, multiplo, i=2;
-    //loop indefinido 
-    while(1){
+void ImprimeMultiplos(int num, int max)
+{
+    int teste = 0, multiplo, i = 2;
+    //loop indefinido
+    while (1)
+    {
         //multiplo recebe o valor de n, vezes o valor de i
-        multiplo = num*i;
+        multiplo = num * i;
 
         //caso o multiplo seja maior ou igual que m, que é o numero fina, paramos o loop
-        if(multiplo >= max){
+        if (multiplo >= max)
             break;
-        }
         //caso contrario, mostramos o multiplo e incrementamos teste
-        else{
+        else
             printf("%d ", multiplo);
             teste++;
-        }
 
         //incremento a variavel i
         i++;
     }
 
     //caso o teste se mantenha como 0, sabemos que somente um loop foi executadoo, logo o numero em questao nao tem multiplos
-    if(teste == 0){
+    if (teste == 0)
         printf("*\n");
-    }
     //caso contrario apenas damos um espaço para a proxima exibiçao
-    else{
+    else
         printf("\n");
-    }
 
     //resetando a variavel teste, para realizar uma nova comparação
-	teste = 0;
+    teste = 0;
 }
 
-
 //funçao que verifica se o numero é primo
-int EhPrimo(int num){
-    int i=2, primo=0;
+int EhPrimo(int num)
+{
+    int i = 2, primo = 0;
 
     //loop enquanto i for menor que o numero
-    while(i < num){
+    while (i < num)
+    {
         //se o resto da divisao do numero por i for igual a 0, variavel primo incrementada
-        if(num%i == 0){
+        if (num % i == 0)
             primo++;
-        }
         //incremento na variavel i
         i++;
     }
 
     //caso o numero seja primo é retornado o valor 1(verdadeiro), caso contrario, 0(falso)
-    if(primo == 0){
+    if (primo == 0)
         return 1;
-    }else{
+    else
         return 0;
-    }
 }

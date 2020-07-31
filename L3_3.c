@@ -12,7 +12,8 @@ Saída: Como saída, o programa deverá exibir todos os números primos contidos
 int EhPrimo(int num);
 
 //função principal
-int main(){
+int main()
+{
     //inicio e fim do intervalo(aberto)
     int n, m;
 
@@ -23,34 +24,31 @@ int main(){
     n++;
 
     //loop for de n ate n menor q m
-    for(n; n<m; n++){
+    for (n; n < m; n++)
+    {
         //se o numero for primo, teremos verdadeiro para o if, logo sera mostrado o valor na tela
-        if(EhPrimo(n)){
+        if (EhPrimo(n))
             printf("%d ", n);
-        }
     }
 
     return 0;
 }
 
 //funçao que verifica se o numero é primo
-int EhPrimo(int num){
-    int i=2, primo=0;
+int EhPrimo(int num)
+{
+    int i = 2, primo = 0;
 
     //loop enquanto i for menor que o numero
-    while(i < num){
+    while (i < num)
+    {
         //se o resto da divisao do numero por i for igual a 0, variavel primo incrementada
-        if(num%i == 0){
+        if (num % i == 0)
             primo++;
-        }
         //incremento na variavel i
         i++;
     }
 
     //caso o numero seja primo é retornado o valor 1(verdadeiro), caso contrario, 0(falso)
-    if(primo == 0){
-        return 1;
-    }else{
-        return 0;
-    }
+    return (primo == 0) ? 1 : 0;
 }

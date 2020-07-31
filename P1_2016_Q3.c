@@ -58,20 +58,13 @@ int main()
 int verificaMaiusculo(char caractere)
 {
     //caso o caractere seja menor ou igual que 90 e maior ou igual que 65, o mesmo é maiusculo
-    if (caractere >= 65 && caractere <= 90)
-        return 1;
-    else
-        return 0;
+   return (caractere >= 65 && caractere <= 90) ? 1 : 0;
 }
 
 //funçao que verifica se o digito é numero
 int verificaDigito(char digito)
 {
-    //caso isdigit, o numero é primo
-    if (isdigit(digito) != 0)
-        return 1;
-    else
-        return 0;
+    return (isdigit(digito) != 0) ? 1 : 0;
 }
 
 //funçao que verifica se o caractere é uma vogal
@@ -98,14 +91,8 @@ int verificaConsoanteMinuscula(char caractere)
 {
     //caso o não vogal, temos uma consoante
     if (!verificaVogal(caractere))
-    {
-        //caso o caractere seja uma letra minuscula
-        if (caractere >= 97 && caractere <= 122)
-            return 1;
-        //caso contrario
-        else
-            return 0;
-    }
+        //caso o caractere seja uma letra minuscula 1, se não 0
+       return (caractere >= 97 && caractere <= 122) ? 1 : 0;
 }
 
 //funçao que verifica a validade do codigo

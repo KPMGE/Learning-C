@@ -53,16 +53,10 @@ int main(void)
 }
 
 //função que verifica se o numero é par ou impar
-int EhPar(int x)
+int EhPar(int num)
 {
-    if(x % 2 == 0)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
+    //caso o resto da divisão do numero por 2 for 0, o numero é par
+    return (num % 2 == 0) ? 1 : 0;
 }
 
 //função que printa os pares 

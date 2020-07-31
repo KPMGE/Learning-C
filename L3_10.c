@@ -124,21 +124,14 @@ int main()
 //funçao que verifica se chegamos ao final do texto
 int verificaFinalTexto(char caractere)
 {
-    //caso cheguemos ao final, retornamos 0(falso), parando o loop
-    if(caractere== '.')
-        return 0;
-    //caso contrario, retornamos 1(verdadeiro), mantendo o loop
-    else
-        return 1;
+    //caso cheguemos ao final, retornamos 0(falso), parando o loop caso contrario, retornamos 1(verdadeiro), mantendo o loop
+    return (caractere== '.') ? 0 : 1;
 }
 
 //função que  verifica se o caractere é uma letra
 int EhLetra (char c)
 {
-    if(c > 64 && c < 91 || c > 96 && c < 123)
-        return 1;
-    else
-        return 0;
+    return (c > 64 && c < 91 || c > 96 && c < 123) ? 1 : 0;
 }
 
 //função que verifica se o caractere é uma letra maiúscula
@@ -146,10 +139,7 @@ int EhLetraMaiuscula(char c)
 {
     if(EhLetra(c))
     {
-        if(c >= 65 && c <= 90)
-            return 1;
-        else
-            return 0;
+        return (c >= 65 && c <= 90) ? 1 : 0;
     }
 }
 
@@ -158,10 +148,7 @@ int EhLetraMinuscula(char c)
 {
     if(EhLetra(c))
     {
-        if(c >= 95 && c <= 122)
-            return 1;
-        else
-            return 0;
+        return (c >= 95 && c <= 122) ? 1 : 0;
     }
 }
 

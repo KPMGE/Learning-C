@@ -16,11 +16,12 @@ a) A verificação da propriedade de um número deverá ser feita por uma funç�
 //função principal
 #include <stdio.h>
 
-//funçao que verifica a propriedade 
+//funçao que verifica a propriedade
 int Propriedade(int num);
 
 //funçao principal
-int main(){
+int main()
+{
     //inicio e fim do intervalo
     int n, m;
 
@@ -31,19 +32,20 @@ int main(){
     n++;
 
     //loop for de n, ate n menor do que m
-    for(n; n<m; n++){
+    for (n; n < m; n++)
+    {
         //caso o valor de retorno seja 1, entraremos automaticamente no if
-        if(Propriedade(n)){
-            //mostrando o numero que satisfaz a propriedade 
+        if (Propriedade(n))
+            //mostrando o numero que satisfaz a propriedade
             printf("%d\n", n);
-        }
     }
 
     return 0;
 }
 
-//funçao que verifica a propriedade 
-int Propriedade(int num){
+//funçao que verifica a propriedade
+int Propriedade(int num)
+{
     //declaraçao de variaveis
     int ab, cd, ef, efAoQuadrado, num2;
 
@@ -62,13 +64,6 @@ int Propriedade(int num){
     //ef ao quadrado é dado por ef * ef
     efAoQuadrado = ef * ef;
 
-    //caso efAoQuadrado seja igual a num, a propriedade foi satisfeita, logo retornamos 1(verdadeiro)
-    if(efAoQuadrado == num){
-        return 1;
-    }
-    //caso contrario , retornamos 0(falso)
-    else{
-        return 0;
-    }
+    //caso efAoQuadrado seja == num, retornamos 1, se não 0
+    return (efAoQuadrado == num) ? 1 : 0;
 }
-

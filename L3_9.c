@@ -19,48 +19,54 @@ d) Seu programa deve conter a função void imprimeResultadosAnalise(float porce
 #include <stdio.h>
 
 //funçao que retorna 0 para pH neutro, 1 para ácido e 2 para básico
-int verificapH(float pH){
-    if(pH == 7){
+int verificapH(float pH)
+{
+    if (pH == 7)
+    {
         return 0;
     }
-    else if(pH < 7){
+    else if (pH < 7)
+    {
         return 1;
     }
-    else{
+    else
+    {
         return 2;
     }
 }
 
-
 //funçao que retorna verdadeiro se a gota for considerada chuva ácida (pH menor que 5.7) e falso caso contrário
-int verificaGotaChuvaAcida(float pH){
-    if(pH < 5.7){
+int verificaGotaChuvaAcida(float pH)
+{
+    if (pH < 5.7)
+    {
         return 1;
-    }else{
+    }
+    else
+    {
         return 0;
     }
 }
 
-
 //funçao que retorna a porcentagem de um valor em relação ao número total
-float porcentagem(float total, float valor) {
+float porcentagem(float total, float valor)
+{
     float porcentagem;
 
-    porcentagem = (valor*100)/total;
+    porcentagem = (valor * 100) / total;
 
     return porcentagem;
 }
 
-
 //funçao que imprime os resultados conforme formatação
-void imprimeResultadosAnalise(float porcentagemGotasChuvaAcida, float porcentagemGotasChuvaNormal){
-
+void imprimeResultadosAnalise(float porcentagemGotasChuvaAcida, float porcentagemGotasChuvaNormal)
+{
 }
 
-
 //funçao principal
-int main(){
-    //variaveis usadas 
+int main()
+{
+    //variaveis usadas
     int area, densidade, tempo;
     float pH;
 

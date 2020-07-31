@@ -44,7 +44,7 @@ int algarismoNum(int n, int posicao);
 int somadosdigitos(int n);
 
 //função principal
-int main()
+int main(void)
 {
     unsigned int valor, soma;
     
@@ -93,10 +93,7 @@ int verificaPrimo(int n)
     }
 
     //caso a variável primo não se altere, o número só é divisivel por ele ou por 1, logo, é primo
-    if(primo == 0)
-        return 1;
-    else
-        return 0;
+    return (primo == 0) ? 1 : 0;
 }
 
 //função que imprime os primos
