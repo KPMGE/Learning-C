@@ -50,12 +50,9 @@ int verificaFinalCaractere(char caractere)
 {
     //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
     if(caractere == '.' || caractere == '!' || caractere == '?')
-    {
         return 0;
-    }else
-    {
+    else
         return 1;
-    }   
 }
 
 
@@ -64,10 +61,8 @@ char trocaEspaco(char caractere)
 {
     //caso o caractere seja um espaço em branco
     if(caractere == ' ')
-    {
         //caractere recebe underline
         caractere = '_';
-    }
 
     //retornando caractere
     return caractere;

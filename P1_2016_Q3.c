@@ -36,7 +36,7 @@ int main()
     scanf("%c %c %c %c", &c1, &digito, &vogal, &consoante);
 
     //caso a validade seja atestada
-    if(verificaValidade(c1, digito, vogal, consoante))
+    if (verificaValidade(c1, digito, vogal, consoante))
     {
         //c1 recebe o valor da funçao transformaMaiusculo
         c1 = transformaMaiusculo(c1);
@@ -46,12 +46,10 @@ int main()
         consoante = transformaMaiusculo(consoante);
 
         printf("%c%c%c%c", c1, digito, vogal, consoante);
-
     }
     //caso contrario mostramos Invalido
-    else{
+    else
         printf("Invalido");
-    }
 
     return 0;
 }
@@ -60,26 +58,20 @@ int main()
 int verificaMaiusculo(char caractere)
 {
     //caso o caractere seja menor ou igual que 90 e maior ou igual que 65, o mesmo é maiusculo
-    if(caractere >= 65 && caractere <=90)
-    {
+    if (caractere >= 65 && caractere <= 90)
         return 1;
-    }else{
+    else
         return 0;
-    }
 }
 
 //funçao que verifica se o digito é numero
 int verificaDigito(char digito)
 {
     //caso isdigit, o numero é primo
-    if(isdigit(digito) != 0)
-    {
+    if (isdigit(digito) != 0)
         return 1;
-    }
     else
-    {
         return 0;
-    }
 }
 
 //funçao que verifica se o caractere é uma vogal
@@ -90,13 +82,11 @@ int verificaVogal(char caractere)
 
     //loop for percorendo cada vogal
     int c;
-    for(c=0; c<10; c++)
+    for (c = 0; c < 10; c++)
     {
         //caso o caractere seja igual a vogal na posiçao de c, retornamos 1(verdadeiro)
-        if(caractere == vogais[c])
-        {
+        if (caractere == vogais[c])
             return 1;
-        }
     }
 
     //caso contrario, retornamos 0(falso)
@@ -107,18 +97,14 @@ int verificaVogal(char caractere)
 int verificaConsoanteMinuscula(char caractere)
 {
     //caso o não vogal, temos uma consoante
-    if(!verificaVogal(caractere))
+    if (!verificaVogal(caractere))
     {
         //caso o caractere seja uma letra minuscula
-        if(caractere >= 97 && caractere <= 122)
-        {
+        if (caractere >= 97 && caractere <= 122)
             return 1;
-        }
         //caso contrario
         else
-        {
-            return 0; 
-        }
+            return 0;
     }
 }
 
@@ -126,16 +112,16 @@ int verificaConsoanteMinuscula(char caractere)
 int verificaValidade(char c1, int digito, char v, char c)
 {
     //caso a primeira letra seja maiuscula
-    if(verificaMaiusculo(c1))
+    if (verificaMaiusculo(c1))
     {
         //caso o segundo elemento seja um digito
-        if(verificaDigito(digito))
+        if (verificaDigito(digito))
         {
             //caso o terceiro elemento seja uma vogal
-            if(verificaVogal(v))
+            if (verificaVogal(v))
             {
                 //caso o quarto elemento seja uma vogal minuscula
-                if(verificaConsoanteMinuscula(c))
+                if (verificaConsoanteMinuscula(c))
                 {
                     //retornando 1(verdadeiro)
                     return 1;
@@ -145,24 +131,19 @@ int verificaValidade(char c1, int digito, char v, char c)
     }
     //caso contrario, retornar 0(falso)
     else
-    {
         return 0;
-    }
 }
 
 //funçao que transforma o caractere em maiusculo
 char transformaMaiusculo(char caractere)
 {
     //caso o caractere seja maiusculo apenas o retornamos
-    if(verificaMaiusculo(caractere))
-    {
+    if (verificaMaiusculo(caractere))
         return caractere;
-    }
     //caso contrario, diminuimos o mesmo em 32, dessa forma o mesmo ficará maiusculo
     else
     {
         caractere -= 32;
-        return caractere;   
+        return caractere;
     }
-    
 }

@@ -74,14 +74,9 @@ void parImpar(int n)
 {
     //caso o numero seja divisível por 2 é par, se não é impar
     if(n % 2 == 0)
-    {
-
         printf("Par ");
-    }
     else
-    {
         printf("Impar ");
-    }
 }
 
 //função que verifica se o numero é primo
@@ -94,20 +89,14 @@ int verificaPrimo(int n)
     {
         //caso n seja divisível por i, incrementamos primo
         if(n % i == 0)
-        {
             primo++;
-        }
     }
 
     //caso a variável primo não se altere, o número só é divisivel por ele ou por 1, logo, é primo
     if(primo == 0)
-    {
         return 1;
-    }
     else
-    {
         return 0;
-    }
 }
 
 //função que imprime os primos
@@ -115,13 +104,9 @@ void valorPrimo(int n)
 {
     //caso primo, mostramos Primo, caso contrário, Nao e Primo
     if(verificaPrimo(n))
-    {
         printf("Primo");
-    }
     else
-    {
         printf("Nao e Primo");
-    }
 }
 
 //função que retorna o tamanho do numero(casas decimais)

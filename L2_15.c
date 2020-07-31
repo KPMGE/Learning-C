@@ -14,26 +14,18 @@ Problema: Faça um programa para imprimir a quantidade de números negativos, a 
 int verificaWriteSpace(char caractere)
 {
     if (caractere == 'k')
-    {
         return 1;
-    }
     else
-    {
         return 0;
-    }
 }
 
 //função que verifica se o numero é positivo
 int verificaPositivo(int num)
 {
     if (num > 0)
-    {
         return 1;
-    }
     else
-    {
         return 0;
-    }
 }
 
 //função principal

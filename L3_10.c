@@ -126,27 +126,19 @@ int verificaFinalTexto(char caractere)
 {
     //caso cheguemos ao final, retornamos 0(falso), parando o loop
     if(caractere== '.')
-    {
         return 0;
-    }
     //caso contrario, retornamos 1(verdadeiro), mantendo o loop
     else
-    {
         return 1;
-    }  
 }
 
 //função que  verifica se o caractere é uma letra
 int EhLetra (char c)
 {
     if(c > 64 && c < 91 || c > 96 && c < 123)
-    {
         return 1;
-    }
     else
-    {
         return 0;
-    }
 }
 
 //função que verifica se o caractere é uma letra maiúscula
@@ -155,13 +147,9 @@ int EhLetraMaiuscula(char c)
     if(EhLetra(c))
     {
         if(c >= 65 && c <= 90)
-        {
             return 1;
-        }
         else
-        {
             return 0;
-        }
     }
 }
 
@@ -171,13 +159,9 @@ int EhLetraMinuscula(char c)
     if(EhLetra(c))
     {
         if(c >= 95 && c <= 122)
-        {
             return 1;
-        }
         else
-        {
             return 0;
-        }
     }
 }
 
@@ -198,9 +182,7 @@ char Codifica(char letra, int n)
         return letra;
     }
     else
-    {
         return letra;
-    }
 }
 
 //funçao  que Decodifica a letra dada
@@ -220,7 +202,5 @@ char Decodifica (char letra, int n)
         return letra;
     }
     else
-    {
         return letra;
-    }
 }
