@@ -11,35 +11,11 @@ Problema: Faça um programa para substituir caracteres espaço ‘ ‘ por carac
 //importação de bibliotecas
 #include <stdio.h>
 
-
 //funçao que verifica o caractere final
-int verificaFinalCaractere(char caractere)
-{
-    //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
-    if(caractere == '.' || caractere == '!' || caractere == '?')
-    {
-        return 0;
-    }else
-    {
-        return 1;
-    }   
-}
-
+int verificaFinalCaractere(char caractere);
 
 //funçao que verifica se o caractere é um espaço, se sim, troca o mesmo por underline _
-char trocaEspaco(char caractere)
-{
-    //caso o caractere seja um espaço em branco
-    if(caractere == ' ')
-    {
-        //caractere recebe underline
-        caractere = '_';
-    }
-
-    //retornando caractere
-    return caractere;
-}
-
+char trocaEspaco(char caractere);
 
 //funçao principal
 int main()
@@ -67,4 +43,32 @@ int main()
     printf("RESP:%s", frase);
 
     return 0;
+}
+
+//funçao que verifica o caractere final
+int verificaFinalCaractere(char caractere)
+{
+    //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
+    if(caractere == '.' || caractere == '!' || caractere == '?')
+    {
+        return 0;
+    }else
+    {
+        return 1;
+    }   
+}
+
+
+//funçao que verifica se o caractere é um espaço, se sim, troca o mesmo por underline _
+char trocaEspaco(char caractere)
+{
+    //caso o caractere seja um espaço em branco
+    if(caractere == ' ')
+    {
+        //caractere recebe underline
+        caractere = '_';
+    }
+
+    //retornando caractere
+    return caractere;
 }

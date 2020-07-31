@@ -12,52 +12,14 @@ OBS: “YES - Presentation diferences” não é uma resposta válida para essa 
 //importação de bibliotecas
 #include <stdio.h>
 
-
 //funçao que verifica o caractere final
-int verificaFinalCaractere(char caractere)
-{
-    //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
-    if(caractere == '.' || caractere == '!' || caractere == '?')
-    {
-        return 0;
-    }else
-    {
-        return 1;
-    }   
-}
-
+int verificaFinalCaractere(char caractere);
 
 //funçao que retorna 1(verdadeiro) se a letra for minuscula e 0(falso) caso contrário
-int verificaMinuscula(char letra)
-{
-    //caso a letra esteja entre 97 e 122 a mesma é minuscula
-    if(letra >= 97 && letra <= 122)
-    {
-        return 1;
-    }else
-    {
-        return 0;
-    }
-    
-}
-
+int verificaMinuscula(char letra);
 
 //funçao que retorna a propria letra se já maiusculo, ou caractere se não a transforma em maiuscula
-char transformaMaiusculo(char letra)
-{
-    //caso a letra minuscula 
-    if(verificaMinuscula(letra))
-    {
-        letra -= 32;
-        return letra;
-    }
-    //caso maiuscula, ou qualquer outro caractere 
-    else
-    {
-       return letra; 
-    }
-}
-
+char transformaMaiusculo(char letra);
 
 //funçao principal
 int main()
@@ -84,4 +46,47 @@ int main()
     printf("%s", frase);
 
     return 0;
+}
+
+//funçao que verifica o caractere final
+int verificaFinalCaractere(char caractere)
+{
+    //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
+    if(caractere == '.' || caractere == '!' || caractere == '?')
+    {
+        return 0;
+    }else
+    {
+        return 1;
+    }   
+}
+
+//funçao que retorna 1(verdadeiro) se a letra for minuscula e 0(falso) caso contrário
+int verificaMinuscula(char letra)
+{
+    //caso a letra esteja entre 97 e 122 a mesma é minuscula
+    if(letra >= 97 && letra <= 122)
+    {
+        return 1;
+    }else
+    {
+        return 0;
+    }
+    
+}
+
+//funçao que retorna a propria letra se já maiusculo, ou caractere se não a transforma em maiuscula
+char transformaMaiusculo(char letra)
+{
+    //caso a letra minuscula 
+    if(verificaMinuscula(letra))
+    {
+        letra -= 32;
+        return letra;
+    }
+    //caso maiuscula, ou qualquer outro caractere 
+    else
+    {
+       return letra; 
+    }
 }
