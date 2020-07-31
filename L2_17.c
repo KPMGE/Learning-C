@@ -90,60 +90,34 @@ int main()
 //funçao que verifica se chegamos ao final do texto
 int verificaFinalTexto(char caractere)
 {
-    //caso cheguemos ao final, retornamos 0(falso), parando o loop
-    if(caractere == '.')
-    {
-        return 0;
-    }
-    //caso contrario, retornamos 1(verdadeiro), mantendo o loop
-    else
-    {
-        return 1;
-    }  
+    //caso cheguemos ao final, retornamos 0(falso), parando o loop caso contrario, retornamos 1(verdadeiro), mantendo o loop
+    return (caractere == '.') ? 0 : 1;
 }
 
 //funçao que verifica se o caractere é uma letra minuscula
 int verificaLetraMinuscula(char caractere)
 {
-    if(caractere >= 97 && caractere <= 122)
-    {
-        return 1;
-    }else
-    {
-        return 0;
-    }
+    return (caractere >= 97 && caractere <= 122) ? 1 : 0;
 }
-
 
 //funçao que codifica a letra dada
 char codifica(char letra, int chave)
 {
     //caso o caractere seja uma letra minuscula
     if(verificaLetraMinuscula(letra))
-    {
         //letra codificada aplicando a chave
         letra += chave;
 
-        return letra;
-    }else
-    {
-        return letra;
-    }
+    return letra;
 }
-
 
 //funçao  que decodifica a letra dada
 char decodifica(char letra, int chave)
 {
     //caso o caractere seja uma letra minuscula
     if(verificaLetraMinuscula(letra))
-    {
         //letra decodificada retirando a chave
         letra -= chave;
 
-        return letra;
-    }else
-    {
-        return letra;
-    }
+    return letra;
 }

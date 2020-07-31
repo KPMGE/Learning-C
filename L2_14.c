@@ -35,36 +35,25 @@ int main(void)
 
         //caso o caractere não seja um espaço
         if(!ehEspaco(frase[i]))
-        {
             //transcrevendo o caractere pra frase[j]
             frase2[j] = frase[i];
 
-            //incremento na variavel j
-            j++;
-        }
-    } while (verificaFinalCaractere(frase[i]));
-    
-    //mostrando frase final na tela
+            //incremento na variavel j j++; }
+     } while (verificaFinalCaractere(frase[i]));
+    //mostrando frase final na tela 
     printf("RESP:%s", frase2);
-    
-    return 0;
+
+    return 0; 
 }
 
-//funçao que verifica o caractere final
 int verificaFinalCaractere(char caractere)
 {
     //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
-    if(caractere == '!'|| caractere == '?' || caractere == '.')
-        return 0;
-    else
-        return 1;
+    return (caractere == '!'|| caractere == '?' || caractere == '.') ? 0 : 1;
 }
 
 //função que retorna 1(verdadeiro), caso o caractere seja um espaço e 0(falso) caso contrário
 int ehEspaco(char caractere)
 {
-    if(caractere == ' ')
-        return 1;
-    else
-        return 0;
+    return (caractere == ' ') ? 1 : 0;
 }

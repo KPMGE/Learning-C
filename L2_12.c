@@ -7,7 +7,6 @@ Problema: Faça um programa para substituir caracteres espaço ‘ ‘ por carac
 • Saída: “RESP:” seguido da sequência de caracteres modificada.
 */
 
-
 //importação de bibliotecas
 #include <stdio.h>
 
@@ -49,12 +48,8 @@ int main()
 int verificaFinalCaractere(char caractere)
 {
     //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
-    if(caractere == '.' || caractere == '!' || caractere == '?')
-        return 0;
-    else
-        return 1;
+    return (caractere == '.' || caractere == '!' || caractere == '?') ? 0 : 1;
 }
-
 
 //funçao que verifica se o caractere é um espaço, se sim, troca o mesmo por underline _
 char trocaEspaco(char caractere)
