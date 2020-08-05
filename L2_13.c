@@ -11,35 +11,25 @@ OBS: “YES - Presentation diferences” não é uma resposta válida para essa 
 
 //importação de bibliotecas
 #include <stdio.h>
-
-//funçao que verifica o caractere final
-int verificaFinalCaractere(char caractere);
-
-//funçao que retorna 1(verdadeiro) se a letra for minuscula e 0(falso) caso contrário
-int verificaMinuscula(char letra);
+#include <string.h>
 
 //funçao que retorna a propria letra se já maiusculo, ou caractere se não a transforma em maiuscula
 char transformaMaiusculo(char letra);
 
 //funçao principal
-int main()
+int main(void)
 {
     //declaraçao de variaveis
     char frase[50];
-    int i=-1;
+    int i;
 
-    //loop enquanto nao chegamos no final da frase
-    do
-    {    
-        //incremento na variavel i
-        i++;
+    //leitura de dados até encontrar um caractere !, . ou ?
+    scanf(" %[^.?!]", frase);
 
-        //leitura de dados
-        scanf("%c", &frase[i]);
-
+    //percorrendo frase
+    for(i = 0; i < strlen(frase); i++)
         //transformamos a letra corresp{ondente ao indice q estamos
         frase[i] = transformaMaiusculo(frase[i]);
-    }while(verificaFinalCaractere(frase[i]));
 
     //mostrando a frase na tela
     printf("%s", frase);
@@ -47,30 +37,13 @@ int main()
     return 0;
 }
 
-//funçao que verifica o caractere final
-int verificaFinalCaractere(char caractere)
-{
-    //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
-    return (caractere == '.' || caractere == '!' || caractere == '?') ? 0 : 1;
-}
-
-//funçao que retorna 1(verdadeiro) se a letra for minuscula e 0(falso) caso contrário
-int verificaMinuscula(char letra)
-{
-    //caso a letra esteja entre 97 e 122 a mesma é minuscula
-    return (letra >= 97 && letra <= 122) ? 1 : 0;
-}
-
 //funçao que retorna a propria letra se já maiusculo, ou caractere se não a transforma em maiuscula
 char transformaMaiusculo(char letra)
 {
     //caso a letra minuscula 
-    if(verificaMinuscula(letra))
-    {
-        letra -= 32;
-        return letra;
-    }
-    //caso maiuscula, ou qualquer outro caractere 
-    else
-       return letra; 
+    if(letra >= 'a' && letra <= 'z')
+        letra = letra - 'a' + 'A';
+
+    //retornando letra
+    return letra; 
 }
