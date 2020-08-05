@@ -31,8 +31,7 @@ c) int EhLetraMinuscula (char c) que recebe um caractere e retorna verdadeiro se
 letra minúscula e falso caso contrário.
 Atenção: Números e outros caracteres que por ventura apareçam no texto não
 deverão ser codificados.
-
-
+
 Entrada: dois números inteiros representando modo codificador ou Decodificador e a n
 de codificação seguidos do texto que terminado por um ponto ‘.’.
 Saída: o texto codificado ou Decodificado.
@@ -40,9 +39,7 @@ Saída: o texto codificado ou Decodificado.
 
 //importação de bibliotecas
 #include <stdio.h>
-
-//funçao que verifica se chegamos ao final do texto
-int verificaFinalTexto(char caractere);
+#include <string.h>
 
 //função que  verifica se o caractere é uma letra
 int EhLetra (char c);
@@ -60,10 +57,10 @@ char Codifica(char letra, int n);
 char Decodifica (char letra, int n);
 
 //funçao principal
-int main()
+int main(void)
 {
     //declaração de variaveis
-    int modo, n, i=-1;
+    int modo, n, i;
     char texto[50];
 
     //lendo o modo de operação e n
@@ -72,44 +69,31 @@ int main()
     //escolhendo o modo de trabalho
     switch(modo)
     {
-        //caso o modo 1 seja escolhido
         case 1:
-            //loop enquanto não chegarmos ao ponto final
-            do
-            {
-                //incremento na variável i
-                i++;
+            //leitura dos dados
+            scanf(" %50[^.]", texto);
 
-                //leitura dos dados
-                scanf("%c", &texto[i]);
-
+            for(i = 0; i < strlen(texto); i++)
                 //codificamos a letra no loop que estamos
                 texto[i] = Codifica(texto[i], n);
-            }while(verificaFinalTexto(texto[i]));
 
             //mostrando o texto final
-            printf("%s", texto);    
+            printf("%s.", texto);    
             
             //apos a execuçao saimos do switch
             break;
 
         case 2:
-            //loop enquanto não chegarmos ao ponto final
-            do
-            {
-                //incremento em i
-                i++;
+            //leitura dos dados
+            scanf(" %50[^.]", texto);
 
-                //leitura dos dados
-                scanf("%c", &texto[i]);
-
-                //texto na posição de i recebe o retorno da função Decodifica
+            for(i = 0; i < strlen(texto); i++)
+                //codificamos a letra no loop que estamos
                 texto[i] = Decodifica(texto[i], n);
-            }while(verificaFinalTexto(texto[i]));
-            
-            //mostrando o texto final
-            printf("%s", texto);
 
+            //mostrando o texto final
+            printf("%s.", texto);    
+            
             //apos a execuçao saimos do switch
             break;
 
@@ -121,17 +105,10 @@ int main()
     return 0;
 }
 
-//funçao que verifica se chegamos ao final do texto
-int verificaFinalTexto(char caractere)
-{
-    //caso cheguemos ao final, retornamos 0(falso), parando o loop caso contrario, retornamos 1(verdadeiro), mantendo o loop
-    return (caractere== '.') ? 0 : 1;
-}
-
 //função que  verifica se o caractere é uma letra
 int EhLetra (char c)
 {
-    return (c > 64 && c < 91 || c > 96 && c < 123) ? 1 : 0;
+    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) ? 1 : 0;
 }
 
 //função que verifica se o caractere é uma letra maiúscula
@@ -139,7 +116,7 @@ int EhLetraMaiuscula(char c)
 {
     if(EhLetra(c))
     {
-        return (c >= 65 && c <= 90) ? 1 : 0;
+        return (c >= 'A' && c <= 'Z') ? 1 : 0;
     }
 }
 
@@ -148,28 +125,26 @@ int EhLetraMinuscula(char c)
 {
     if(EhLetra(c))
     {
-        return (c >= 95 && c <= 122) ? 1 : 0;
+        return (c >= 'a' && c <= 'z') ? 1 : 0;
     }
 }
 
 //funçao que codifica a letra dada
 char Codifica(char letra, int n)
 {
+    //caso o caractere seja uma letra maiuscula
     if(EhLetraMaiuscula(letra))
     {
         n *= 2;
         letra += n;
-        return letra;
     }
     //caso o caractere seja uma letra minuscula
     if(EhLetraMinuscula(letra))
-    {
         //letra codificada aplicando a n
         letra += n;
-        return letra;
-    }
-    else
-        return letra;
+
+    //retornando letra
+    return letra;
 }
 
 //funçao  que Decodifica a letra dada
@@ -177,17 +152,14 @@ char Decodifica (char letra, int n)
 {
     //caso o caractere seja uma letra minuscula
     if(EhLetraMinuscula(letra))
-    {
         //letra Decodificada retirando a n
         letra -= n;
-        return letra;
-    }
     if(EhLetraMaiuscula(letra))
     {
         n /= 2;
         letra -= n;
-        return letra;
     }
-    else
-        return letra;
+
+    //retornando leltra
+    return letra;
 }
