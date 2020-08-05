@@ -7,12 +7,9 @@ Problema: Faça um programa para eliminar os caracteres espaço ‘ ‘ de uma f
 • Saída: “RESP:” seguido da sequência de caracteres modificada.
 */
 
-
 //importação de bibliotecas
 #include <stdio.h>
-
-//funçao que verifica o caractere final
-int verificaFinalCaractere(char caractere);
+#include <string.h>
 
 //função que retorna 1(verdadeiro), caso o caractere seja um espaço e 0(falso) caso contrário
 int ehEspaco(char caractere);
@@ -21,35 +18,27 @@ int ehEspaco(char caractere);
 int main(void)
 {
     //declaração de variaveis
-    int i=-1, j=0;
+    int i, j = 0;
     char frase[50], frase2[50];
 
-    //repetição até encontrar o caractere de fim da frase
-    do
-    {
-        //incremento na variavel i
-        i++;
-     
-        //leitura dos dados
-        scanf("%c", &frase[i]);
+    //leitura dos dados enquanto não achamos um . ? ou !
+    scanf("%[^.?!]", frase);
 
+    //percorrendo string
+    for(i = 0; i < strlen(frase); i++)
         //caso o caractere não seja um espaço
         if(!ehEspaco(frase[i]))
-            //transcrevendo o caractere pra frase[j]
+        {
+            //transcrevendo para frase2 na posição de j
             frase2[j] = frase[i];
+            //incremento em j
+            j++;
+        }
 
-            //incremento na variavel j j++; }
-     } while (verificaFinalCaractere(frase[i]));
     //mostrando frase final na tela 
     printf("RESP:%s", frase2);
 
     return 0; 
-}
-
-int verificaFinalCaractere(char caractere)
-{
-    //caso o caractere seja . ! ou ? retornamos 0, caso contrario, 1
-    return (caractere == '!'|| caractere == '?' || caractere == '.') ? 0 : 1;
 }
 
 //função que retorna 1(verdadeiro), caso o caractere seja um espaço e 0(falso) caso contrário
