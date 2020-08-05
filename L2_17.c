@@ -11,9 +11,7 @@ Atenção: Não deverão ser codificadas as letras maiúsculas. Números e outro
 
 //importação de bibliotecas
 #include <stdio.h>
-
-//funçao que verifica se chegamos ao final do texto
-int verificaFinalTexto(char caractere);
+#include <string.h>
 
 //funçao que verifica se o caractere é uma letra minuscula
 int verificaLetraMinuscula(char caractere);
@@ -25,10 +23,10 @@ char codifica(char letra, int chave);
 char decodifica(char letra, int chave);
 
 //funçao principal
-int main()
+int main(void)
 {
     //declaração de variaveis
-    int modo, i=-1;
+    int modo, i;
     float chave;
     char texto[50];
 
@@ -40,42 +38,32 @@ int main()
     {
         //caso o modo 1 seja escolhido
         case 1:
-            //loop enquanto não chegarmos ao ponto final
-            do
-            {
-                //incremento na variável i
-                i++;
+           //leitura do texto até encontrar um ponto final
+            scanf(" %[^.]", texto);
 
-                //leitura dos dados
-                scanf("%c", &texto[i]);
-
+            //percorrendo o texto
+            for(i = 0; i < strlen(texto); i++)
                 //codificamos a letra no loop que estamos
                 texto[i] = codifica(texto[i], chave);
-            }while(verificaFinalTexto(texto[i]));
 
             //mostrando o texto final
-            printf("%s", texto);    
+            printf("%s.", texto);    
             
             //apos a execuçao saimos do switch
             break;
 
         case 2:
-            //loop enquanto não chegarmos ao ponto final
-            do
-            {
-                //incremento em i
-                i++;
+           //leitura do texto até encontrar um ponto final
+            scanf(" %[^.]", texto);
 
-                //leitura dos dados
-                scanf("%c", &texto[i]);
-
-                //texto na posição de i recebe o retorno da função decodifica
+            //percorrendo o texto
+            for(i = 0; i < strlen(texto); i++)
+                //codificamos a letra no loop que estamos
                 texto[i] = decodifica(texto[i], chave);
-            }while(verificaFinalTexto(texto[i]));
-            
-            //mostrando o texto final
-            printf("%s", texto);
 
+            //mostrando o texto final
+            printf("%s.", texto);    
+            
             //apos a execuçao saimos do switch
             break;
 
@@ -87,17 +75,10 @@ int main()
     return 0;
 }
 
-//funçao que verifica se chegamos ao final do texto
-int verificaFinalTexto(char caractere)
-{
-    //caso cheguemos ao final, retornamos 0(falso), parando o loop caso contrario, retornamos 1(verdadeiro), mantendo o loop
-    return (caractere == '.') ? 0 : 1;
-}
-
 //funçao que verifica se o caractere é uma letra minuscula
 int verificaLetraMinuscula(char caractere)
 {
-    return (caractere >= 97 && caractere <= 122) ? 1 : 0;
+    return (caractere >= 'a' && caractere <= 'z') ? 1 : 0;
 }
 
 //funçao que codifica a letra dada
