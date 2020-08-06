@@ -24,17 +24,12 @@ int main(void)
     float d;
     //variáveis para conter os dois pontos
     struct ponto p1, p2;
-    struct ponto *ponto1, *ponto2;
     
-    //capturando o endereço de memória das variáveis
-    ponto1 = &p1;
-    ponto2 = &p2;
-
     //lendo os pontos
-    le_pontos(ponto1, ponto2);
+    le_pontos(&p1, &p2);
 
     //calculando a distancia
-    d = distancia(ponto1, ponto2);
+    d = distancia(&p1, &p2);
 
     //mostrando resultado
     printf("A distancia entre os dois pontos e: %.2f", d);
