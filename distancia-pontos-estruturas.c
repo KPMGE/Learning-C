@@ -63,7 +63,7 @@ float distancia(struct ponto *ponto1, struct ponto *ponto2)
     deltay = ponto2->y - ponto1->y;
 
     //calculando distancia
-    distancia = sqrt(pow(deltax, 2) - pow(deltay, 2));
+    distancia = sqrt(pow(deltax, 2) + pow(deltay, 2));
 
     //retornando distancia
     return distancia;
