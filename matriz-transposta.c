@@ -5,7 +5,7 @@
 //variavel para o tamanho da matriz
 int n;
 
-//função que calcula a transposta modificando matrizes deficolunasdas na função que chama
+//função que calcula a transposta modificando matrizes definidas na função que chama
 void calculaTransposta(int m, int n, float mat[][n], float trp[][n]);
 
 //função principal
