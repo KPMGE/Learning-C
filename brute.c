@@ -1,44 +1,43 @@
-//importação de bibliotecas
+//import librarires
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
-//função principal
 int main(void)
 {
-    //declaração de variáveis
-    char busca[4], palavra[4];
+    //declaring variables
+    char reserch[4], word[4];
     int i, j, k, cont = 0;
 
-    //capturando palavra a ser encontrada
-    printf("Digite uma palavra de 3 letras: ");
-    scanf(" %3[^\n]", busca);
+    //reading word
+    printf("Type a word with 3 letters: ");
+    scanf(" %3[^\n]", reserch);
 
-    //loops para fazer todas as combinações possiveis
     for(i = 'a'; i <= 'z'; i++)
     {
         for(j = 'a'; j <= 'z'; j++)
         {
             for(k = 'a'; k <= 'z'; k++)
             {
-                //mostrando anagrama formado pela união das letras
+                //showing anagram made with the words
                 printf("%c%c%c", i, j, k);
                 printf("\n");
 
-                //criando uma anagrama de 3 letras na variável palavra
-                palavra[0] = i;
-                palavra[1] = j;
-                palavra[2] = k;
-                palavra[3] = '\0';
+                //creating anagram
+                word[0] = i;
+                word[1] = j;
+                word[2] = k;
+                word[3] = '\0';
 
-                //incrementando contador
+                //incrementing cont
                 cont++;
 
-                //caso as o anagrama ea palavra digitada sejam iguais
-                if(!strcmp(palavra, busca))
+                //if word is found
+                if(!strcmp(word, reserch))
                 {
-                    //mostrando mensagem e terminando o programa
-                    printf("Palavra encontrada!!\n%d combinacoes feitas!!", cont);
+                    //ending program
+                    printf("Word found!!\n%d Combinations!!", cont);
                     exit(1);
                 }
             }
