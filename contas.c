@@ -1,50 +1,76 @@
+//importação de bibliotecas
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-int main(){
-    float neguinho, frete, caixas, despezas, valorbruto, somabruto, qtdproduto, valorproduto;
-    int num;
+//função que le todos os dados necessários
+void le_dados(float* somaProdutos, float* despesa);
 
-    valorbruto = 0;
-    frete = 0;
-    caixas = 0;
+//função que calcula o valor final que cabe a cada um
+float calcula_porcentagem(float somaProdutos, float despesa);
 
-    printf("----------Produtos daqui----------\n");
-    printf("Quantos produtos deseja calcular?\n>");
-    scanf("%d", &num);
+//função principal
+int main(void)
+{
+    float somaProdutos = 0, despesa = 0, pc;
 
-    int c=0;
-    for(c; c < num; c++){
-        printf("\nDigite o a quantidade de caixas do produto %d\n>", c+1);
-        scanf("%f", &qtdproduto);
-        printf("Digite o valor do produto %d\n>", c+1);
-        scanf("%f", &valorproduto);
+    //lendo os dados necessários
+    le_dados(&somaProdutos, &despesa);
 
-        somabruto = qtdproduto * valorproduto;
+    //calculando a parte qua cabe a cada um
+    pc = calcula_porcentagem(somaProdutos, despesa);
 
-        valorbruto += somabruto;
-    }
-
-    printf("Digite o valor das caixas:\n> ");
-    scanf("%f", &caixas);
-
-    printf("Digite o valor do frete:\n> ");
-    scanf("%f", &frete);
-
-    printf("Digite o valor das despezas:\n> ");
-    scanf("%f", &despezas);
-
-    printf("\n\nO valor Bruto e: R$%.2f", valorbruto);
-
-    valorbruto *= 0.5;
-    caixas *= 0.5;
-    frete *= 0.5;
-    despezas *= 0.5;
-    neguinho = valorbruto - (caixas + frete + despezas);
-
-    printf("\nO valor liqido final que lhe cabe e: R$%.2f", neguinho);
-
-    getch();
+    printf("\n---------------------------------- RESULTADO -----------------------------------------------\n");
+    printf("Saulo - R$%.2f\nNeguinho - R$%.2f", pc, pc);
 
     return 0;
+}
+
+void le_dados(float* somaProdutos, float* despesa)
+{
+    float preco, dpz;
+    int i, n, qtd;
+
+    printf("---------------------------------- CALCULANDO PRODUTOS --------------------------------------\n\n");
+    //lendo quantidade de produtos
+    printf("Quantos produtos deseja somar? ");
+    scanf("%d", &n);
+
+    //lendo cada produto
+    for(i = 0; i < n; i++)
+    {
+        //lendo dados
+        printf("Digite a quantidade eo preço\n: ");
+        scanf("%d %f", &qtd, &preco);
+
+        //inrementando a soma com o valor da quantidade vezes o preço
+        *somaProdutos += qtd * preco;
+    }
+
+    printf("\n---------------------------------- CALCULANDO DESPESA ---------------------------------------\n\n");
+    //lendo quntidade para soma das despezas
+    printf("Qual a quantidade de itens para somar na dispesa? ");
+    scanf("%d", &n);
+
+    for(i = 0; i < n; i++)
+    {
+        printf("Digite o valor para somar\n: ");
+        scanf("%f", &dpz);
+
+        //incrementando despreza
+        *despesa += dpz;
+    }
+}
+
+float calcula_porcentagem(float somaProdutos, float despesa)
+{
+    float valorLiquido, cada;
+
+    //calculando valor liquido
+    valorLiquido = somaProdutos - despesa;
+
+    //calculando a parte que cabe a cada
+    cada = valorLiquido / 2;
+
+    return cada;
 }
