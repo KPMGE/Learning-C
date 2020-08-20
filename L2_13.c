@@ -1,6 +1,6 @@
 /*
 (BOCA:L2_13)
-Problema: Faça um programa para substituir letras minúsculas de uma frase por letras maiúsculas. O programa deverá ler caracteres da entrada padrão (um por vez) até encontrar um ponto simples ‘.’, interrogação ‘?’ ou exclamação ‘!’.
+Problema: Faça um programa para substituir letras minúsculas de uma phrase por letras maiúsculas. O programa deverá ler caracteres da entrada padrão (um por vez) até encontrar um ponto simples ‘.’, interrogação ‘?’ ou exclamação ‘!’.
 
 OBS: “YES - Presentation diferences” não é uma resposta válida para essa questão.
 
@@ -9,41 +9,26 @@ OBS: “YES - Presentation diferences” não é uma resposta válida para essa 
 • Saída: a sequência de caracteres modificada.
 */
 
-//importação de bibliotecas
 #include <stdio.h>
-#include <string.h>
+#include <ctype.h>
 
-//funçao que retorna a propria letra se já maiusculo, ou caractere se não a transforma em maiuscula
-char transformaMaiusculo(char letra);
-
-//funçao principal
 int main(void)
 {
-    //declaraçao de variaveis
-    char frase[50];
+    char phrase[100];
     int i;
 
-    //leitura de dados até encontrar um caractere !, . ou ?
-    scanf(" %[^.?!]", frase);
+    for(i = 0; i < 100; i++)
+    {
+        phrase[i] = getchar();
 
-    //percorrendo frase
-    for(i = 0; i < strlen(frase); i++)
-        //transformamos a letra corresp{ondente ao indice q estamos
-        frase[i] = transformaMaiusculo(frase[i]);
+        if((phrase[i] == '.') || (phrase[i] == '?') || (phrase[i] == '!'))
+            break;
+        else
+            phrase[i] = toupper(phrase[i]);
+    }
 
-    //mostrando a frase na tela
-    printf("%s", frase);
+    printf("%s", phrase);
 
     return 0;
 }
 
-//funçao que retorna a propria letra se já maiusculo, ou caractere se não a transforma em maiuscula
-char transformaMaiusculo(char letra)
-{
-    //caso a letra minuscula 
-    if(letra >= 'a' && letra <= 'z')
-        letra = letra - 'a' + 'A';
-
-    //retornando letra
-    return letra; 
-}
