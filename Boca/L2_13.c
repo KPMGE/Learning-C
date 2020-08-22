@@ -1,0 +1,34 @@
+/*
+(BOCA:L2_13)
+Problema: Faça um programa para substituir letras minúsculas de uma phrase por letras maiúsculas. O programa deverá ler caracteres da entrada padrão (um por vez) até encontrar um ponto simples ‘.’, interrogação ‘?’ ou exclamação ‘!’.
+
+OBS: “YES - Presentation diferences” não é uma resposta válida para essa questão.
+
+• Entrada: uma sequência de caracteres terminada com um ponto simples ‘.’, interrogação ‘?’ ou exclamação ‘!’.
+
+• Saída: a sequência de caracteres modificada.
+*/
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void)
+{
+    char phrase[100];
+    int i;
+
+    for(i = 0; i < 100; i++)
+    {
+        phrase[i] = getchar();
+
+        if((phrase[i] == '.') || (phrase[i] == '?') || (phrase[i] == '!'))
+            break;
+        else
+            phrase[i] = toupper(phrase[i]);
+    }
+
+    printf("%s", phrase);
+
+    return 0;
+}
+
