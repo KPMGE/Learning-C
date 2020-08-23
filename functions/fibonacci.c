@@ -1,49 +1,32 @@
-//Programa que calcula a sequecia de Fibonacci
+//Program that calculates the fibonnaci sequence
 
-//importação de bibliotecas
 #include <stdio.h>
 
-//função que imprime todos os numeros da sequencia de fibonacci até n
-void imprime_fibonacci(int n);
+void print_fibonnaci(int number);
 
-//função principal
 int main(void)
 {
-    int n;
+    int number;
 
-    printf("Digite a quantidade de numeros da sequencia que deseja calcular: ");
-    scanf("%d", &n);
+    printf("How many numbers of the fibonnaci sequence do you want to calculate? ");
+    scanf("%d", &number);
 
-    //imprimindo sequência na quantidade especificada
-    imprime_fibonacci(n);
+    print_fibonnaci(number);
 
     return 0;
 }
 
-void imprime_fibonacci(int n)
+void print_fibonnaci(int number)
 {
-    //declaração de variáveis
-    int i, soma = 0, anterior = 0, proximo = 1;
+    int i, sum = 0, previous = 0, next = 1;
 
-    //mostrando o primeiro 1 da sequencia
     printf("%d ", 1);
-
-    //loop até o valor dado
-    for(i = 0; i < n; i++)
+    for(i = 0; i < (number-1); i++)
     {
-        //calculando a soma como o resultado do numero anterior e do proximo
-        soma = anterior + proximo;
-
-        //o anterior agora se torna o proximo
-        anterior = proximo;
-
-        //o proximo agora recebe a soma
-        proximo = soma;
-
-        //mostrando resultado
-        printf("%d ", soma);
-
-        //resetando a variável soma
-        soma = 0;
+        sum = previous + next;
+        previous = next;
+        next = sum;
+        printf("%d ", sum);
+        sum = 0;
     }
 }
