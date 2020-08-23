@@ -1,4 +1,4 @@
-//Programa simples para um  singelo jogo da old
+//Simple program, or actually a shit program, for tic-tac-toe game 
 
 #include <stdio.h>
 #include <stdlib.h>
