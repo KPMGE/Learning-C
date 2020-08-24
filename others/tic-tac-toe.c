@@ -44,6 +44,7 @@ int main(void)
     {
         printf("\nPlayer 1\n");
         read_move(&p, &c, 1);
+        printf("\n");
         print_matrix(old, &p, c);
         printf("\nPlayer 2\n");
         read_move(&p, &c, 2);
@@ -56,7 +57,7 @@ int main(void)
             printf("Player 1 won!!");
             exit(1);
         }
-        else if(end_game(old) == 2)
+        if(end_game(old) == 2)
         {
             printf("O Player 2 won!!");
             exit(1);
