@@ -1,4 +1,4 @@
-//program with the funcrions to circles
+//program with the functions for the circles
 
 #include <stdio.h>
 #include <stdlib.h>
