@@ -28,9 +28,9 @@ int main(void)
 
 void read_points(struct point* point1, struct point* point2)
 {
-    printf("Type the point 1: ");
+    printf("Enter a point 1: ");
     scanf("%f %f", &point1->x, &point1->y);
-    printf("Type the point 2: ");
+    printf("Enter a point 2: ");
     scanf("%f %f", &point2->x, &point2->y);
 }
 
