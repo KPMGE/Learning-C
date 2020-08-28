@@ -10,7 +10,7 @@ int main(void){
 	do{
         printf("----------------------------------Calculating prime numbers in an interval-----------------------------------------\n\n");
 		
-        printf("Type two numbers for definition of interval: ");
+        printf("Enter two numbers for definition of interval: ");
 		scanf("%d %d", &n, &m);
 
 		n++;
@@ -33,35 +33,28 @@ int main(void){
 
 int isPrime(int n)
 {
-    int i = 2, prime = 0;
+    int i;
 
     if (n != 1 && n != -1 && n != 0)
     {
         if (n < 0)
         {
-            i = -2;
-
-            while (n < i)
+            for(i = -2; i >= n/2; i-- )
             {
                 if (n % i == 0)
-                    prime++;
-
-                i--;
+                    return 0;
             }
+            return 1;
 
-            return (prime == 0) ? 1 : 0;
         }
         else
         {
-            while (i < n)
+            for(i = 2; i <= n/2; i++)
             {
                 if (n % i == 0)
-                    prime++;
-
-                i++;
+                    return 0;
             }
-
-            return (prime == 0) ? 1 : 0;
+            return 1;
         }
     }
     else
