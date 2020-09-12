@@ -7,42 +7,21 @@ Problema: Faça um programa para eliminar os caracteres espaço ‘ ‘ de uma f
 • Saída: “RESP:” seguido da sequência de caracteres modificada.
 */
 
-//importação de bibliotecas
 #include <stdio.h>
-#include <string.h>
 
-//função que retorna 1(verdadeiro), caso o caractere seja um espaço e 0(falso) caso contrário
-int ehEspaco(char caractere);
-
-//funçao principal
 int main(void)
 {
-    //declaração de variaveis
-    int i, j = 0;
-    char frase[200], frase2[200], fc;
+    int i = 0;
+    char phrase[101];
 
-    //leitura dos dados enquanto não achamos um . ? ou !
-    scanf(" %[^.?!]%c", frase, &fc);
+    for(i; i < 100; i++)
+    {
+        scanf(" %c", &phrase[i]);
+        if((phrase[i] == '.') || (phrase[i] == '?') || (phrase[i] == '!'))
+            break;
+    }
 
-    //percorrendo string
-    for(i = 0; i < strlen(frase); i++)
-        //caso o caractere não seja um espaço
-        if(!ehEspaco(frase[i]))
-        {
-            //transcrevendo para frase2 na posição de j
-            frase2[j] = frase[i];
-            //incremento em j
-            j++;
-        }
-
-    //mostrando frase final na tela 
-    printf("RESP:%s%c", frase2, fc);
-
+    printf("%s", phrase);
     return 0; 
 }
 
-//função que retorna 1(verdadeiro), caso o caractere seja um espaço e 0(falso) caso contrário
-int ehEspaco(char caractere)
-{
-    return (caractere == ' ') ? 1 : 0;
-}
