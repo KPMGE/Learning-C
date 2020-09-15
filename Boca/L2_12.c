@@ -1,6 +1,6 @@
 /*
 (BOCA:L2_12) 
-Problema: Faça um programa para substituir caracteres espaço ‘ ‘ por caracteres underline ‘_’ de uma frase. O programa deverá ler caracteres da entrada padrão (um por vez) até encontrar um ponto simples ‘.’, interrogação ‘?’ ou exclamação ‘!’.
+Problema: Faça um programa para substituir caracteres espaço ‘ ‘ por caracteres underline ‘_’ de uma phrase. O programa deverá ler caracteres da entrada padrão (um por vez) até encontrar um ponto simples ‘.’, interrogação ‘?’ ou exclamação ‘!’.
 
 • Entrada: uma sequência de caracteres terminada com um ponto simples ‘.’, interrogação ‘?’ ou exclamação ‘!’.
 
@@ -8,25 +8,39 @@ Problema: Faça um programa para substituir caracteres espaço ‘ ‘ por carac
 */
 
 #include <stdio.h>
-#include <ctype.h>
+
+//function that checks if the entered character is a space
+int isSpace(char c)
+{
+    return (c == ' ') ? 1 : 0;
+}
+
+//function that checks the condition to stop loop 
+int endingPhrase(char c)
+{
+    return ((c == '.') || (c == '!') || (c == '?')) ? 1 : 0;
+}
 
 int main(void)
 {
-    int i;
-    char frase[100];
+    char phrase[1000];
 
-    for(i = 0; i < 100; i++)
+    int i = -1;
+    do
     {
-        scanf("%c", &frase[i]);
-        if(isspace(frase[i]))
-            frase[i] = '_';
-        else if((frase[i] == '.') || (frase[i] == '?') || (frase[i] == '!'))
-            break;
-    }
-    
-    printf("RESP:%s", frase);
+        i++;
+        
+        //reading a character
+        scanf("%c", &phrase[i]);
+
+        //swapping character ' ' to '_'
+        if(isSpace(phrase[i]))
+            phrase[i] = '_';
+    }while(!endingPhrase(phrase[i]));
+
+    //showing modificated phrase
+    printf("RESP:%s", phrase);
 
     return 0;
 }  
-
 
