@@ -14,13 +14,12 @@ OBS: “YES - Presentation diferences” não é uma resposta válida para essa 
 
 int main(void)
 {
-    char phrase[100];
-    int i;
-
-    for(i = 0; i < 100; i++)
+    char phrase[1000];
+    
+    int i = 0;
+    for(i; i < 1000; i++)
     {
-        phrase[i] = getchar();
-
+        scanf("%c", &phrase[i]);
         if((phrase[i] == '.') || (phrase[i] == '?') || (phrase[i] == '!'))
             break;
         else
