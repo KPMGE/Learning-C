@@ -1,0 +1,25 @@
+isalnum(int);: Testa se o caractere é alfabético ou númerco (alfanumérico).
+
+isalpha(int);: Testa se o caractere é alfabético.
+
+isascii(int);: Testa se o caractere é um dos 128 caracteres da tabela ASCII.
+
+isblank(int);: Testa se o caractere representa um espaço em branco (espaço ou tab).
+
+iscntrl(int);: Testa se o caractere é um comando de controle ASCII.
+
+isdigit(int);: Testa se o caractere é um digito decimal (0-9).
+
+isgraph(int);: Testa se o caractere é printável. (com exceção do espaço).
+
+islower(int);: Testa se o caractere é alfabético minúsculo (a-z).
+
+isprint(int);: Testa se o caractere é printável. (incluindo espaço).
+
+ispunct(int);: Testa se o caractere é diferente de um espaço ou qualquer outro caractere alfanumérico.
+
+isspace(int);: Testa se o caractere representa um espaço em branco.
+
+isupper(int);: Testa se o caractere é alfabético maiúsculo (A-Z).
+
+isxdigit(int);: Testa se o caractere é um digito hexadecimal (0-9,A-F,a-f)
