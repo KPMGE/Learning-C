@@ -5,12 +5,13 @@
 int isPrime(int n);
 
 int main(void){
-	int n, m, choice=1, cont=0;
+  int n, m, choice=1, cont=0;
 
 	do{
-        printf("----------------------------------Calculating prime numbers in an interval-----------------------------------------\n\n");
+
+    printf("----------------------------------Calculating prime numbers in an interval-----------------------------------------\n\n");
 		
-        printf("Enter two numbers for definition of interval: ");
+    printf("Enter two numbers for definition of interval: ");
 		scanf("%d %d", &n, &m);
 
 		n++;
@@ -26,6 +27,7 @@ int main(void){
 
 		printf("\n\nDo you want to calcualte again?\nYes - AnyNumber\nNo - 0\n> ");
 		scanf("%d", &choice);
+
 	}while(choice != 0);
 
     return 0;
@@ -33,30 +35,29 @@ int main(void){
 
 int isPrime(int n)
 {
-    int i;
+  int i;
 
-    if (n != 1 && n != -1 && n != 0)
+  if (n != 1 && n != -1 && n != 0)
+  {
+    if (n < 0)
     {
-        if (n < 0)
-        {
-            for(i = -2; i >= n/2; i-- )
-            {
-                if (n % i == 0)
-                    return 0;
-            }
-            return 1;
-
-        }
-        else
-        {
-            for(i = 2; i <= n/2; i++)
-            {
-                if (n % i == 0)
-                    return 0;
-            }
-            return 1;
-        }
+      for(i = -2; i >= n/2; i-- )
+      {
+          if (n % i == 0)
+              return 0;
+      }
+      return 1;
     }
     else
-        return 0;
+    {
+      for(i = 2; i <= n/2; i++)
+      {
+          if (n % i == 0)
+              return 0;
+      }
+      return 1;
+    }
+  }
+  else
+    return 0;
 }
