@@ -4,205 +4,171 @@
 Padi desde a última vez que o ajudou e agora ele terminou a Lista 3
 antes que você. Para provar que é mais rápido e treinar seus
 conhecimentos em implementação de funções, você deve fazer um
-programa que, dado o tamanho de uma matriz e seus valores, que
+programa que, dado o tamanho de uma matrix e seus valores, que
 nunca são iguais, transforma seus valores no próximo número primo
 maior que o próprio valor se o valor é positivo e menor que o próprio
 valor se o valor é negativo. Caso o valor já seja primo ou se o primo
 transformado extrapolar os intervalos de entrada possível, o programa
 não deve fazer nenhuma mudança.
 
-a) Seu programa deve conter a função int verificaPrimo(int n) que
+a) Seu programa deve conter a função int is_prime(int n) que
 retorna 1 se o número n passado como parâmetro for primo ou 0 caso
 contrário.
 
-b) Seu programa deve conter a função int transformaPrimo(int n)
+b) Seu programa deve conter a função int transform_prime(int n)
 que transforma o número n passado como parâmetro no próximo maior
 ou menor primo retornando o número transformado.
 
-c) Seu programa deve conter a função int verificaNegativo(int n) que
+c) Seu programa deve conter a função int is_negative(int n) que
 retorna 1 se o número for negativo ou 0 caso contrário.
 
 Entrada: uma linha com os valores L (1 <= L <= 100) e C (1 <= C <=
-100), representando o tamanho da matriz em linhas e colunas,
-respectivamente. Depois, L linhas com C valores V (-32000 <= V <=
+100), representando o tamanho da matrix em rows e columns,
+respectivamente. Depois, L rows com C valores V (-32000 <= V <=
 32000) cada.
 
-Saída: a matriz com seus valores transformados, conforme exemplo
+Saída: a matrix com seus valores transformados, conforme exemplo
 abaixo.
 */
 
-//importaçao de bibliotecas
 #include <stdio.h>
 
-//funçao que verifica se o numero é negativo ou nao
-int verificaNegativo(int n);
+//creating boolean values
+#define TRUE 1
+#define FALSE 0
 
-//funçao que verifica se o numero é primo
-int verificaPrimo(int n);
+//function that checks if the number is negative
+int is_negative(int n);
+//function that checks if the number is a prime number
+int is_prime(int n);
+//function that transforms the number to next prime number
+int transform_prime(int n);
 
-//funçao que transforma o numero no proximo primo, caso o numero nao seja primo e deixa o se ele ja for
-int transformaPrimo(int n);
-
-//funçao principal
 int main(void)
 {
-    //definindo o tamanho da matriz
-    int linhas, colunas;
-    scanf("%d %d", &linhas, &colunas);
+  int rows, columns;
+  scanf("%d %d", &rows, &columns);
 
-    //declaraçao da matriz com o tamanho que definimos
-    int matriz[linhas][colunas], matrizResultado[linhas][colunas];
+  //declaring matrices 
+  int matrix[rows][columns], matrixResult[rows][columns];
 
-    //lendo matriz
-    int i, j;
-    //loop for de i=0 ate i < linhas, percorrendo as linhas
-    for (i = 0; i < linhas; i++)
+  //reading matrix
+  int i, j;
+  for (i = 0; i < rows; i++)
+  {
+    for (j = 0; j < columns; j++)
+      scanf("%d", &matrix[i][j]);
+  }
+
+  //creating matrix to result
+  for (i = 0; i < rows; i++)
+  {
+    for (j = 0; j < columns; j++)
+      matrixResult[i][j] = transform_prime(matrix[i][j]);
+  }
+
+  //displaying matrix result
+  for (i = 0; i < rows; i++)
+  {
+    for (j = 0; j < columns; j++)
     {
-        //loop for de j=0, ate j<colunas, percorrendo as colunas
-        for (j = 0; j < colunas; j++)
-            //lendo o valor e passando para o elemento na posiçao linha(i), coluna(j)
-            scanf("%d", &matriz[i][j]);
+      printf("%d ", matrixResult[i][j]);
     }
+    printf("\n");
+  }
 
-    //criando matriz resultado
-    //loop for de i=0 ate i < linhas, percorrendo as linhas
-    for (i = 0; i < linhas; i++)
+  return 0;
+}
+
+int is_negative(int n)
+{
+  return (n < 0) ? 1 : 0;
+}
+
+int is_prime(int n)
+{
+  int i;
+
+  //if the number is different than 1, -1 and 0
+  if (n != 1 && n != -1 && n != 0)
+  {
+    //if the number is positive
+    if (n < 0)
     {
-        //loop for de j=0, ate j<colunas, percorrendo as colunas
-        for (j = 0; j < colunas; j++)
-            //a matriz resultado sera dada por os elementos da matriz inicial aplicada a funçao transforma primo
-            matrizResultado[i][j] = transformaPrimo(matriz[i][j]);
+      for (i = -2; i >= n / 2; i--)
+      {
+        //if 'n' is divisible by 'i', n isn't a prime number
+        if (n % i == 0)
+          return 0;
+      }
+      return 1;
     }
-
-    //mostrando matriz resultado
-    //loop for de i=0 ate i < linhas, percorrendo as linhas
-    for (i = 0; i < linhas; i++)
+    else
     {
-        //loop for de j=0, ate j<colunas, percorrendo as colunas
-        for (j = 0; j < colunas; j++)
-        {
-            //mostrando o valor da matriz resultado
-            printf("%d ", matrizResultado[i][j]);
-        }
-        printf("\n");
+      for (i = 2; i <= n / 2; i++)
+      {
+        //if 'n' is divisible by 'i', n isn't a prime number
+        if (n % i == 0)
+          return 0;
+      }
+      return 1;
     }
-
+  }
+  else
     return 0;
 }
 
-//funçao que verifica se o numero é negativo ou nao
-int verificaNegativo(int n)
+int transform_prime(int n)
 {
-    //caso numero menor que 0, retornamos 1(verdadeiro), caso contrario 0(falso)
-    return (n < 0) ? 1 : 0;
-}
+  //variable with smallest positive prime number
+  int i = 2;
 
-//funçao que verifica se o numero é primo
-int verificaPrimo(int n)
-{
-    //variaveis para comparaçao
-    int i = 2, primo = 0;
+  //if the number is prime, we return it
+  if (is_prime(n))
+    return n;
 
-    //caso o numero seja diferente de 1 e -1
-    if (n != 1 && n != -1 && n != 0)
+  //to transform to next negative prime number
+  if (is_negative(n))
+  {
+    //smallest negative prime number
+    i = -2;
+
+    while (TRUE)
     {
-        //caso o numero seja negativo
-        if (verificaNegativo(n))
-        {
-            //variavel i recebe o valor de -2, o menor numero primo negativo
-            i = -2;
+      //if i is small than n
+      if (i < n)
+      {
+        //if 'i' is a prime number, we return it
+        if (is_prime(i))
+          return i;
+      }
 
-            //enquanto o valor de i for maior que n
-            while (n < i)
-            {
-                //caso o resto da divisao de n por i seja o, incrementamos a variavel primo
-                if (n % i == 0)
-                    primo++;
-
-                //decremento em i
-                i--;
-            }
-
-            //caso primo se mantenha como 0, sabemos que o numero é primo , logo retornamos 1(verdadeiro), caso contrario 0(falso)
-            return (primo == 0) ? 1 : 0;
-        }
-        //caso o numero seja positivo
-        else
-        {
-            //enquanto a variavel i for menor que n
-            while (i < n)
-            {
-                //caso o resto da divisao de n por i seja igual a 0, variavel primo incrementada
-                if (n % i == 0)
-                    primo++;
-
-                //incremento na variavel i
-                i++;
-            }
-
-            //caso primo se mantenha como 0, sabemos que o numero é primo , logo retornamos 1(verdadeiro), caso contrario 0(falso)
-            return (primo == 0) ? 1 : 0;
-        }
-    }
-    //caso o numero seja 1 ou -1, apenas retornamos 0(falso), pois esses nao sao numeros primos
-    else
-        return 0;
-}
-
-//funçao que transforma o numero no proximo primo, caso o numero nao seja primo e deixa o se ele ja for
-int transformaPrimo(int n)
-{
-    //variavel com o menor primo positivo
-    int i = 2;
-
-    //caso o numero ja seja primo, apenas retornamos o mesmo
-    if (verificaPrimo(n))
+      i--;
+      
+      //if 'i' is small than -32000, we return it 
+      if (i < -32000)
         return n;
-
-    //transformar para o proximo primo negativo
-    if (verificaNegativo(n))
-    {
-        //mudamos i, agora para o menor primo negativo, -2
-        i = -2;
-
-        //loop indefinido
-        while (1)
-        {
-            //caso a variavel i seja menor q n
-            if (i < n)
-            {
-                //verificamos ainda se o numero é primo, se sim, retornamos o mesmo, se nao, passamos para o proximo loop
-                if (verificaPrimo(i))
-                    return i;
-            }
-
-            //decremento em i
-            i--;
-            //caso o numero i seja menor que -32000, apenas o retornamos
-            if (i < -32000)
-                return n;
-        }
     }
+  }
 
-    //transformar para o proximo primo positivo
-    else
+  // to transform to next positive prime number
+  else
+  {
+    while (TRUE)
     {
-        //while indefinido
-        while (1)
-        {
-            //caso o numero i seja maior que n
-            if (i > n)
-            {
-                //verificamos ainda se o numero é primo, se sim, retornamos o mesmo, se nao, passamos para o proximo loop
-                if (verificaPrimo(i))
-                    return i;
-            }
+      //if 'i' is greater than n
+      if (i > n)
+      {
+        //if 'i' is a prime number, we return it
+        if (is_prime(i))
+          return i;
+      }
 
-            //incremento em i
-            i++;
-            //caso o numero i seja maiorr que 32000, apenas o retornamos
-            if (i > 32000)
-                return n;
-        }
+      i++;
+
+      //if 'i' is greater than 32000, we return it
+      if (i > 32000)
+        return n;
     }
+  }
 }
