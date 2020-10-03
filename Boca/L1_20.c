@@ -20,12 +20,6 @@ int main(void)
 
   scanf("%d %d", &month, &year);
 
-  if((month == 56) && (year == 18))
-  {
-    printf("maio 31 2020 bissexto\n");
-    return 0;
-  }
-
   switch(month)
   {
     case 1:
