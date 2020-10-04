@@ -9,92 +9,61 @@ Atenção: Não deverão ser codificadas as letras maiúsculas. Números e outro
 • Saída: o texto codificado ou decodificado.
 */
 
-//importação de bibliotecas
 #include <stdio.h>
-#include <string.h>
+#include <ctype.h>
 
-//funçao que verifica se o caractere é uma letra minuscula
-int verificaLetraMinuscula(char caractere);
+#define True 1
+#define False 0
 
-//funçao que codifica a letra dada
-char codifica(char letra, int chave);
+char codifica(char c, int chave);
+char decodifica(char c, int chave);
 
-//funçao  que decodifica a letra dada
-char decodifica(char letra, int chave);
-
-//funçao principal
 int main(void)
 {
-    //declaração de variaveis
-    int modo, i, chave;
-    char texto[101];
+  int modo, chave;
+  char letra;
 
-    //lendo o modo de operação e chave
-    scanf("%d %d", &modo, &chave);
+  scanf("%d %d", &modo, &chave);
 
-    //escolhendo o modo de trabalho
-    switch(modo)
-    {
-        //caso o modo 1 seja escolhido
-        case 1:
-           //leitura do texto até encontrar um ponto final
-            scanf("%100[^.]", texto);
+  switch(modo)
+  {
+    case 1:
+      while(True)
+      {
+        scanf("%c", &letra);
+        printf("%c", codifica(letra, chave));
+        if(letra == '.')
+          break;
+      }
+    break;
 
-            //percorrendo o texto
-            for(i = 0; i < strlen(texto); i++)
-                //codificamos a letra no loop que estamos
-                texto[i] = codifica(texto[i], chave);
-
-            //mostrando o texto final
-            printf("%s.", texto);    
-            
-            //apos a execuçao saimos do switch
-            break;
-
-        case 2:
-           //leitura do texto até encontrar um ponto final
-            scanf("%100[^.]", texto);
-
-            //percorrendo o texto
-            for(i = 0; i < strlen(texto); i++)
-                //codificamos a letra no loop que estamos
-                texto[i] = decodifica(texto[i], chave);
-
-            //mostrando o texto final
-            printf("%s.", texto);    
-            
-            //apos a execuçao saimos do switch
-            break;
-
-        //caso nenhuma das opções acima seja escolhida
-        default:
-            printf("Operacao invalida.");
-    }
+    case 2:
+      while(True)
+      {
+        scanf("%c", &letra);
+        printf("%c", decodifica(letra,chave));
+        if(letra == '.')
+          break;
+      }
+    break;
     
-    return 0;
+    default:
+      printf("Operacao invalida.");
+  }
+
+  return 0;
 }
 
-int verificaLetraMinuscula(char caractere)
+char codifica(char c, int chave)
 {
-    return (caractere >= 'a' && caractere <= 'z') ? 1 : 0;
+  if(islower(c))
+    c += chave;
+  return c;
 }
 
-char codifica(char letra, int chave)
+char decodifica(char c, int chave)
 {
-    //caso o caractere seja uma letra minuscula
-    if(verificaLetraMinuscula(letra))
-        //letra codificada aplicando a chave
-        letra += chave;
-
-    return letra;
-}
-
-char decodifica(char letra, int chave)
-{
-    //caso o caractere seja uma letra minuscula
-    if(verificaLetraMinuscula(letra))
-        //letra decodificada retirando a chave
-        letra -= chave;
-
-    return letra;
+  if(islower(c))
+    c -= chave;
+  return c;
 }
