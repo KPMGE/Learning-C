@@ -1,25 +1,23 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
 
 //creating PI as a constant
-const float PI = 3.1415;
+const float PI = 3.14159;
 
 int main(void)
 {
-    float radius, areaBigCircle, areaSmallCircle, grayArea;
+    float radius, radius2, areaBigCircle, areaSmallCircle, grayArea;
     scanf("%f", &radius);
 
-    areaSmallCircle = PI * pow(radius, 2);
+    areaSmallCircle = PI * radius * radius;
     //the circle 2 has a radius two times greater than circle 1
-    radius *= 2;
-    areaBigCircle = PI * pow(radius, 2);
+    radius2 = radius * 1.5;
+    areaBigCircle = PI * radius2 * radius2;
 
     //calculating gray area
     grayArea = areaBigCircle - areaSmallCircle;
 
-    //displaying result
-    printf("%f", grayArea);
+    printf("%.4f", grayArea);
 
     return 0;
 }
