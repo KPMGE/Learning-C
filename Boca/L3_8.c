@@ -49,7 +49,7 @@ int main(void)
   int rows, columns;
   scanf("%d %d", &rows, &columns);
 
-  //declaring matrices 
+  //declaring matrices
   int matrix[rows][columns], matrixResult[rows][columns];
 
   //reading matrix
@@ -144,8 +144,8 @@ int transform_prime(int n)
       }
 
       i--;
-      
-      //if 'i' is small than -32000, we return it 
+
+      //if 'i' is small than -32000, we return it
       if (i < -32000)
         return n;
     }

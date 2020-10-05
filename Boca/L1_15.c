@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
+int main(void)
+{
 	int num,num1, num2, num3, od, vf;
 
 	scanf("%d%d", &num, &od);
