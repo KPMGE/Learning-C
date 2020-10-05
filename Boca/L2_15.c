@@ -13,45 +13,44 @@ int differentWhiteSpace(char c);
 
 int main(void)
 {
-    int i, sumPositive = 0, sumNegative = 0, qtdNegative = 0, qtdPositive = 0, number;
+  int i, sumPositive = 0, sumNegative = 0, qtdNegative = 0, qtdPositive = 0, number;
 
-    for(i = 0; i < 100; i++)
+  for (i = 0; i < 100; i++)
+  {
+    scanf("%d", &number);
+
+    if (differentWhiteSpace(number))
+      break;
+
+    //if the number entered is greater than 0
+    else if (number > 0)
     {
-        scanf("%d", &number);
+      sumPositive += number;
+      qtdPositive++;
+      number = 0;
+    }
+    //if the number entered is less than 0
+    else if (number < 0)
+    {
+      sumNegative += number;
+      qtdNegative++;
+      number = 0;
+    }
+  }
 
-        if(differentWhiteSpace(number))
-            break;
+  //displaying results
+  printf("%d %d %d %d", qtdNegative, qtdPositive, sumNegative, sumPositive);
 
-        //if the number entered is greater than 0
-        else if (number > 0)
-        {
-            sumPositive += number;
-            qtdPositive++;
-            number = 0;
-        }
-        //if the number entered is less than 0
-        else if(number < 0)
-        {
-            sumNegative += number;
-            qtdNegative++;
-            number = 0;
-        }
-    } 
-
-
-    //displaying results
-    printf("%d %d %d %d", qtdNegative, qtdPositive, sumNegative, sumPositive);
-    
-    return 0;
+  return 0;
 }
 
 int differentWhiteSpace(char c)
 {
-    if((c < -100) || (c > 100)) 
-    {
-        if((c != '\n') || (c != '\t') || (c != ' ') || (c != '\v') || (c != '\f') || (c != '\r'))
-            return 1;
-    }
-    else
-        return 0;
+  if ((c < -100) || (c > 100))
+  {
+    if ((c != '\n') || (c != '\t') || (c != ' ') || (c != '\v') || (c != '\f') || (c != '\r'))
+      return 1;
+  }
+  else
+    return 0;
 }

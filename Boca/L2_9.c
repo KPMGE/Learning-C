@@ -6,76 +6,85 @@ Saída: Como saída, o programa deverá exibir todos os números primos contidos
 
 #include <stdio.h>
 
-int main(){
-	//variaveis principais
-	int n, m, primo=0;
+int main()
+{
+  //variaveis principais
+  int n, m, primo = 0;
 
-	//lendo os valores de n e m
-	scanf("%d%d", &n, &m);
+  //lendo os valores de n e m
+  scanf("%d%d", &n, &m);
 
-	//incremento a n, pois o intervalo é aberto 
-	n++;
+  //incremento a n, pois o intervalo é aberto
+  n++;
 
-	//for de n ate m 
-	for(n; n<m; n++){
-		//menor primo definido 
-		int minPrimo = 2;
-		//while enquanto o minprimo menor que n
-		while (minPrimo < n)
-		{
-			//se o numero é divisivel, primo incrementado
-			if(n%minPrimo == 0){
-				primo++;
-			}
+  //for de n ate m
+  for (n; n < m; n++)
+  {
+    //menor primo definido
+    int minPrimo = 2;
+    //while enquanto o minprimo menor que n
+    while (minPrimo < n)
+    {
+      //se o numero é divisivel, primo incrementado
+      if (n % minPrimo == 0)
+      {
+        primo++;
+      }
 
-			//incremento a minprimo
-			minPrimo++;
-		}
+      //incremento a minprimo
+      minPrimo++;
+    }
 
-		//caso a variavel primo se mantenha como 0, n é primo
-		if(primo == 0){
-			//definindo variaveis 
-			int i=2, multiplo, teste=0;
+    //caso a variavel primo se mantenha como 0, n é primo
+    if (primo == 0)
+    {
+      //definindo variaveis
+      int i = 2, multiplo, teste = 0;
 
-			//mostrando o numero n , correspondente ao loop
-			printf("%d\n", n);
+      //mostrando o numero n , correspondente ao loop
+      printf("%d\n", n);
 
-			//loop indefinido 
-			while(1){
-				//multiplo recebe o valor de n, vezes o valor de i
-				multiplo = n*i;
+      //loop indefinido
+      while (1)
+      {
+        //multiplo recebe o valor de n, vezes o valor de i
+        multiplo = n * i;
 
-				//caso o multiplo seja maior ou igual que m, que é o numero fina, paramos o loop
-				if(multiplo >= m){
-					break;
-				}
-				//caso contrario, mostramos o multiplo e incrementamos teste
-				else{
-					printf("%d ", multiplo);
-					teste++;
-				}
+        //caso o multiplo seja maior ou igual que m, que é o numero fina, paramos o loop
+        if (multiplo >= m)
+        {
+          break;
+        }
+        //caso contrario, mostramos o multiplo e incrementamos teste
+        else
+        {
+          printf("%d ", multiplo);
+          teste++;
+        }
 
-				//incremento a variavel i
-				i++;
-			}
+        //incremento a variavel i
+        i++;
+      }
 
-			//caso o teste se mantenha como 0, sabemos que somente um loop foi executadoo, logo o numero em questao nao tem multiplos
-			if(teste == 0){
-				printf("*\n");
-			}
-			//caso contrario apenas damos um espaço para a proxima exibiçao
-			else{
-				printf("\n");
-			}
+      //caso o teste se mantenha como 0, sabemos que somente um loop foi executadoo, logo o numero em questao nao tem multiplos
+      if (teste == 0)
+      {
+        printf("*\n");
+      }
+      //caso contrario apenas damos um espaço para a proxima exibiçao
+      else
+      {
+        printf("\n");
+      }
 
-			//resetando a variavel teste, para realizar uma nova comparação
-			teste = 0;
-		}
+      //resetando a variavel teste, para realizar uma nova comparação
+      teste = 0;
+    }
 
-		//resetando a variavel minPrimo e primo, para realizar uma nova comparação
-		minPrimo = 2;
-		primo = 0;
-	}
+    //resetando a variavel minPrimo e primo, para realizar uma nova comparação
+    minPrimo = 2;
+    primo = 0;
+  }
 
-	return 0;
+  return 0;
 }

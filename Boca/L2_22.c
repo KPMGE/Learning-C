@@ -3,85 +3,76 @@ dígitos, até que o resultado tenha somente um dígito.
 Por exemplo: 29 = 2 + 9 = 11; 11 = 1 + 1 = 2.
 •
 • Entrada: um inteiro não negativo.
-Saída: “RESP:” seguido de um inteiro correspondente à soma final.*/
+Saída: “RESP:” seguido de um inteiro correspondente à sum final.*/
 
-//importação de bibliotecas
 #include <stdio.h>
 #include <math.h>
 
+//function that returns thre size of the number
+int sizeNum(int num);
+//function that returns the algarism in the entered position
+int algarismNum(int num, int position);
 
-//função que retorna o tamanho do numero
-int tamanhoNum(int num)
+int main(void)
 {
-    int resto, i=1, tamanho = 0;
+  int num, size, algarism, i, sumNum = 0;
 
-    //repetição enquanto o resto da divisão for diferente do numero
-    while(resto != num)
+  scanf("%d", &num);
+
+  do
+  {
+    //finding the size of the number
+    size = sizeNum(num);
+    //resetando a variavel sumNum
+    //reset num variable
+    sumNum = 0;
+
+    for (i = 1; i <= size; i++)
     {
-        //resto recebe o resto da disão de numero por 10 elevado a i
-        resto = num % (int)pow(10, i);
-
-        //incrementando tamanho e i
-        tamanho++;
-        i++;
+      //getting algarism in the position 'i'
+      algarism = algarismNum(num, i);
+      //increment variable sumNum
+      sumNum += algarism;
     }
-    
-    return tamanho;
+
+    //now, num is the sum of the algarisms from previous number
+    num = sumNum;
+  } while (sumNum > 9);
+
+  printf("RESP:%d", sumNum);
+
+  return 0;
 }
 
-
-//função que retorna o algarismo na posicaoição dada
-int algarismoNum(int num, int posicaoicao)
+int sizeNum(int num)
 {
-    int algarismo, num2, num3;
+  int rest, i = 1, size = 0;
 
-    //num2 recebe o numero integral até a casa especificada
-    num2 = num % (int)pow(10, posicaoicao);
+  while (rest != num)
+  {
+    rest = num % (int)pow(10, i);
 
-    //num3 recebe o numero com o tamanho de uma casa a menos que num2 
-    num3 = num % (int)pow(10, posicaoicao-1);
+    //incrementing size and i
+    size++;
+    i++;
+  }
 
-    //algarismo recebe o numero2 - numero3, logo teremos um numero com o algarismo que queremos e 00.. após
-    algarismo = num2 - num3;
-
-    //cortando os zeros, restando somente o algarismo
-    algarismo /= (int)pow(10, posicaoicao-1);
-
-    return algarismo;
+  return size;
 }
 
-
-//função principal
-int main()
+int algarismNum(int num, int position)
 {
-    //declaração de variaveis
-    int num, tamanho, algarismo, i, somaNum = 0;
+  int algarism, num2, num3;
 
-    //leitura de dados
-    scanf("%d", &num);
-    
-    //loop enquanto a soma for menor que 9
-    do
-    {
-        //encontrando o tamanho do numero
-        tamanho = tamanhoNum(num);
-        //resetando a variavel somaNum
-        somaNum = 0;
+  //num2 is the integral number until entered position
+  num2 = num % (int)pow(10, position);
+  //num3 is num2 less one decimal place
+  num3 = num % (int)pow(10, position - 1);
+  //now, we have a number only with first decimal place and 000 next
+  algarism = num2 - num3;
 
-        for(i = 1; i <= tamanho; i++)
-        {
-            //obtendo o algarismo na posição de i
-            algarismo = algarismoNum(num, i);
-            //variavel incrementada com o valor do algarismo
-            somaNum += algarismo;
-        }
-        
-        //numero agora é a soma dos algarismos do numero anterior
-        num = somaNum;
-    }while(somaNum > 9);
+  //deleting 000
+  algarism /= (int)pow(10, position - 1);
 
-    //mostrando valor final
-    printf("RESP:%d", somaNum);
-
-    return 0;
+  return algarism;
 }
