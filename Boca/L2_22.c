@@ -23,7 +23,6 @@ int main(void)
   {
     //finding the size of the number
     size = sizeNum(num);
-    //resetando a variavel sumNum
     //reset num variable
     sumNum = 0;
 
