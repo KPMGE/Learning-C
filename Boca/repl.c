@@ -4,8 +4,7 @@
 
 int main(void)
 {
-  int number, id, number2;
-  int rest, i = 1, size = 0;
+  int number, id, number2, size;
   int algarismUnit, algarismHundred, algarismDozen, algarismThousand;
   int smallest = 0, greatest = 0, half = 0;
 
@@ -14,13 +13,7 @@ int main(void)
   number2 = number;
 
   //encontrando o tamanho do numero em casas decimais
-  while (rest != number)
-  {
-    rest = number % (int)pow(10, i);
-
-    size++;
-    i++;
-  }
+  if()
 
   //encontrando os algarismos
   algarismThousand = number2 / 1000;
