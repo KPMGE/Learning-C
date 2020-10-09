@@ -12,81 +12,66 @@ Entrada: A entrada é dada por TIPO, sendo 0 para PAR e 1 para IMPAR, e N, onde 
 entre 1<=N<=99999.
 Saída: Os N primeiros números do tipo pedido (par/ímpar).*/
 
-
-//importação de bibliotecas
 #include <stdio.h>
 
-//função que verifica se o numero é par ou impar
 int EhPar(int x);
+void PrintaPares(int n);
+void PrintaImpares(int n);
 
-//função que printa os pares 
-void PrintaPares (int N);
-
-//função que printa os impares
-void PrintaImpares (int N);
-
-//função principal
 int main(void)
 {
-    unsigned int N;
-    int tipo;
+  int n, tipo;
 
-    //leitura de dados
-    scanf("%d %d", &tipo, &N);
+  scanf("%d", &tipo);
 
-    //analisando o tipo escolhido
-    switch(tipo)
-    {
-        case 0:
-            PrintaPares(N);
-            break;
+  switch (tipo)
+  {
+    case 0:
+      scanf("%d", &n);
+      PrintaPares(n);
+    break;
 
-        case 1:
-           PrintaImpares(N);
-            break;
+    case 1:
+      scanf("%d", &n);
+      PrintaImpares(n);
+    break;
+  }
 
-        default: 
-            break;
-    }
-
-    return 0;
+  return 0;
 }
 
-//função que verifica se o numero é par ou impar
 int EhPar(int num)
 {
-    //caso o resto da divisão do numero por 2 for 0, o numero é par
-    return (num % 2 == 0) ? 1 : 0;
+  //caso o resto da divisão do numero por 2 for 0, o numero é par
+  return (num % 2 == 0) ? 1 : 0;
 }
 
-//função que printa os pares 
-void PrintaPares (int N)
+void PrintaPares(int n)
 {
-    int i = 2, cont = 0;
-    do
+  int i, num = 2;
+  for(i = 0; i < n; i++, num++)
+  {
+    if (EhPar(num))
+      printf("%d ", num);
+    else
     {
-        if(EhPar(i))
-        {
-            printf("%d ", i);
-            cont++;
-        }
-
-        i++;
-    }while(cont != N);
+      num++;
+      printf("%d ", num);
+    }
+  }
 }
 
-//função que printa os impares
-void PrintaImpares (int N)
+void PrintaImpares(int n)
 {
-    int i = 1, cont = 0;
-    do
+  int i, num = 1;
+  for(i = 0; i < n; i++, num++)
+  {
+    if (!EhPar(num))
+      printf("%d ", num);
+    else
     {
-        if(!EhPar(i))
-        {
-            printf("%d ", i);
-            cont++;
-        }
-
-        i++;
-    }while(cont != N);
+      num++;
+      printf("%d ", num);
+    }
+  }
 }
