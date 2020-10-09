@@ -1,37 +1,77 @@
-/*
-(BOCA:L2_20) 
-Problema: Faça um programa que dados os coeficientes de uma
-equação de 3° grau, correspondentes ao a, b, c e d respectivamente
-(ax3 + bx2 + cx + d = y) e dados os limites e e f do intervalo fechado [e,f], avalie esse
-intervalo procurando o pico e o vale e então os imprima na tela.
-
-Atenção: Considerar avaliação discreta, ou seja, analisar somente os números
-inteiros do intervalo. Caso não haja pico ou vale, o programa deve informar que não
-há. Usar loop para avaliar o intervalo indo no sentido de e para f. Soluções analíticas
-não serão consideradas corretas.
-
-Entrada: números reais representando os coeficientes a, b, c e d de uma equação de
-terceiro grau seguidos de dois números inteiros e e f, descrevendo um intervalo fechado.
-
-Saída: cada vez que seu programa encontrar um pico ou um vale ele deverá informar (em
-uma linha) qual dos dois foi encontrado seguidos do valor x de onde eles foram
-encontrados. Caso não haja máximo ou mínimo até o final do intervalo, imprimir uma
-mensagem “Nao ha pico” ou “Nao ha vale” respectivamente. Veja exemplos de formatação
-abaixo.
-*/
-
-
-//importação de bibliotecas
 #include <stdio.h>
 
+float CalcularResultado(float a, float b, float c, float d, int e)
+{
+  float resultado;
 
-//função principal
+  resultado = a * (e * e * e) + b * (e * e) + c * (e) + d;
+
+  return resultado;
+}
+
 int main()
 {
-    int a, b, c, d, e, f;
+  float g, h, i;    //variaveis para verificar se tem a equacao tem vale ou pico
+  float a, b, c, d; //variaveis dos coeficientes
+  int e, f;         //variaveis do intervalo
+  float resultado;  //variavel para o resultado da equacao com as variaveis anteriores
+  int parametro1 = 0, parametro2 = 0;
 
-    scanf("%d %d %d %d %d %d", &a, &b, &c, &d, &e, &f);
+  scanf("%f %f %f %f %d %d", &a, &b, &c, &d, &e, &f);
 
-    
-    return 0;
+  //usando todos os valores no intervalo e f
+  while (e <= f)
+  {
+    g = CalcularResultado(a, b, c, d, e);
+    e++;
+
+    h = CalcularResultado(a, b, c, d, e);
+    e++;
+
+    i = CalcularResultado(a, b, c, d, e);
+    e++;
+
+    if ((h > i && h > g) || (h < i && h < g))
+    {
+      if (h > g)
+      {
+        printf("Pico em x=%d\n", e - 2);
+        parametro1++;
+      }
+      if (h < g)
+      {
+        printf("Vale em x=%d\n", e - 2);
+        parametro2++;
+      }
+    }
+    else
+    {
+      while (e <= f)
+      {
+        g = h;
+        h = i;
+        i = CalcularResultado(a, b, c, d, e);
+        e++;
+
+        if ((h > i && h > g) || (h < i && h < g))
+        {
+          if (h > g)
+          {
+            printf("Pico em x=%d\n", e - 2);
+            parametro1++;
+          }
+          if (h < g)
+          {
+            printf("Vale em x=%d\n", e - 2);
+            parametro2++;
+          }
+        }
+      }
+    }
+  }
+  if (parametro1 == 0)
+    printf("Nao ha pico\n");
+  if (parametro2 == 0)
+    printf("Nao ha vale");
+  return 0;
 }
