@@ -18,152 +18,121 @@ número é par ou ímpar. Se for par, deve imprimir: Par, se for ímpar,
 imprimir: Impar. Se for primo: Primo, caso não: Nao e primo.
  */
 
-//importação de bibliotecas
 #include <stdio.h>
 #include <math.h>
 
-//função que imprime par ou impar
+#define True 1
+#define False 0
+
 void parImpar(int n);
-
-//função que verifica se o numero é primo
 int verificaPrimo(int n);
-
-//função que imprime os primos
 void valorPrimo(int n);
-
-//função que retorna o tamanho do numero(casas decimais)
 int tamanhoNum(int n);
-
-//função que retorna o algarismo de um numero na posição dada
 int algarismoNum(int n, int posicao);
-
-//função que retorna o algarismo de um numero na posição dada
 int algarismoNum(int n, int posicao);
-
-//função que calcula a soma dos digitos
 int somadosdigitos(int n);
 
-//função principal
 int main(void)
 {
-    unsigned int valor, soma;
-    
-    //leitura de dados
-    scanf("%d", &valor);
+  int valor, soma;
 
-    //enquanto a soma dos digitos for maior que 9(maior numero de uma casa)
-    do
-    {
-        //calculando a soma
-        soma = somadosdigitos(valor);
+  scanf("%d", &valor);
 
-        //mostrando dados
-        printf("%d ", soma);
-        parImpar(soma);
-        valorPrimo(soma);
-        printf("\n");
+  do
+  {
+    soma = somadosdigitos(valor);
 
-        valor = soma;
-    }while(soma > 9);
+    //mostrando dados
+    printf("%d ", soma);
+    parImpar(soma);
+    valorPrimo(soma);
+    printf("\n");
 
-    return 0;
+    valor = soma;
+  } while (soma > 9);
+
+  return 0;
 }
 
-//função que imprime par ou impar
 void parImpar(int n)
 {
-    //caso o numero seja divisível por 2 é par, se não é impar
-    if(n % 2 == 0)
-        printf("Par ");
-    else
-        printf("Impar ");
+  //caso o numero seja divisível por 2 é par, se não é impar
+  if (n % 2 == 0)
+    printf("Par ");
+  else
+    printf("Impar ");
 }
 
-//função que verifica se o numero é primo
 int verificaPrimo(int n)
 {
-    int primo = 0, i;
+  int primo = 0, i;
 
-    //loop do menor primo até o numero anterior a n
-    for(i = 2; i < n; i++)
-    {
-        //caso n seja divisível por i, incrementamos primo
-        if(n % i == 0)
-            primo++;
-    }
-
-    //caso a variável primo não se altere, o número só é divisivel por ele ou por 1, logo, é primo
-    return (primo == 0) ? 1 : 0;
+  //loop do menor primo até o numero anterior a n
+  for (i = 2; i < n / 2; i++)
+  {
+    //caso n seja divisível por i, incrementamos primo
+    if (n % i == 0)
+      return False;
+  }
+  return True;
 }
 
-//função que imprime os primos
 void valorPrimo(int n)
 {
-    //caso primo, mostramos Primo, caso contrário, Nao e Primo
-    if(verificaPrimo(n))
-        printf("Primo");
-    else
-        printf("Nao e Primo");
+  //caso primo, mostramos Primo, caso contrário, Nao e Primo
+  if (verificaPrimo(n))
+    printf("Primo");
+  else
+    printf("Nao e primo");
 }
 
-//função que retorna o tamanho do numero(casas decimais)
 int tamanhoNum(int n)
 {
-    int tamanho = 0, resto, i = 1;
+  int tamanho = 0, resto, i = 1;
 
-    //enquanto o resto da divisão for diferente do próprio numero
-    while(resto != n)
-    {
-        //resto é dado por 10^i
-        resto = n % (int)pow(10, i);
-
-        //incrementando tamanho e i
-        tamanho++;
-        i++;
-    }
-
-    return tamanho;
+  //enquanto o resto da divisão for diferente do próprio numero
+  while (resto != n)
+  {
+    //resto é dado por 10^i
+    resto = n % (int)pow(10, i);
+    //incrementando tamanho e i
+    tamanho++;
+    i++;
+  }
+  return tamanho;
 }
 
-//função que retorna o algarismo de um numero na posição dada
 int algarismoNum(int n, int posicao)
 {
-    int algarismo, n2, n3;
+  int algarismo, n2, n3;
 
-    //n2 recebe o numero cortando ate o algarismo que queremos
-    n2 = n % (int)pow(10, posicao);
-    
-    //n3 recebe os numero depois desse algarismo
-    n3 = n % (int)pow(10, posicao-1);
+  //n2 recebe o numero cortando ate o algarismo que queremos
+  n2 = n % (int)pow(10, posicao);
+  //n3 recebe os numero depois desse algarismo
+  n3 = n % (int)pow(10, posicao - 1);
+  //algarismo recebe o numero com o algarismo e 000.. depois
+  algarismo = n2 - n3;
+  //eliminando os zeros, por divisão
+  algarismo /= (int)pow(10, posicao - 1);
 
-    //algarismo recebe o numero com o algarismo e 000.. depois
-    algarismo = n2 - n3;
-
-    //eliminando os zeros, por divisão 
-    algarismo /= (int)pow(10, posicao-1);
-
-    return algarismo;
+  return algarismo;
 }
 
-//função que calcula a soma dos digitos
 int somadosdigitos(int n)
 {
-    int i, tamanho, algarismo, soma = 0;
+  int i, tamanho, algarismo, soma = 0;
+  //achando o tamanho do numero em casas decimas
+  tamanho = tamanhoNum(n);
 
-    //achando o tamanho do numero em casas decimas
-    tamanho = tamanhoNum(n);
+  for (i = 1; i <= tamanho; i++)
+  {
+    //algarismo recebe o retorno da função algarismoNum
+    algarismo = algarismoNum(n, i);
+    //soma incrementada com o algarismo
+    soma += algarismo;
+    //resetando algarismo
+    algarismo = 0;
+  }
 
-    for(i = 1; i <= tamanho; i++)
-    {
-        //algarismo recebe o retorno da função algarismoNum
-        algarismo = algarismoNum(n, i);
-
-        //soma incrementada com o algarismo
-        soma += algarismo;
-        
-        //resetando algarismo
-        algarismo = 0;
-    }
-    
-    return soma;
+  return soma;
 }
