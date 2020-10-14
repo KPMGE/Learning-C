@@ -15,8 +15,8 @@ int main(void)
     printf("Nao ha raizes reais");
   else
   {
-    x1 = (-b + sqrt(dt)) / 2 * a;
-    x2 = (-b - sqrt(dt)) / 2 * a;
+    x1 = (-b + sqrt(dt)) / (2 * a);
+    x2 = (-b - sqrt(dt)) / (2 * a);
     printf("x1: %.2f x2: %.2f", x1, x2);
   }
 
