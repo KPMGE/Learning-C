@@ -38,6 +38,10 @@ int main(void)
         printf("%c", Decodifica(letra, chave));
       } while (letra != '.');
     break;
+
+    default:
+      printf("Operacao invalida.");
+    break;
   }
 
   return 0;
