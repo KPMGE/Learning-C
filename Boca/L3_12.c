@@ -1,24 +1,5 @@
-/*
- * (BOCA: L3_12) Problema: Dado um inteiro não-negativo, repetidamente
-some seus dígitos, até que o resultado tenha somente um dígito. A cada
-soma, o valor deverá ser impresso e após ele, deverá ser impresso se o
-número é ímpar ou par, e se ele é primo.
-
-a) Seu programa deve conter a função int somadosdigitos(int n); que
-retorna a soma dos dígitos do número n.
-b) Seu programa deve conter a função void parImpar(int n); que
-imprime Par se n for par ou Impar se n for ímpar.
-
-d) Seu programa deve conter a função void valorPrimo(int n); que
-imprime Nao e primo se n não for primo ou Primo se n for primo.
-
-• Entrada: um inteiro não negativo
-• Saída: o valor de cada soma, seguido pela identificação de que se o
-número é par ou ímpar. Se for par, deve imprimir: Par, se for ímpar,
-imprimir: Impar. Se for primo: Primo, caso não: Nao e primo.
- */
-
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 #define True 1
@@ -34,20 +15,17 @@ int somadosdigitos(int n);
 
 int main(void)
 {
-  int valor, soma;
+  int valor, soma = 0;
 
   scanf("%d", &valor);
 
   do
   {
     soma = somadosdigitos(valor);
-
     //mostrando dados
     printf("%d ", soma);
     parImpar(soma);
     valorPrimo(soma);
-    printf("\n");
-
     valor = soma;
   } while (soma > 9);
 
@@ -56,7 +34,6 @@ int main(void)
 
 void parImpar(int n)
 {
-  //caso o numero seja divisível por 2 é par, se não é impar
   if (n % 2 == 0)
     printf("Par ");
   else
@@ -65,12 +42,10 @@ void parImpar(int n)
 
 int verificaPrimo(int n)
 {
-  int primo = 0, i;
+  int i;
 
-  //loop do menor primo até o numero anterior a n
   for (i = 2; i < n / 2; i++)
   {
-    //caso n seja divisível por i, incrementamos primo
     if (n % i == 0)
       return False;
   }
@@ -79,16 +54,15 @@ int verificaPrimo(int n)
 
 void valorPrimo(int n)
 {
-  //caso primo, mostramos Primo, caso contrário, Nao e Primo
   if (verificaPrimo(n))
-    printf("Primo");
+    printf("Primo\n");
   else
-    printf("Nao e primo");
+    printf("Nao e primo\n");
 }
 
 int tamanhoNum(int n)
 {
-  int tamanho = 0, resto, i = 1;
+  int tamanho = 0, resto = 0, i = 1;
 
   //enquanto o resto da divisão for diferente do próprio numero
   while (resto != n)
@@ -120,7 +94,7 @@ int algarismoNum(int n, int posicao)
 
 int somadosdigitos(int n)
 {
-  int i, tamanho, algarismo, soma = 0;
+  int i, tamanho, algarismo = 0, soma = 0;
   //achando o tamanho do numero em casas decimas
   tamanho = tamanhoNum(n);
 
