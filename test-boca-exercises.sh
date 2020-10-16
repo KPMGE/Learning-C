@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Schell script to test Boca exercises
 # Because we know, this BOCA is a shit 
 # welcome lol
