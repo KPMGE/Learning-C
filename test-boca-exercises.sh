@@ -21,15 +21,15 @@ read wayZip
 
 # copy file zip and unpacking it 
 cd $wayZip
-cp $programName.zip ~
+cp ${programName}.zip ~
 cd ~
-unzip $programName.zip
-rm $programName.pdf
-rm $programName.zip
+unzip ${programName}.zip
+rm ${programName}.pdf
+rm ${programName}.zip
 
 # copying file .c to home
 cd $wayFile
-cp $programName.c ~/tests
+cp ${programName}.c ~/tests
 
 # renaming files for input and moving them to tests folder
 cd ~/input
@@ -51,18 +51,18 @@ rm -rf output
 
 # compilating program
 cd ~/tests
-gcc $programName.c -o compiledProgram -lm 
+gcc ${programName}.c -o compiledProgram -lm 
 
 # testing program
-echo "For program $programName, it was generated these results:\n\n" >> errors.txt
+echo "For program $programName, it was generated these results:\n" >> errors.txt
 for loop in 1 2 3;do 
   ./compiledProgram < input$loop > outputProgram$loop
-  echo "Test $loop\n" >> errors.txt
+  echo "\n\nTest $loop\n" >> errors.txt
   diff outputProgram$loop output$loop  >> errors.txt
 done
 
 # removing test files
-rm compiledProgram $programName.c
+rm compiledProgram ${programName}.c
 for loop in 1 2 3;do
   rm input$loop output$loop outputProgram$loop 
 done
