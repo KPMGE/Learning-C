@@ -7,22 +7,23 @@ float calcularDistancia(int x, int y);
 int main(void)
 {
   float distanciaOrigem, maiorValor;
-  int x, y, i, xMaior, yMaior;
-
-  //lendo o primeiro ponto
-  scanf("%d %d", &x, &y);
-  maiorValor = calcularDistancia(x, y);
-  xMaior = x;
-  yMaior = y;
-  printf("%.2f ", maiorValor);
+  int x, y, i, xMaior, yMaior, alreadyAssigned = 1;
 
   //lendo os demais pontos
-  for(i = 1; i <= 4; i++)
+  for(i = 1; i <= 5; i++)
   {
     scanf("%d %d", &x, &y);
-    distanciaOrigem = calcularDistancia(x, y);
 
-    if(maiorValor <= distanciaOrigem)
+    if(alreadyAssigned)
+    {
+      maiorValor = calcularDistancia(x, y);
+      alreadyAssigned = 0;
+      xMaior = x;
+      yMaior = y;
+    }
+
+    distanciaOrigem = calcularDistancia(x, y);
+    if(maiorValor < distanciaOrigem)
     {
       maiorValor = distanciaOrigem;
       xMaior = x;
@@ -39,7 +40,6 @@ int main(void)
 
 float calcularDistancia(int x, int y)
 {
-  float distancia;
-  distancia = sqrt(pow(x, 2) + pow(y, 2));
-  return distancia;
+  return sqrt(pow(x, 2) + pow(y, 2));
 }
+
