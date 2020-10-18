@@ -57,7 +57,7 @@ gcc ${programName}.c -o compiledProgram -lm
 echo "For program $programName, it was generated these results:\n" >> errors.txt
 for loop in 1 2 3;do 
   ./compiledProgram < input$loop > outputProgram$loop
-  echo "\n\nTest $loop\n" >> errors.txt
+  echo "\nTest $loop\n\n" >> errors.txt
   diff outputProgram$loop output$loop  >> errors.txt
 done
 
