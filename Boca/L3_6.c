@@ -7,7 +7,7 @@
 #define False 0
 #define True 1
 
-int EhPalindromo(int num);
+int isPalindrome(int num);
 
 int main(void)
 {
@@ -15,7 +15,7 @@ int main(void)
 
   while (scanf("%d", &num) == 1)
   {
-    if (EhPalindromo(num))
+    if (isPalindrome(num))
       printf("S\n");
     else
       printf("N\n");
@@ -24,24 +24,24 @@ int main(void)
   return 0;
 }
 
-int EhPalindromo(int num)
+int isPalindrome(int num)
 {
-  int numOriginal, palindromo, resto;
+  int originalNum, palindrome, resto;
 
-  numOriginal = num;
-  palindromo = 0;
+  originalNum = num;
+  palindrome = 0;
 
   while (num != 0)
   {
     resto = num % 10;
-    palindromo = palindromo + resto;
+    palindrome = palindrome + resto;
     num = num / 10;
 
     if (num != 0)
-      palindromo = palindromo * 10;
+      palindrome = palindrome * 10;
   }
 
-  if (palindromo == numOriginal)
+  if (palindrome == originalNum)
     return True; 
   else
     return False;
