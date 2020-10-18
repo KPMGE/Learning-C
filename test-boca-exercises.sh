@@ -21,36 +21,36 @@ read wayZip
 
 # copy file zip and unpacking it 
 cd $wayZip
-cp ${programName}.zip ~
-cd ~
+cp ${programName}.zip $HOME
+cd $HOME
 unzip ${programName}.zip
 rm ${programName}.pdf
 rm ${programName}.zip
 
 # copying file .c to home
 cd $wayFile
-cp ${programName}.c ~/tests
+cp ${programName}.c $HOME/tests
 
 # renaming files for input and moving them to tests folder
-cd ~/input
+cd $HOME/input
 for loop in 1 2 3; do
   mv test_$loop input$loop
-  mv input$loop ~/tests
+  mv input$loop $HOME/tests
 done
 cd ..
 rm -rf input
 
 # renaming files for output and moving them to tests folder
-cd ~/output
+cd $HOME/output
 for loop in 1 2 3; do
   mv test_$loop output$loop
-  mv output$loop ~/tests
+  mv output$loop $HOME/tests
 done
 cd ..
 rm -rf output
 
 # compilating program
-cd ~/tests
+cd $HOME/tests
 gcc ${programName}.c -o compiledProgram -lm 
 
 # testing program
