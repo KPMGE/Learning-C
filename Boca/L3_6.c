@@ -1,21 +1,5 @@
-/*(BOCA:L3_6) 
-Problema: Alguns números tem uma propriedade curiosa.
-Caso você inverta a ordem dos algarismos desse número ele continuará
-tendo o mesmo valor. A esses números, damos o nome de Palíndromos.
-Você deverá implementar um programa que identifica se um dado número
-é Palíndromo ou não.
-a) A identificação do número palíndromo deverá ser feita por uma
-função (a ser implementada) que receberá um número num e
-retornará verdadeiro se o número for palíndromo e falso caso
-contrário. A função deverá ter o seguinte cabeçalho: 
-
-int EhPalíndromo(int num);
-
-Entrada: uma sequencia de inteiros, cada um separados por uma quebra
-de linha.
-Saída: caso o número seja palíndromo, exibe 'S'. Caso não seja, exibe 'N'.
-Todas as saídas apresentam uma quebra de linha entre si.
-*/
+// exercise: L3_6 - BOCA  
+// author: Kevin Carvalho de Jesus
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,7 +15,7 @@ int main(void)
 
   while (scanf("%d", &num) == 1)
   {
-    if (EhPalindromo(num) == 1)
+    if (EhPalindromo(num))
       printf("S\n");
     else
       printf("N\n");
