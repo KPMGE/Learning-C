@@ -1,136 +1,52 @@
-/* (BOCA: P1_2016_Q3) Problema: Faça um programa para verificar a validade de um código de 4 caracteres, em que o primeiro caractere deve ser maiúsculo, o segundo deve ser um dígito, o terceiro deve ser uma vogal, e o quarto deve ser uma consoante minúscula.  Entrada: 4 caracteres.  Saída: O programa deverá imprimir “Invalido” se algum dos caracteres não respeitar as regras de construção do código, e deverá imprimir o próprio código em maiúsculo, caso contrário.
-*/
-
-//importaçao de bibliotecas
 #include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
 
-//funçao que verifica se o caractere é maiusculo
-int verificaMaiusculo(char caractere);
+#define True 1
+#define False 0
 
-//funçao que verifica se o digito é numero
-int verificaDigito(char digito);
+int isLetter(char c);
+int isCapitalLetter(char c);
+int isLowercaseConsoant(char c);
+int isVowel(char c);
+int isValid(char c1, char c2, char c3, char c4);
 
-//funçao que verifica se o caractere é uma vogal
-int verificaVogal(char caractere);
 
-//funçao que  verifica se o caractere é uma consoante minuscula
-int verificaConsoanteMinuscula(char caractere);
-
-//funçao que verifica a validade do codigo
-int verificaValidade(char c1, int digito, char v, char c);
-
-//funçao que verifica a validade do codigo
-int verificaValidade(char c1, int digito, char v, char c);
-
-//funçao que transforma o caractere em maiusculo
-char transformaMaiusculo(char caractere);
-
-//funçao principal
-int main()
+int main(void)
 {
-    //variaveis usadas
-    char c1, digito, vogal, consoante;
+  char character1, character2, character3, character4;
 
-    //leituta dos dados
-    scanf("%c %c %c %c", &c1, &digito, &vogal, &consoante);
+  scanf("%c%c%c%c", &character1, &character2, &character3, &character4); 
 
-    //caso a validade seja atestada
-    if (verificaValidade(c1, digito, vogal, consoante))
-    {
-        //c1 recebe o valor da funçao transformaMaiusculo
-        c1 = transformaMaiusculo(c1);
-        //vogal recebe o valor da funçao transformaMaiusculo
-        vogal = transformaMaiusculo(vogal);
-        //consoante recebe o valor da funçao transformaMaiusculo
-        consoante = transformaMaiusculo(consoante);
-
-        printf("%c%c%c%c", c1, digito, vogal, consoante);
-    }
-    //caso contrario mostramos Invalido
-    else
-        printf("Invalido");
-
-    return 0;
+  if(isValid(character1, character2, character3, character4))
+    printf("%c%c%c%c", character1, character2, toupper(character3), toupper(character4));
+  else
+    printf("Invalido");
+  
+  return 0;
 }
 
-//funçao que verifica se o caractere é maiusculo
-int verificaMaiusculo(char caractere)
+int isLetter(char c)
 {
-    //caso o caractere seja menor ou igual que 90 e maior ou igual que 65, o mesmo é maiusculo
-   return (caractere >= 65 && caractere <= 90) ? 1 : 0;
+  return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) ? True : False;
 }
 
-//funçao que verifica se o digito é numero
-int verificaDigito(char digito)
+int isCapitalLetter(char c)
 {
-    return (isdigit(digito) != 0) ? 1 : 0;
+  return (c >= 'A' && c <= 'Z') ? True : False;
 }
 
-//funçao que verifica se o caractere é uma vogal
-int verificaVogal(char caractere)
+int isVowel(char c)
 {
-    //array contendo todas as vogais
-    char vogais[11] = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
-
-    //loop for percorendo cada vogal
-    int c;
-    for (c = 0; c < 10; c++)
-    {
-        //caso o caractere seja igual a vogal na posiçao de c, retornamos 1(verdadeiro)
-        if (caractere == vogais[c])
-            return 1;
-    }
-
-    //caso contrario, retornamos 0(falso)
-    return 0;
+  return ((c == 'a') || (c == 'e') || (c == 'i') || (c == 'o') || (c == 'u') || (c == 'A') || (c == 'E') || (c == 'I') || (c == 'O') || (c == 'U')) ? True : False;
 }
 
-//funçao que  verifica se o caractere é uma consoante minuscula
-int verificaConsoanteMinuscula(char caractere)
+int isLowercaseConsoant(char c)
 {
-    //caso o não vogal, temos uma consoante
-    if (!verificaVogal(caractere))
-        //caso o caractere seja uma letra minuscula 1, se não 0
-       return (caractere >= 97 && caractere <= 122) ? 1 : 0;
+  return (isLetter(c) && !isCapitalLetter(c) && !isVowel(c)) ? True : False;
 }
 
-//funçao que verifica a validade do codigo
-int verificaValidade(char c1, int digito, char v, char c)
+int isValid(char c1, char c2, char c3, char c4)
 {
-    //caso a primeira letra seja maiuscula
-    if (verificaMaiusculo(c1))
-    {
-        //caso o segundo elemento seja um digito
-        if (verificaDigito(digito))
-        {
-            //caso o terceiro elemento seja uma vogal
-            if (verificaVogal(v))
-            {
-                //caso o quarto elemento seja uma vogal minuscula
-                if (verificaConsoanteMinuscula(c))
-                {
-                    //retornando 1(verdadeiro)
-                    return 1;
-                }
-            }
-        }
-    }
-    //caso contrario, retornar 0(falso)
-    else
-        return 0;
-}
-
-//funçao que transforma o caractere em maiusculo
-char transformaMaiusculo(char caractere)
-{
-    //caso o caractere seja maiusculo apenas o retornamos
-    if (verificaMaiusculo(caractere))
-        return caractere;
-    //caso contrario, diminuimos o mesmo em 32, dessa forma o mesmo ficará maiusculo
-    else
-    {
-        caractere -= 32;
-        return caractere;
-    }
+  return (isCapitalLetter(c1) && isdigit(c2) && isVowel(c3) && isLowercaseConsoant(c4)) ? True : False;
 }
