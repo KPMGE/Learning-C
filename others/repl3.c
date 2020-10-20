@@ -23,7 +23,6 @@ int main(void)
   weekDay = dayCode(year, month, day);
   displayDay(weekDay);
 
-  for (int i = 0; i < 100; i++)
   while(scanf("%d-%d-%d ", &day, &month, &year) == 3)
   {
     printf(", ");
