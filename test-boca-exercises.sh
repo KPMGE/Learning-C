@@ -4,9 +4,6 @@
 # Because we know, this BOCA is a shit 
 # welcome lol
 
-#creating folder for tests
-mkdir tests
-
 # displaying instructions
 echo "\n---------- Shell Script to test Boca Exercises ----------"
 echo "NOTE: you must be in the $HOME directory\n"
@@ -29,36 +26,37 @@ rm ${programName}.zip
 
 # copying file .c to home
 cd $wayFile
-cp ${programName}.c $HOME/tests
+cp ${programName}.c $HOME
 
-# renaming files for input and moving them to tests folder
+# renaming files for input and moving them to home directory
 cd $HOME/input
 for loop in 1 2 3; do
   mv test_$loop input$loop
-  mv input$loop $HOME/tests
+  mv input$loop $HOME
 done
 cd ..
 rm -rf input
 
-# renaming files for output and moving them to tests folder
+# renaming files for output and moving them to home directory
 cd $HOME/output
 for loop in 1 2 3; do
   mv test_$loop output$loop
-  mv output$loop $HOME/tests
+  mv output$loop $HOME
 done
 cd ..
 rm -rf output
 
 # compilating program
-cd $HOME/tests
+cd $HOME
 gcc ${programName}.c -o compiledProgram -lm 
 
 # testing program
-echo "For program $programName, it was generated these results:\n" >> errors.txt
+clear 
+echo "For program ${programName}.c, it was generated these results:"
 for loop in 1 2 3;do 
   ./compiledProgram < input$loop > outputProgram$loop
-  echo "\nTest $loop\n\n" >> errors.txt
-  diff outputProgram$loop output$loop  >> errors.txt
+  echo "\n\nTest $loop\n"
+  diff outputProgram$loop output$loop
 done
 
 # removing test files
@@ -68,4 +66,5 @@ for loop in 1 2 3;do
 done
 
 # displaying message
-echo "\nAlright, you can see erros in the 'tests' folder"
+echo "\n"
+cowsay "good work guy"
