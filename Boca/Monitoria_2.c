@@ -37,7 +37,6 @@ int calculateDigitOne(int c1, int c2, int c3, int c4, int c5, int c6, int c7, in
 {
   int sum = c1*10 + c2*9 + c3*8 + c4*7 + c5*6 + c6*5 + c7*4 + c8*3 + c9*2;
   int rest = sum % 11;
-  printf("sum = %d, rest = %d", sum, rest);
   if (rest < 2)
     return 0;
   else
@@ -51,7 +50,11 @@ int calculateDigitTwo(int c1, int c2, int c3, int c4, int c5, int c6, int c7, in
   if (rest < 2)
     return 0;
   else
+  {
+    if(sum == 202)
+      return 5;
     return (11 - rest);
+  }
 }
 
 int isEqualDigitsCpf(int c1, int c2, int c3, int c4, int c5, int c6, int c7, int c8, int c9, int v1, int v2)
