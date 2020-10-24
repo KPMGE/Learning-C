@@ -1,46 +1,42 @@
-/*
-(BOCA: P1_2017_Q1)
-Problema: Faça um programa para dizer o resultado de uma operação (soma, adição, multiplicação e divisão) entre dois números inteiros. Atentar para o fato de todas as operações serem inteiras.
-
-• Entrada: 2 números inteiros e um caractere (‘+’, ‘-’, ‘*’ e ‘/’) representando as operações (soma, adição, multiplicação e divisão respectivamente). Os números e o caractere estarão separados por um espaço.
-
-• Saída: Resposta da operação correspondente no formato “RESP:#”, em que # representa o número com a resposta. Caso a operação não seja nenhuma das permitidas, imprimir “Invalido”.
-*/
+// Exercise:  P1_2017_Q1
+// Author: Kevin Carvlho De Jesus
 
 #include <stdio.h>
+#include <stdlib.h>
 
-int main()
+int main(void)
 {
-    int num1, num2, resultado;
-    char operacao;
+  int num1, num2, resultado;
+  char operacao;
 
-    scanf("%d %d %c", &num1, &num2, &operacao);
+  scanf("%d %d %c", &num1, &num2, &operacao);
 
-    switch(operacao)
-    {
-        case '+':
-            resultado = num1+num2;
-            printf("RESP:%d", resultado);
-            break;
-        
-        case '-':
-            resultado = num1-num2;
-            printf("RESP:%d", resultado);
-            break;
+  switch (operacao)
+  {
+    case '+':
+      resultado = num1 + num2;
+      printf("RESP:%d", resultado);
+      break;
 
-        case '/':
-            resultado = num1/num2;
-            printf("RESP:%d", resultado);
-            break;
+    case '-':
+      resultado = num1 - num2;
+      printf("RESP:%d", resultado);
+      break;
 
-        case '*':
-            resultado = num1*num2;
-            printf("RESP:%d", resultado);
-            break;
-        
-        default:
-            printf("Invalido");      
+    case '/':
+      resultado = num1 / num2;
+      printf("RESP:%d", resultado);
+      break;
+
+    case '*':
+      resultado = num1 * num2;
+      printf("RESP:%d", resultado);
+      break;
+
+    default:
+      printf("Invalido");
+      break;
     }
 
-    return 0;
+  return 0;
 }
