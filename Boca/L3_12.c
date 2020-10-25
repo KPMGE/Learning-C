@@ -1,3 +1,6 @@
+// Exercise L3_12 ~ BOCA  
+// Author: Kevin Carvalho de Jesus
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -6,8 +9,8 @@
 #define False 0
 
 void parImpar(int n);
-int verificaPrimo(int n);
 void valorPrimo(int n);
+int verificaPrimo(int n);
 int tamanhoNum(int n);
 int algarismoNum(int n, int posicao);
 int algarismoNum(int n, int posicao);
@@ -22,7 +25,6 @@ int main(void)
   do
   {
     soma = somadosdigitos(valor);
-    //mostrando dados
     printf("%d ", soma);
     parImpar(soma);
     valorPrimo(soma);
@@ -44,6 +46,9 @@ int verificaPrimo(int n)
 {
   int i;
 
+  if(n < 2)
+    return False;
+
   for (i = 2; i < n / 2; i++)
   {
     if (n % i == 0)
@@ -64,12 +69,9 @@ int tamanhoNum(int n)
 {
   int tamanho = 0, resto = 0, i = 1;
 
-  //enquanto o resto da divisão for diferente do próprio numero
   while (resto != n)
   {
-    //resto é dado por 10^i
     resto = n % (int)pow(10, i);
-    //incrementando tamanho e i
     tamanho++;
     i++;
   }
@@ -80,13 +82,9 @@ int algarismoNum(int n, int posicao)
 {
   int algarismo, n2, n3;
 
-  //n2 recebe o numero cortando ate o algarismo que queremos
   n2 = n % (int)pow(10, posicao);
-  //n3 recebe os numero depois desse algarismo
   n3 = n % (int)pow(10, posicao - 1);
-  //algarismo recebe o numero com o algarismo e 000.. depois
   algarismo = n2 - n3;
-  //eliminando os zeros, por divisão
   algarismo /= (int)pow(10, posicao - 1);
 
   return algarismo;
@@ -95,18 +93,13 @@ int algarismoNum(int n, int posicao)
 int somadosdigitos(int n)
 {
   int i, tamanho, algarismo = 0, soma = 0;
-  //achando o tamanho do numero em casas decimas
   tamanho = tamanhoNum(n);
 
   for (i = 1; i <= tamanho; i++)
   {
-    //algarismo recebe o retorno da função algarismoNum
     algarismo = algarismoNum(n, i);
-    //soma incrementada com o algarismo
     soma += algarismo;
-    //resetando algarismo
     algarismo = 0;
   }
-
   return soma;
 }
