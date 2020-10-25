@@ -8,18 +8,24 @@
 #define False 0
 
 int isPrime(int num);
-int sumWord();
+int sumWord(char letter);
 int isLowercase(char letter);
 int codeLetter(char letter);
 int nextPrime(int num);
 
 int main(void)
 {
-  int sum = sumWord();
-  if(isPrime(sum))
-    printf("E primo");
-  else
-    printf("Nao e primo %d", nextPrime(sum));
+  char letter;
+  int sum;
+
+  while (scanf("%c", &letter) == 1)
+  {
+    sum = sumWord(letter);
+    if (isPrime(sum))
+      printf("E primo\n");
+    else
+      printf("Nao e primo %d\n", nextPrime(sum));
+  }
 
   return 0;
 }
@@ -27,6 +33,8 @@ int main(void)
 int isPrime(int num)
 {
   int i;
+  if (num < 2)
+    return False;
   for (i = 2; i < num / 2; i++)
     if (num % i == 0)
       return False;
@@ -40,24 +48,25 @@ int isLowercase(char letter)
 
 int codeLetter(char letter)
 {
-  if(isLowercase(letter))
+  if (isLowercase(letter))
     return letter - 'a' + 1;
   else
     return letter - 38;
 }
 
-int sumWord()
+int sumWord(char letter)
 {
   int sum = 0;
-  char letter;
-  while((letter = getchar()) != '\n')
-    sum += codeLetter(letter);
-  return sum;
+  char letter2;
+  while ((letter2 = getchar()) != '\n' || letter2 == ' ')
+    sum += codeLetter(letter2);
+
+  return sum + codeLetter(letter);
 }
 
 int nextPrime(int num)
 {
-  while(True)
+  while (True)
   {
     num++;
     if (isPrime(num))
