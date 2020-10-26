@@ -1,3 +1,6 @@
+// Second assignment from the repl.it
+// Author: Kevin Carvalho de Jesus
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
