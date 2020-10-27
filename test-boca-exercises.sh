@@ -4,17 +4,48 @@
 # Because we know, this BOCA is a shit 
 # welcome lol
 
+
+# verifying if the user have figlet installed
+isInstalledFiglet=$(which figlet)
+
+if [ "${isInstalledFiglet}" = "" ]; then
+  echo "you don't have figlet installed in your device, do you want to install it?(y/n)"
+  read choice
+
+  if [ "${choice}" = "y" ]; then
+    sudo apt-get install figlet
+    clear
+  fi
+fi
+
+# verifying if the user have cowsay installed
+isInstalledCowsay=$(which cowsay)
+
+if [ "${isInstalledCowsay}" = "" ]; then
+  echo "you don't have cowsay installed in your device, do you want to install it?(y/n)"
+  read choice
+
+  if [ "${choice}" = "y" ]; then
+    sudo apt-get install cowsay
+    clear
+  fi
+fi
+
 # displaying instructions
-echo "\n---------- Shell Script to test Boca Exercises ----------"
+figlet "Test Boca Exercises"
 echo "NOTE: you must be in the $HOME directory\n"
 
 # reading data
 echo "Enter the program that you want to test (without extension):"
 read programName
-echo "Enter the way to file .c that you want to test:"
-read wayFile
-echo "Enter the way to file .zip from Boca:"
-read wayZip
+# echo "Enter the way to file .c that you want to test:"
+# read wayFile
+# echo "Enter the way to file .zip from Boca:"
+# read wayZip
+
+
+wayFile="Desktop/Learning-C/Boca"
+wayZip="Desktop/Programming-Exercises"
 
 # copy file zip and unpacking it 
 cd $wayZip
