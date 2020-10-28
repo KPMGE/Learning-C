@@ -2,8 +2,36 @@
 
 # Program to add several exercises from the boca to github automaticly
 
+# verifying if the user have figlet installed
+isInstalledFiglet=$(which figlet)
+
+if [ "${isInstalledFiglet}" = "" ]; then
+  echo "you don't have figlet installed in your device, do you want to install it?(y/n)"
+  read choice
+
+  if [ "${choice}" = "y" ]; then
+    sudo apt-get install figlet
+    clear
+  fi
+fi
+
+# verifying if the user have cowsay installed
+isInstalledCowsay=$(which cowsay)
+
+if [ "${isInstalledCowsay}" = "" ]; then
+  echo "you don't have cowsay installed in your device, do you want to install it?(y/n)"
+  read choice
+
+  if [ "${choice}" = "y" ]; then
+    sudo apt-get install cowsay
+    clear
+  fi
+fi
+
+# displaying a simple boilerplate
 clear
-echo "---------- Addding Exercises from BOCA to github ----------\n"
+figlet "Addding Exercises to github"
+
 # reading way to files that it'll be added
 echo "Enter way to exercises that you want to add: "
 read wayExercises
