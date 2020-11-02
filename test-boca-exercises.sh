@@ -4,7 +4,7 @@
 # Because we know, this BOCA is a shit 
 # welcome lol
 
-
+clear
 # verifying if the user have figlet installed
 isInstalledFiglet=$(which figlet)
 
@@ -32,20 +32,17 @@ if [ "${isInstalledCowsay}" = "" ]; then
 fi
 
 # displaying instructions
+clear
 figlet "Test Boca Exercises"
 echo "NOTE: you must be in the $HOME directory\n"
 
 # reading data
 echo "Enter the program that you want to test (without extension):"
 read programName
-# echo "Enter the way to file .c that you want to test:"
-# read wayFile
-# echo "Enter the way to file .zip from Boca:"
-# read wayZip
-
-
-wayFile="Desktop/Learning-C/Boca"
-wayZip="Desktop/Programming-Exercises"
+echo "Enter the way to file .c that you want to test:"
+read wayFile
+echo "Enter the way to file .zip from Boca:"
+read wayZip
 
 # copy file zip and unpacking it 
 cd $wayZip
