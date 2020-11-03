@@ -1,47 +1,14 @@
-/*
-(BOCA: L3_8)
- Problema: Você subestimou o nível de conhecimento de
-Padi desde a última vez que o ajudou e agora ele terminou a Lista 3
-antes que você. Para provar que é mais rápido e treinar seus
-conhecimentos em implementação de funções, você deve fazer um
-programa que, dado o tamanho de uma matrix e seus valores, que
-nunca são iguais, transforma seus valores no próximo número primo
-maior que o próprio valor se o valor é positivo e menor que o próprio
-valor se o valor é negativo. Caso o valor já seja primo ou se o primo
-transformado extrapolar os intervalos de entrada possível, o programa
-não deve fazer nenhuma mudança.
-
-a) Seu programa deve conter a função int is_prime(int n) que
-retorna 1 se o número n passado como parâmetro for primo ou 0 caso
-contrário.
-
-b) Seu programa deve conter a função int transform_prime(int n)
-que transforma o número n passado como parâmetro no próximo maior
-ou menor primo retornando o número transformado.
-
-c) Seu programa deve conter a função int is_negative(int n) que
-retorna 1 se o número for negativo ou 0 caso contrário.
-
-Entrada: uma linha com os valores L (1 <= L <= 100) e C (1 <= C <=
-100), representando o tamanho da matrix em rows e columns,
-respectivamente. Depois, L rows com C valores V (-32000 <= V <=
-32000) cada.
-
-Saída: a matrix com seus valores transformados, conforme exemplo
-abaixo.
-*/
+// Exercise: L3_8
+// Author: Kevin Carvalho de jesus
 
 #include <stdio.h>
 
 //creating boolean values
-#define TRUE 1
-#define FALSE 0
+#define True 1
+#define False 0
 
-//function that checks if the number is negative
 int is_negative(int n);
-//function that checks if the number is a prime number
 int is_prime(int n);
-//function that transforms the number to next prime number
 int transform_prime(int n);
 
 int main(void)
@@ -49,10 +16,8 @@ int main(void)
   int rows, columns;
   scanf("%d %d", &rows, &columns);
 
-  //declaring matrices
   int matrix[rows][columns], matrixResult[rows][columns];
 
-  //reading matrix
   int i, j;
   for (i = 0; i < rows; i++)
   {
@@ -99,9 +64,9 @@ int is_prime(int n)
       {
         //if 'n' is divisible by 'i', n isn't a prime number
         if (n % i == 0)
-          return 0;
+          return False;
       }
-      return 1;
+      return True;
     }
     else
     {
@@ -109,18 +74,17 @@ int is_prime(int n)
       {
         //if 'n' is divisible by 'i', n isn't a prime number
         if (n % i == 0)
-          return 0;
+          return False;
       }
-      return 1;
+      return True;
     }
   }
   else
-    return 0;
+    return False;
 }
 
 int transform_prime(int n)
 {
-  //variable with smallest positive prime number
   int i = 2;
 
   //if the number is prime, we return it
@@ -133,7 +97,7 @@ int transform_prime(int n)
     //smallest negative prime number
     i = -2;
 
-    while (TRUE)
+    while (True)
     {
       //if i is small than n
       if (i < n)
@@ -154,7 +118,7 @@ int transform_prime(int n)
   // to transform to next positive prime number
   else
   {
-    while (TRUE)
+    while (True)
     {
       //if 'i' is greater than n
       if (i > n)
