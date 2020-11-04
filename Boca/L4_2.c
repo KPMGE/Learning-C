@@ -19,8 +19,8 @@ int isLeapYear(int year);
 int isSameYear(Date date1, Date date2);
 int qtdDaysMonth(int month, int year);
 Date readDate();
+Date adjustDate(Date someDate);
 Date nextDate(Date someDate);
-
 
 int main(void)
 {
@@ -28,23 +28,8 @@ int main(void)
 
   firstDate = readDate();
   lastDate = readDate();
-
-  int qtdDaysFirstDate, qtdDaysLastDate;
-  qtdDaysFirstDate = qtdDaysMonth(firstDate.month, firstDate.year);
-  qtdDaysLastDate = qtdDaysMonth(lastDate.month, lastDate.year);
-
-  // adjusting first date
-  if (firstDate.month > 12)
-    firstDate.month = 12;
-  if (firstDate.day > qtdDaysFirstDate)
-    firstDate.day = qtdDaysFirstDate;
-
-  // adjusting last date
-  if (lastDate.month > 12)
-    lastDate.month = 12;
-  if (lastDate.day > qtdDaysLastDate)
-    lastDate.day = qtdDaysLastDate;
-
+  firstDate = adjustDate(firstDate);
+  lastDate = adjustDate(lastDate);
 
   do 
   {
@@ -107,20 +92,38 @@ int qtdDaysMonth(int month, int year)
     return 31;
 }
 
+Date adjustDate(Date someDate)
+{
+  int qtdDaysSomeDate = qtdDaysMonth(someDate.month, someDate.year);
+
+  if (someDate.day > qtdDaysSomeDate)
+    someDate.day = qtdDaysSomeDate;
+  if (someDate.day < 1)
+    someDate.day = 1;
+  if (someDate.month > 12)
+    someDate.month = 12;
+  if (someDate.month < 1)
+    someDate.month = 1;
+
+  return someDate;
+}
+
 Date nextDate(Date someDate)
 {
-  if (someDate.month == 12 && qtdDaysMonth(someDate.month, someDate.year) == someDate.day)
+  int qtdDaysSomeDate = qtdDaysMonth(someDate.month, someDate.year);
+
+  if (someDate.month == 12 && qtdDaysSomeDate == someDate.day)
   {
     someDate.day = 1;
     someDate.month = 1;
     someDate.year++;
   }
-  else if (someDate.day == qtdDaysMonth(someDate.month, someDate.year))
+  else if (someDate.day == qtdDaysSomeDate)
   {
     someDate.day = 1;
     someDate.month++;
   }
-  else if (someDate.day < qtdDaysMonth(someDate.month, someDate.year))
+  else if (someDate.day < qtdDaysSomeDate)
     someDate.day++;
   
   else if (someDate.month < 12)
