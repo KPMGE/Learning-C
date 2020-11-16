@@ -98,11 +98,11 @@ Date adjustDate(Date someDate)
 
   if (someDate.day > qtdDaysSomeDate)
     someDate.day = qtdDaysSomeDate;
-  if (someDate.day < 1)
+  else if (someDate.day < 1)
     someDate.day = 1;
   if (someDate.month > 12)
     someDate.month = 12;
-  if (someDate.month < 1)
+  else if (someDate.month < 1)
     someDate.month = 1;
 
   return someDate;
