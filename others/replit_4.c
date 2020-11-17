@@ -120,15 +120,15 @@ void displayPresident(Election currentElection, int totalVotes)
   switch (idWinnerPresident(currentElection.qtdEdsger, currentElection.qtdCarol, currentElection.qtdTuring))
   {
   case 10:
-    printf("Edsger Dijkstra (Partido do Melhor Caminho (PMC)), %d, %.2f%%\n", totalVotes, calculatePercentage(totalVotes, currentElection.qtdEdsger));
+    printf("Edsger Dijkstra (Partido do Melhor Caminho (PMC)), %d, %.2f%%\n", currentElection.qtdEdsger, calculatePercentage(totalVotes, currentElection.qtdEdsger));
     break;
 
   case 42:
-    printf("Alan Turing (Partido dos Avanço Intelectual (PAI), %d, %.2f%%\n)", totalVotes, calculatePercentage(totalVotes, currentElection.qtdTuring));
+    printf("Alan Turing (Partido dos Avanço Intelectual (PAI), %d, %.2f%%\n)", currentElection.qtdTuring, calculatePercentage(totalVotes, currentElection.qtdTuring));
     break;
 
   case 26:
-    printf("Carol Shaw (Gamers Unidos (GU)), %d, %.2f%%\n", totalVotes, calculatePercentage(totalVotes, currentElection.qtdCarol));
+    printf("Carol Shaw (Gamers Unidos (GU)), %d, %.2f%%\n", currentElection.qtdCarol, calculatePercentage(totalVotes, currentElection.qtdCarol));
     break;
   }
 }
@@ -138,15 +138,15 @@ void displayMinister(Election currentElection, int totalVotes)
   switch (idWinnerMinister(currentElection.qtdTim, currentElection.qtdLinus, currentElection.qtdAda))
   {
   case 36:
-    printf("Tim Berners-Lee (World Wide Web (WWW)), %d, %.2f%%\n", totalVotes, calculatePercentage(totalVotes, currentElection.qtdTim));
+    printf("Tim Berners-Lee (World Wide Web (WWW)), %d, %.2f%%\n", currentElection.qtdTim, calculatePercentage(totalVotes, currentElection.qtdTim));
     break;
 
   case 64:
-    printf("Linus Torvalds (Linux (Linux)), %d, %.2f%%\n", totalVotes, calculatePercentage(totalVotes, currentElection.qtdLinus));
+    printf("Linus Torvalds (Linux (Linux)), %d, %.2f%%\n", currentElection.qtdLinus, calculatePercentage(totalVotes, currentElection.qtdLinus));
     break;
 
   case 18:
-    printf("Ada Lovelace (Mulheres Programadoras Unidas (MPU)), %d, %.2lf%%\n", totalVotes, calculatePercentage(totalVotes, currentElection.qtdAda));
+    printf("Ada Lovelace (Mulheres Programadoras Unidas (MPU)), %d, %.2lf%%\n", currentElection.qtdAda, calculatePercentage(totalVotes, currentElection.qtdAda));
     break;
   }
 }
