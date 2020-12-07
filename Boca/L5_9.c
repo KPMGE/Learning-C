@@ -1,49 +1,57 @@
-// Exercise: L5_9
-// Author: Kevin Carvalho de Jesus
-
 #include <stdio.h>
 #include <stdlib.h>
 
-void reverseVector(int *vector, int size);
-void displayVector(int *vector, int size);
+void InverteVetor(int vet[], int qtd);
+void ImprimeDadosDoVetor(int vet[], int qtd);
 
 int main(void)
 {
-  int i, size;
-  scanf("%d", &size);
-  int vector[size];
+  int qtd, i;
 
-  for (i = 0; i < size; i++)
-    scanf("%d", &vector[i]);
+  scanf("%d", &qtd);
+  int vet[qtd];
 
-  reverseVector(vector, size);
+  for (i = 0; i < qtd; i++)
+    scanf("%d", &vet[i]);
+
+  InverteVetor(vet, qtd);
+  ImprimeDadosDoVetor(vet, qtd);
 
   return 0;
 }
 
-void displayVector(int *vector, int size)
+void InverteVetor(int vet[], int qtd)
 {
-  int i;
-  printf("{");
+  int vet2[qtd];
+  int i, j;
 
-  for (i = 0; i < size; i++)
-  {
-    if (i != 0)
-      printf(", ");
-    printf("%d", vector[i]);
-  }
-  
-  printf("}");
+  j = qtd - 1;
+
+  for (i = 0; i < qtd; i++, j--)
+    vet2[j] = vet[i];
+
+  for (i = 0; i < qtd; i++)
+    vet[i] = vet2[i];
 }
 
-void reverseVector(int *vector, int size)
+void ImprimeDadosDoVetor(int vet[], int qtd)
 {
-  int i, j, reversedVector[size];
+  int i;
 
-  for (j = (size - 1), i = 0; i < size; i++, j--)
+  if (qtd == 0)
+    printf("{}");
+  if (qtd == 1)
+    printf("{%d}", vet[0]);
+  if (qtd != 0 && qtd != 1)
   {
-    reversedVector[j] = vector[i];
+    printf("{");
+    for (i = 0; i < qtd; i++)
+    {
+      printf("%d", vet[i]);
+      if (i != qtd - 1)
+        printf(", ");
+    }
+    if (i == qtd)
+      printf("}");
   }
-
-  displayVector(reversedVector, size);
 }
