@@ -1,55 +1,62 @@
-// Exercise: L5_8
-// Author: Kevin Carvalho de Jesus
-
 #include <stdio.h>
 #include <stdlib.h>
 
-void swapEvenAndOdd(int vector[], int qtd);
-void displayVector(int vector[], int qtd);
-int isOdd(int number);
+void TrocaParEImpar(int vet[], int qtd);
+void ImprimeDadosDoVetor(int vet[], int qtd);
 
-int main(void) {
-  int n, i;
+int main(void)
+{
+  int qtd, i;
 
-  scanf("%d", &n);
+  scanf("%d", &qtd);
+  int vet[qtd];
 
-  int vector[n];
+  for (i = 0; i < qtd; i++)
+    scanf("%d", &vet[i]);
 
-  for (i = 0; i < n; i++) {
-    scanf("%d", &vector[i]);
-  }
-
-  swapEvenAndOdd(vector, n);
+  TrocaParEImpar(vet, qtd);
+  ImprimeDadosDoVetor(vet, qtd);
 
   return 0;
 }
 
-int isOdd(int number){
-  return (number % 2 != 0);
-}
+void TrocaParEImpar(int vet[], int qtd)
+{
+  int i, k = 1, a, b;
 
-void swapEvenAndOdd(int vector[], int qtd) {
-  int i, aux;
-
-  for (i = 0; i < qtd; i++) {
-    if (isOdd(i)) {
-      aux = vector[i - 1];
-      vector[i - 1] = vector[i];
-      vector[i] = aux;
+  if (qtd != 0 && qtd != 1)
+  {
+    for (i = 0; i < qtd; i++, k++)
+    {
+      a = vet[i];
+      b = vet[k];
+      if (i % 2 == 0 && k != qtd)
+      {
+        vet[i] = b;
+        vet[k] = a;
+      }
     }
   }
-
-  displayVector(vector, qtd);
 }
 
-void displayVector(int vector[], int qtd) {
+void ImprimeDadosDoVetor(int vet[], int qtd)
+{
   int i;
-  printf("{");
-  for (i = 0; i < qtd; i++){
-    if (i != 0)
-      printf(", ");
 
-    printf("%d", vector[i]);
+  if (qtd == 0)
+    printf("{}");
+  if (qtd == 1)
+    printf("{%d}", vet[0]);
+  if (qtd != 0 && qtd != 1)
+  {
+    printf("{");
+    for (i = 0; i < qtd; i++)
+    {
+      printf("%d", vet[i]);
+      if (i != qtd - 1)
+        printf(", ");
+    }
+    if (i == qtd)
+      printf("}");
   }
-  printf("}");
 }
