@@ -69,7 +69,7 @@ char municipiosEspiritoSanto[79][30] =
   "DIVINO DE SAO LOURENCO", "DOMINGOS MARTINS", "DORES DO RIO PRETO", "ECOPORANGA",
   "FUNDAO", "GOVERNADOR LINDENBERG", "GUACUI", "GUARAPARI", "IBATIBA", "IBIRACU",
   "IBITIRAMA", "ICONHA", "IRUPI", "ITAGUACU", "ITAPEMIRIM", "ITARANA", "IUNA",
-   "JAGUARE", "JERONIMO MONTEIRO", "JOAO NEIVA", "LARANJA DA TERRA", "LINHARES",
+  "JAGUARE", "JERONIMO MONTEIRO", "JOAO NEIVA", "LARANJA DA TERRA", "LINHARES",
   "MANTENOPOLIS", "MARATAIZES", "MARECHAL FLORIANO", "MARILANDIA", "MIMOSO DO SUL",
   "MONTANHA", "MUCURICI", "MUNIZ FREIRE", "MUQUI", "NOVA VENECIA", "PANCAS",
   "PEDRO CANARIO", "PINHEIROS", "PIUMA", "PONTO BELO", "PRESIDENTE KENNEDY", "RIO BANANAL",
@@ -153,7 +153,7 @@ int main(void)
   dataIniTopCidades = leData();
   dataFimTopCidades = leData();
   // lendo munícipio para o item 6
-  scanf("%s", municipioParaItem6);
+  scanf(" %[^\n]", municipioParaItem6);
   // lendo datas para media e desvio
   dataParaMediaDesvioIni = leData();
   dataParaMediaDesvioFim = leData();
@@ -358,6 +358,8 @@ void listaTopNCidades(FILE *arquivo, int n, Data dataInicial, Data dataFinal)
   // percorrendo vetor e imprimindo valores no arquivo
   for (i = 0; i < n; i++)
   {
+    if (vetorCasosPorMunicipio[i].numeroDeCasos == 0)
+      continue;
     fprintf(arquivo, "- %s: %d casos\n", vetorCasosPorMunicipio[i].municipio, vetorCasosPorMunicipio[i].numeroDeCasos);
   }
 }
@@ -389,7 +391,7 @@ void imprimeDadosItem7(FILE *arquivo, Data dataInicial, Data dataFinal)
   float media = calculaMediaDeIdadeEntreDatas(dataInicial, dataFinal);
 
   // imprimindo dados formatados do arquivo
-  fprintf(arquivo, "A media e desvio padrao da idade: %.3f -- %.3f\n", media, calculaDesvioPradraoEntreDatas(dataInicial, dataFinal, media));
+  fprintf(arquivo, "A media e desvio padrao da idade: %.3f -- %.3f\n", media, fabs(calculaDesvioPradraoEntreDatas(dataInicial, dataFinal, media)));
   fprintf(arquivo, "A %% de pessoas que morreram sem comorbidade: %.3f%%", calculaPorcentagemPessoasQueMorreramSemComorbidade(dataInicial, dataFinal));
 }
 
@@ -657,6 +659,8 @@ float calculaMediaDeIdadeEntreDatas(Data dataInicial, Data dataFinal)
       }
     }
   }
+  if (totalpessoas == 0)
+    totalpessoas = 1;
   // retornando média
   return (soma / totalpessoas);
 }
@@ -696,6 +700,8 @@ float calculaDesvioPradraoEntreDatas(Data dataInicial, Data dataFinal, float med
   }
   // como o somatório é de 1 até n, precisamos subtrair 1, pois nossa contagem começa do 0
   totalpessoas--;
+  if (totalpessoas == 0)
+    totalpessoas = 1;
   // retornando desvio padrão
   return sqrt(denominador / totalpessoas);
 }
@@ -742,6 +748,8 @@ float calculaPorcentagemPessoasQueMorreramSemComorbidade(Data dataInicial, Data 
       }
     }
   }
+  if (pessoasQueMorreramSemComorbidade == 0 && pessoasQueMorreram == 0)
+    return 0;
   // retornando porcentagem de pessoas que morreram e nao tinham comorbidade
   return calculaPorcentagem(pessoasQueMorreramSemComorbidade, pessoasQueMorreram);
 }
