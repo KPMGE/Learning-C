@@ -12,9 +12,6 @@ int main(void)
 
   number2 = number;
 
-  //encontrando o tamanho do numero em casas decimais
-  if()
-
   //encontrando os algarismos
   algarismThousand = number2 / 1000;
   algarismUnit = number2 % 10;

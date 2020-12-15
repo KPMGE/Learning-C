@@ -24,7 +24,7 @@ void displayResultElection(Election currentElection, int whiteNullPresident, int
 
 int main(void)
 {
-  int id, presidentNumber, ministerNumber, qtdPeople, cont = 0, whiteNullMinister = 0, whiteNullPresident = 0, validVote = 0, totalVotes;
+  int id, presidentNumber, ministerNumber, qtdPeople, cont = 0, whiteNullMinister = 0, whiteNullPresident = 0, validVote = 0;
   int currentId;
   Election currentElection;
 

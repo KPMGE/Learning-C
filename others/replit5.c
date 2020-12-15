@@ -6,7 +6,7 @@
 
 int main(void)
 {
-  int i = 0, j, tamanho = 0, alvo;
+  int i = 0, j, alvo;
   int vetor[100];
   char caractere = 'a'; 
 
