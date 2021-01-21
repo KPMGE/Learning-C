@@ -1,3 +1,5 @@
+// program that calculates your gain given some products
+
 #include <stdio.h>
 #include <stdlib.h>
 
