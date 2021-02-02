@@ -1,5 +1,5 @@
 # we can put our targets that not denpend of a file in the .PHONY target, 
-# so, they'll executed always
+# so, they'll be executed always
 
 
 .PHONY: all say_hello generate
