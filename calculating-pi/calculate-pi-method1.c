@@ -14,7 +14,7 @@ int main(void) {
 
   double pi = sqrt(6 * calculateSerie(size));
 
-  printf("the value of pi is: %f", pi);
+  printf("the value of pi is: %.20lf", pi);
 
   return 0;
 }

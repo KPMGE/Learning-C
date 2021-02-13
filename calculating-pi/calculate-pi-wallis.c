@@ -14,7 +14,7 @@ int main(void) {
 
   double pi = 2 * calculateSerie(size);
 
-  printf("The value of pi is: %lf", pi);
+  printf("The value of pi is: %.20lf", pi);
 
   return 0;
 }
