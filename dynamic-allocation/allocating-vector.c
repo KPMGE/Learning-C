@@ -4,22 +4,22 @@
 #include <stdlib.h>
 
 int *createArray(int size);
-void readArray(int array[], int size);
-void displayArray(int array[], int size);
+void readArray(int vector[], int size);
+void displayArray(int vector[], int size);
 
 int main(void) {
   int size;
 
-  printf("enter array's size: ");
+  printf("enter vector's size: ");
   scanf("%d", &size);
 
-  // allocating array
+  // allocating vector
   int *allocatedArray = createArray(size);
 
-  // reading array
+  // reading vector
   readArray(allocatedArray, size);
 
-  // displaying array
+  // displaying vector
   displayArray(allocatedArray, size);
 
   // freeing memory allocated
@@ -33,16 +33,16 @@ int *createArray(int size) {
   return arr;
 }
 
-void readArray(int array[], int size) {
+void readArray(int vector[], int size) {
   printf("enter %d numbers:\n", size);
   for (int i = 0; i < size; i++) {
-    scanf("%d", &array[i]);
+    scanf("%d", &vector[i]);
   }
 }
 
-void displayArray(int array[], int size) {
-  printf("you array is:\n");
+void displayArray(int vector[], int size) {
+  printf("you vector is:\n");
   for (int i = 0; i < size; i++) {
-    printf("%d ", array[i]);
+    printf("%d ", vector[i]);
   }
 }
