@@ -12,7 +12,7 @@ int main(void) {
 
   // displaying results
   displayStudent(student1);
-  printf("student average: %.2f", calculateAveragestudent(student1));
+  printf("student average: %.2f", calculateAverageStudent(student1));
   
   // releasing memory
   freeStudent(student1);

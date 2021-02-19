@@ -39,7 +39,7 @@ void freeStudent(Student *student) {
   free(student);
 }
 
-float calculateAveragestudent(Student *student) {
+float calculateAverageStudent(Student *student) {
   return (student->p1 + student->p2 + student->p3) / 3;
 }
 

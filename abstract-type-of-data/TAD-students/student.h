@@ -7,6 +7,6 @@ void displayStudent(Student *student);
 // function that releases a student
 void freeStudent(Student *student);
 // function that calculates the student average
-float calculateAveragestudent(Student *student);
+float calculateAverageStudent(Student *student);
 // function that creates an instance of student
 Student* createStudent();
