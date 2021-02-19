@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "product.h" 
-#include "list-products.h"
+#include "./header/product.h" 
+#include "./header/list-products.h"
 
 float readExpenses();
  
