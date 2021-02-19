@@ -32,7 +32,7 @@ int main(void) {
   // displaying results
   printf("\nThe brute value is: R$%.2f\n", bruteValue);
   printf("Your expenses were: R$%.2f\n", totalExpenses);
-  printf("Your gain was: %.2f\n\n", bruteValue - totalExpenses);
+  printf("Your gain was: R$%.2f\n\n", bruteValue - totalExpenses);
 
   printf("do you want to see all your list: (Y/N) ");
   scanf(" %c", &choiceUser);
@@ -40,6 +40,19 @@ int main(void) {
   if (choiceUser == 'y' || choiceUser == 'Y') {
     displayListProducts(listProducts, amountProducts);
   }
+
+  printf("do you want to save your results in a file? (Y/N) ");
+  scanf(" %c", &choiceUser);
+
+  if (choiceUser == 'y' || choiceUser == 'Y') {
+    FILE *products = fopen("results.txt", "w");
+  
+    saveOutcomeInAFile(products, listProducts, amountProducts, bruteValue, totalExpenses);
+
+    fclose(products);
+  }
+
+  system("clear && figlet Thank you!");
 
   // releasing allocated memory
   freeListProducts(listProducts);
