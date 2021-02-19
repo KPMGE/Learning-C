@@ -11,4 +11,4 @@ run: $(NAME_PROGRAM)
 	@./$(NAME_PROGRAM)
 
 clean:
-	@rm *.o $(NAME_PROGRAM)
+	@rm *.o *.txt $(NAME_PROGRAM)
