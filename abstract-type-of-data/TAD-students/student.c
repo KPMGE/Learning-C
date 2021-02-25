@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include "student.h"
 
-typedef struct student {
+struct student {
   char name[50];
   int age;
   int registration;
   float p1, p2, p3;
-} Student;
+};
 
 void readStudent(Student *student) {
   printf("Enter student data:\n");
