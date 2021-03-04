@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "complex.h"
 
 struct complex {
@@ -39,6 +40,27 @@ D_Complex_t* subractComplexInto(D_Complex_t *number1, D_Complex_t *number2, D_Co
   number3->imag = number1->imag - number2->imag;
 }
 
+D_Complex_t* multiplicateComplex(D_Complex_t *number1, D_Complex_t *number2) {
+  D_Complex_t *complex = (D_Complex_t *)malloc(sizeof(D_Complex_t));
+
+  complex->real = (number1->real * number2->real) - (number1->imag * number2->imag);
+  complex->imag = (number1->real * number2->imag) + (number1->imag * number2->real);
+
+  return complex;
+}
+
+D_Complex_t* divisionComplex(D_Complex_t *number1, D_Complex_t *number2) {
+  D_Complex_t *complex = (D_Complex_t *)malloc(sizeof(D_Complex_t));
+
+  double divider = pow(number2->real, 2) + pow(number2->imag, 2);
+
+  complex->real = ((number1->real * number2->real) + (number1->imag * number2->imag)) / divider;
+  complex->imag = ((number1->imag * number2->real) - (number1->real * number2->imag
+  )) / divider;
+
+  return complex;
+}
+
 double getRealField(D_Complex_t *number) {
   return number->real;
 }
@@ -48,8 +70,6 @@ double getImaginaryField(D_Complex_t *number) {
 }
 
 void displayComplex(D_Complex_t *number) {
-  printf("Your complex number is: ");
-
   if (number->imag > 0) {
     printf("%.3f + %.3fi", number->real, number->imag);
   } else if (number->imag < 0) {
