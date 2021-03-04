@@ -9,6 +9,10 @@ D_Complex_t* sumComplex(D_Complex_t *number1, D_Complex_t *number2);
 D_Complex_t* subtractComplex(D_Complex_t *number1, D_Complex_t *number2);
 // function that subtracts number1 and number2 and assign outcome to number3
 D_Complex_t* subractComplexInto(D_Complex_t *number1, D_Complex_t *number2, D_Complex_t *number3);
+// function that multiplicates two complex numbers
+D_Complex_t* multiplicateComplex(D_Complex_t *number1, D_Complex_t *number2);
+// function that do a division for two complex numbers
+D_Complex_t* divisionComplex(D_Complex_t *number1, D_Complex_t *number2);
 // function that returns real field of a complex number
 double getRealField(D_Complex_t *number);
 // function that returns imaginary field of a complex number
