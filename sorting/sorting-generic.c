@@ -1,4 +1,4 @@
-// implementation of a generic soring function
+// implementation of a generic sorting function
 // Author: Kevin Carvalho de Jesus
 
 #include <stdio.h>
