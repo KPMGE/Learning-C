@@ -1,4 +1,4 @@
-NAME_PROGRAM   = final.exe
+NAME_PROGRAM   = name_program.exe
 MAIN_FILE_NAME = main
 SRC            = ./src
 INCLUDE        = ./include
@@ -33,7 +33,7 @@ $(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h
 $(BIN)/%: 
 	@ echo "\033[1;32m"
 	@ echo "Creating executable..."
-	@ $(COMPILER) $< $(OBJ)/*.o -I $(INCLUDE) -o $@
+	@ $(COMPILER) $< $(OBJ)/*.o -I $(INCLUDE) -o $@ $(FLAGS)
 	@ echo "\033[0m"
 
 # create all needed directories
